@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignInViewController.swift
 //  Shield For Dementia
 //
 //  Created by 彭孝诚 on 2019/4/3.
@@ -8,23 +8,23 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
-
-    @IBOutlet weak var logInButton: UIButton!
-    @IBOutlet weak var userNameTF: UITextField!
+class SignUpViewController: UIViewController {
+    
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var pswTF: UITextField!
-    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var confirmTF: UITextField!
+    @IBOutlet weak var firstNameTF: UITextField!
+    @IBOutlet weak var lastNameTF: UITextField!
     
     override func viewDidAppear(_ animated: Bool) {
-        userNameTF.becomeFirstResponder()
-        self.navigationController!.setNavigationBarHidden(false, animated: true)
+        usernameTF.becomeFirstResponder()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.blurView.layer.cornerRadius = 20
-        self.blurView.clipsToBounds = true
-        logInButton.layer.cornerRadius = 10
+        signUpButton.layer.cornerRadius = 10
+
         // Do any additional setup after loading the view.
     }
     

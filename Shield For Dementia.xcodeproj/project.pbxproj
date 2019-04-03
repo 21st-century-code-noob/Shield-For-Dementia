@@ -21,7 +21,7 @@
 		BD96EB2C22548D820042F236 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB2B22548D820042F236 /* LoginViewController.swift */; };
 		BD96EB2F22548EE90042F236 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB2E22548EE90042F236 /* WelcomeViewController.swift */; };
 		BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB32225497490042F236 /* LoginNavigationController.swift */; };
-		BD96EB392254B4730042F236 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB382254B4730042F236 /* SignUpController.swift */; };
+		BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 		BD96EB2B22548D820042F236 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD96EB2E22548EE90042F236 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BD96EB32225497490042F236 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
-		BD96EB382254B4730042F236 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DB748431E958BFEEF13320BD /* Pods_Shield_For_DementiaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shield_For_DementiaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6478BC999782C6B294D84F /* Pods-Shield For Dementia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For Dementia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For Dementia/Pods-Shield For Dementia.release.xcconfig"; sourceTree = "<group>"; };
 		FC84541F1BE76BA887CF6AD5 /* Pods-Shield For DementiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For DementiaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For DementiaUITests/Pods-Shield For DementiaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				BD96EB2B22548D820042F236 /* LoginViewController.swift */,
 				BD96EB2E22548EE90042F236 /* WelcomeViewController.swift */,
 				BD96EB32225497490042F236 /* LoginNavigationController.swift */,
-				BD96EB382254B4730042F236 /* SignUpController.swift */,
+				BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -431,10 +431,10 @@
 			files = (
 				BD96EB2C22548D820042F236 /* LoginViewController.swift in Sources */,
 				BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */,
+				BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */,
 				BD96EB2F22548EE90042F236 /* WelcomeViewController.swift in Sources */,
 				BD96EABE2252D90C0042F236 /* AppDelegate.swift in Sources */,
 				BD96EAC62252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld in Sources */,
-				BD96EB392254B4730042F236 /* SignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +617,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "monash.Shield-For-Dementia";
+				PRODUCT_BUNDLE_IDENTIFIER = "monash.Shield-For-Carer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -636,7 +636,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "monash.Shield-For-Dementia";
+				PRODUCT_BUNDLE_IDENTIFIER = "monash.Shield-For-Carer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
