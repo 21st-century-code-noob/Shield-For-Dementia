@@ -22,6 +22,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nameHintLabel: UILabel!
     @IBOutlet weak var signupLoadingIndicator: UIActivityIndicatorView!
     
+    var availabilityChecked: Bool = false
+    
     override func viewDidAppear(_ animated: Bool) {
         usernameTF.becomeFirstResponder()
     }
@@ -39,7 +41,7 @@ class SignUpViewController: UIViewController {
         let validated:Bool = ValidationUtils.validatePsw(psw: inputPsw)
         if  validated == false{
             passwordHintLabel.isHidden = false
-            passwordHintLabel.text = "6-24 characters, contains uppercase, lowercase and digit"
+            passwordHintLabel.text = "Password must be 8-24 characters, with at least one uppercase, lowercase and number, no symbol"
         }
         else{
             passwordHintLabel.isHidden = true
@@ -50,13 +52,13 @@ class SignUpViewController: UIViewController {
     
     @IBAction func confirmEditChanged(_ sender: Any) {
         let psw = pswTF.text
-        if psw == ""{
+        if !passwordHintLabel.isHidden{
             confirmPswHintLabel.isHidden = false
-            confirmPswHintLabel.text = "Input password first"
+            confirmPswHintLabel.text = "Enter validated password first"
         }
         else if confirmTF.text != psw{
             confirmPswHintLabel.isHidden = false
-            confirmPswHintLabel.text = "confirm password doesn't match"
+            confirmPswHintLabel.text = "Must be the same as the password you entered above"
         }
         else{
             confirmPswHintLabel.isHidden = true
@@ -64,11 +66,12 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func usernameEditChanged(_ sender: Any) {
+        self.availabilityChecked = false
         let inputUsername = usernameTF.text!
         let validated:Bool = ValidationUtils.validateUsername(username: inputUsername)
         if  validated == false{
             usernameHintLabel.isHidden = false
-            usernameHintLabel.text = "username must be 7-20 characters, no symbols"
+            usernameHintLabel.text = "Username must be 6-20 characters, with no symbol."
         }
         else{
             usernameHintLabel.isHidden = true
@@ -78,10 +81,12 @@ class SignUpViewController: UIViewController {
 
     @IBAction func fnameEditChanged(_ sender: Any) {
         let fnInput = firstNameTF.text
-        let validated:Bool = ValidationUtils.nameValidate(name: fnInput!)
+        let lnInput = lastNameTF.text
+        
+        let validated:Bool = ValidationUtils.nameValidate(name: fnInput!) && ValidationUtils.nameValidate(name: lnInput!)
         if  validated == false{
             nameHintLabel.isHidden = false
-            nameHintLabel.text = "Enter a validated name"
+            nameHintLabel.text = "Your name must be in validated format."
         }
         else{
             nameHintLabel.isHidden = true
@@ -91,10 +96,12 @@ class SignUpViewController: UIViewController {
     
     @IBAction func lnameEditChanged(_ sender: Any) {
         let lnInput = lastNameTF.text
-        let validated:Bool = ValidationUtils.nameValidate(name: lnInput!)
+        let fnInput = firstNameTF.text
+        
+        let validated:Bool = ValidationUtils.nameValidate(name: fnInput!) && ValidationUtils.nameValidate(name: lnInput!)
         if  validated == false{
             nameHintLabel.isHidden = false
-            nameHintLabel.text = "Enter a validated name"
+            nameHintLabel.text = "Your name must be in validated format."
         }
         else{
             nameHintLabel.isHidden = true
@@ -105,20 +112,63 @@ class SignUpViewController: UIViewController {
     @IBAction func SignUpButtonPressed(_ sender: Any) {
         if usernameHintLabel.isHidden && passwordHintLabel.isHidden && confirmPswHintLabel.isHidden &&
             nameHintLabel.isHidden{
-        signUpButton.setTitle("", for: .normal)
-        signupLoadingIndicator.startAnimating()
-        signUpButton.isEnabled = false
+            signUpButton.setTitle("", for: .normal)
+            signupLoadingIndicator.startAnimating()
+            signUpButton.isEnabled = false
+            if availabilityChecked == false{
+
+            }
+            else{
+                
+            }
         }
     }
     
-    func checkUsernameAvailability(username: String!) -> Bool{
+    @IBAction func checkAvailablityButtonPressed(_ sender: Any) {
+        if usernameHintLabel.isHidden {
+            checkUsernameAvailability(username: usernameTF.text)
+        }
+        else{
+            let alert = UIAlertController(title: "Username Not Validated", message: "Please enter a validated username before checking.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    
+    func checkUsernameAvailability(username: String!){
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
         var request = URLRequest(url: URL(string: requestURL)!)
         request.httpMethod = "GET"
         request.timeoutInterval = 10
         
-        
-       
+        let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
+            if error != nil{
+                print("error occured")
+                DispatchQueue.main.sync{
+                    let alert = UIAlertController(title: "Error", message: "There is an error when registering for you. Please try later.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
+            else{
+                let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
+                DispatchQueue.main.sync{
+                    if "true" == responseString{
+                        let alert = UIAlertController(title: "Username Already Exists", message: "Please use another username", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    else{
+                        self.availabilityChecked = true
+                        let alert = UIAlertController(title: "Congrats", message: "This username is available, please continue signing up. ", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                }
+            }
+        }
+        task.resume()
     }
     /*
     // MARK: - Navigation
