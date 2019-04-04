@@ -5,8 +5,9 @@
 //  Created by 彭孝诚 on 2019/4/3.
 //  Copyright © 2019 彭孝诚. All rights reserved.
 //
-
+import CommonCrypto
 import Foundation
+
 class ValidationUtils{
     static func validateUsername(username: String!) -> Bool{
         var validated: Bool! = true
@@ -51,4 +52,7 @@ class ValidationUtils{
         }
         return validated
     }
+    
+
 }
+

@@ -110,65 +110,102 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func SignUpButtonPressed(_ sender: Any) {
-        if usernameHintLabel.isHidden && passwordHintLabel.isHidden && confirmPswHintLabel.isHidden &&
+        if !availabilityChecked{
+            displayAlert(title: "Username Availability Not Checked", message: "Please check username availability before signing up.")
+        }
+        else if usernameHintLabel.isHidden && passwordHintLabel.isHidden && confirmPswHintLabel.isHidden &&
             nameHintLabel.isHidden{
             signUpButton.setTitle("", for: .normal)
             signupLoadingIndicator.startAnimating()
             signUpButton.isEnabled = false
-            if availabilityChecked == false{
-
+            
+            let username = usernameTF.text!
+            var passwordHash = SHA1.hexString(from: pswTF.text!)
+            let firstName = firstNameTF.text!
+            let lastName = lastNameTF.text!
+            
+            var requestURL3 = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/addaewcarer?carerId="
+            requestURL3 = requestURL3 + username
+            requestURL3 = requestURL3 + "&password="
+            requestURL3 = requestURL3 + passwordHash! + "&firstName=" + firstName + "&lastName=" + lastName
+            
+            let url = URL(string: requestURL3)!
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+            let task = URLSession.shared.dataTask(with: request){ data, response, error in
+                var dataString = String(data: data!, encoding: String.Encoding.utf8)! + ""
+                if error != nil{
+                    print("error occured")
+                    DispatchQueue.main.sync{
+                        self.displayAlert(title: "Error", message: "An error occured, please try later.")
+                    }
+                }
+                else if "\"success!\"" != dataString{
+                    DispatchQueue.main.sync{
+                        print(dataString)
+                        self.displayAlert(title: "Sign Up Failed", message: "Please check your input")
+                    }
+                }
+                else{
+                    DispatchQueue.main.sync{
+                        self.displayAlert(title: "Successful", message: "Your account has been created.")
+                    }
+                }
             }
-            else{
-                
-            }
+            task.resume()
         }
+        else{
+                displayAlert(title: "Information Not Correct", message: "Please provide all information in correct format to sign up.")
+        }
+        signUpButton.setTitle("Submit", for: .normal)
+        signupLoadingIndicator.stopAnimating()
+        signUpButton.isEnabled = true
+        
     }
+
+
     
     @IBAction func checkAvailablityButtonPressed(_ sender: Any) {
         if usernameHintLabel.isHidden {
             checkUsernameAvailability(username: usernameTF.text)
         }
         else{
-            let alert = UIAlertController(title: "Username Not Validated", message: "Please enter a validated username before checking.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true)
+            self.displayAlert(title: "Username Not Validated", message: "Please enter a validated username before checking.")
         }
     }
     
     
     func checkUsernameAvailability(username: String!){
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
-        var request = URLRequest(url: URL(string: requestURL)!)
-        request.httpMethod = "GET"
-        request.timeoutInterval = 10
-        
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
                 print("error occured")
                 DispatchQueue.main.sync{
-                    let alert = UIAlertController(title: "Error", message: "There is an error when registering for you. Please try later.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true)
+                    self.displayAlert(title: "Error", message: "An error occured, please try later.")
                 }
             }
             else{
                 let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
                 DispatchQueue.main.sync{
                     if "true" == responseString{
-                        let alert = UIAlertController(title: "Username Already Exists", message: "Please use another username", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true)
+                        self.displayAlert(title: "Username Already Exists", message: "Please try another username.")
                     }
                     else{
                         self.availabilityChecked = true
-                        let alert = UIAlertController(title: "Congrats", message: "This username is available, please continue signing up. ", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true)
+                        self.displayAlert(title: "Congratulations", message: "This username is available.")
                     }
                 }
             }
         }
         task.resume()
+    }
+    
+    func displayAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true)
     }
     /*
     // MARK: - Navigation
