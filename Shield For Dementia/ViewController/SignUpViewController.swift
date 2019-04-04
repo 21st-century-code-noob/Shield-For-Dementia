@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordHintLabel: UILabel!
     @IBOutlet weak var confirmPswHintLabel: UILabel!
     @IBOutlet weak var nameHintLabel: UILabel!
+    @IBOutlet weak var signupLoadingIndicator: UIActivityIndicatorView!
     
     override func viewDidAppear(_ animated: Bool) {
         usernameTF.becomeFirstResponder()
@@ -33,18 +34,82 @@ class SignUpViewController: UIViewController {
     }
     
 
-
+    @IBAction func pswEditChanged(_ sender: Any) {
+        let inputPsw = pswTF.text! + ""
+        let validated:Bool = ValidationUtils.validatePsw(psw: inputPsw)
+        if  validated == false{
+            passwordHintLabel.isHidden = false
+            passwordHintLabel.text = "6-24 characters, contains uppercase, lowercase and digit"
+        }
+        else{
+            passwordHintLabel.isHidden = true
+        }
+        
+        print("password validated, the result is: " + String(describing: validated))
+    }
+    
+    @IBAction func confirmEditChanged(_ sender: Any) {
+        let psw = pswTF.text
+        if psw == ""{
+            confirmPswHintLabel.isHidden = false
+            confirmPswHintLabel.text = "Input password first"
+        }
+        else if confirmTF.text != psw{
+            confirmPswHintLabel.isHidden = false
+            confirmPswHintLabel.text = "confirm password doesn't match"
+        }
+        else{
+            confirmPswHintLabel.isHidden = true
+        }
+    }
+    
     @IBAction func usernameEditChanged(_ sender: Any) {
-        let inputUsername = usernameTF.text! + ""
+        let inputUsername = usernameTF.text!
         let validated:Bool = ValidationUtils.validateUsername(username: inputUsername)
         if  validated == false{
             usernameHintLabel.isHidden = false
-            usernameHintLabel.text = "7-20 characters, no symbols"
+            usernameHintLabel.text = "username must be 7-20 characters, no symbols"
+        }
+        else{
+            usernameHintLabel.isHidden = true
         }
         print("username validated, the result is: " + String(describing: validated))
     }
-    
 
+    @IBAction func fnameEditChanged(_ sender: Any) {
+        let fnInput = firstNameTF.text
+        let validated:Bool = ValidationUtils.nameValidate(name: fnInput!)
+        if  validated == false{
+            nameHintLabel.isHidden = false
+            nameHintLabel.text = "Enter a validated name"
+        }
+        else{
+            nameHintLabel.isHidden = true
+        }
+        print("name validated, the result is: " + String(describing: validated))
+    }
+    
+    @IBAction func lnameEditChanged(_ sender: Any) {
+        let lnInput = lastNameTF.text
+        let validated:Bool = ValidationUtils.nameValidate(name: lnInput!)
+        if  validated == false{
+            nameHintLabel.isHidden = false
+            nameHintLabel.text = "Enter a validated name"
+        }
+        else{
+            nameHintLabel.isHidden = true
+        }
+        print("name validated, the result is: " + String(describing: validated))
+    }
+    
+    @IBAction func SignUpButtonPressed(_ sender: Any) {
+        if usernameHintLabel.isHidden && passwordHintLabel.isHidden && confirmPswHintLabel.isHidden &&
+            nameHintLabel.isHidden{
+        signUpButton.setTitle("", for: .normal)
+        signupLoadingIndicator.startAnimating()
+        signUpButton.isEnabled = false
+        }
+    }
     /*
     // MARK: - Navigation
 
