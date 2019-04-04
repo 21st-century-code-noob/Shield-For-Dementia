@@ -142,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				BD96EB3E2254E0480042F236 /* Utils */,
-				BD96EB3422549C7C0042F236 /* Segue */,
 				BD96EB2D22548D9D0042F236 /* ViewController */,
 				BD96EABD2252D90C0042F236 /* AppDelegate.swift */,
 				BD96EAC12252D90C0042F236 /* Main.storyboard */,
@@ -182,13 +181,6 @@
 				BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		BD96EB3422549C7C0042F236 /* Segue */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Segue;
 			sourceTree = "<group>";
 		};
 		BD96EB3E2254E0480042F236 /* Utils */ = {

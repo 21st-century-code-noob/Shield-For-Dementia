@@ -110,6 +110,16 @@ class SignUpViewController: UIViewController {
         signUpButton.isEnabled = false
         }
     }
+    
+    func checkUsernameAvailability(username: String!) -> Bool{
+        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
+        var request = URLRequest(url: URL(string: requestURL)!)
+        request.httpMethod = "GET"
+        request.timeoutInterval = 10
+        
+        
+       
+    }
     /*
     // MARK: - Navigation
 
