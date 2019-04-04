@@ -22,6 +22,7 @@
 		BD96EB2F22548EE90042F236 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB2E22548EE90042F236 /* WelcomeViewController.swift */; };
 		BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB32225497490042F236 /* LoginNavigationController.swift */; };
 		BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */; };
+		BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,9 @@
 		BD96EB2E22548EE90042F236 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BD96EB32225497490042F236 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
+		BD96EB412254E48D0042F236 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		BD96EB422254E48D0042F236 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		DB748431E958BFEEF13320BD /* Pods_Shield_For_DementiaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shield_For_DementiaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6478BC999782C6B294D84F /* Pods-Shield For Dementia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For Dementia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For Dementia/Pods-Shield For Dementia.release.xcconfig"; sourceTree = "<group>"; };
 		FC84541F1BE76BA887CF6AD5 /* Pods-Shield For DementiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For DementiaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For DementiaUITests/Pods-Shield For DementiaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		BD96EABC2252D90B0042F236 /* Shield For Dementia */ = {
 			isa = PBXGroup;
 			children = (
+				BD96EB3E2254E0480042F236 /* Utils */,
 				BD96EB3422549C7C0042F236 /* Segue */,
 				BD96EB2D22548D9D0042F236 /* ViewController */,
 				BD96EABD2252D90C0042F236 /* AppDelegate.swift */,
@@ -184,6 +189,14 @@
 			children = (
 			);
 			path = Segue;
+			sourceTree = "<group>";
+		};
+		BD96EB3E2254E0480042F236 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E2BF8F72D911A4649FDFDC04 /* Frameworks */ = {
@@ -430,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD96EB2C22548D820042F236 /* LoginViewController.swift in Sources */,
+				BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */,
 				BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */,
 				BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */,
 				BD96EB2F22548EE90042F236 /* WelcomeViewController.swift in Sources */,
@@ -474,6 +488,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BD96EAC22252D90C0042F236 /* Base */,
+				BD96EB412254E48D0042F236 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -482,6 +497,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BD96EACA2252D90D0042F236 /* Base */,
+				BD96EB422254E48D0042F236 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -493,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -554,6 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

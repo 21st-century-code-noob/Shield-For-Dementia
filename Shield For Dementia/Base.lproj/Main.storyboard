@@ -13,7 +13,7 @@
         <!--Login Navigation Controller-->
         <scene sceneID="0tu-ok-ap6">
             <objects>
-                <navigationController id="UBh-KE-jcA" customClass="LoginNavigationController" customModule="Shield_For_Dementia" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="UBh-KE-jcA" customClass="LoginNavigationController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gV1-UY-LhS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +29,7 @@
         <!--Welcome-->
         <scene sceneID="8hz-yB-IcZ">
             <objects>
-                <viewController title="Welcome" id="Hse-gx-uII" customClass="WelcomeViewController" customModule="Shield_For_Dementia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Welcome" id="Hse-gx-uII" customClass="WelcomeViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pog-OT-Rwk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
         <!--Sign In-->
         <scene sceneID="l9l-Dk-c5y">
             <objects>
-                <viewController title="Sign In" id="ufT-3q-4mK" customClass="LoginViewController" customModule="Shield_For_Dementia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign In" id="ufT-3q-4mK" customClass="LoginViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IXu-9t-s8z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +123,7 @@ please log in or sign up</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                             <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                         </textField>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-W8-UDq">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-W8-UDq">
                                                             <rect key="frame" x="34" y="187" width="36" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -160,6 +160,7 @@ please log in or sign up</string>
                     <connections>
                         <outlet property="blurView" destination="HDe-35-2Ng" id="4hc-bt-elz"/>
                         <outlet property="logInButton" destination="BNf-VU-YCt" id="PbM-7v-3wQ"/>
+                        <outlet property="loginHintLabel" destination="VAT-W8-UDq" id="VX1-VC-ITm"/>
                         <outlet property="pswTF" destination="E3t-GT-J9e" id="pPv-EK-x1r"/>
                         <outlet property="userNameTF" destination="bcq-P9-J2X" id="lqm-e1-yPP"/>
                     </connections>
@@ -171,12 +172,12 @@ please log in or sign up</string>
         <!--Sign Up-->
         <scene sceneID="jjK-D8-q1f">
             <objects>
-                <viewController title="Sign Up" id="qoF-Es-Elo" customClass="SignUpViewController" customModule="Shield_For_Dementia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign Up" id="qoF-Es-Elo" customClass="SignUpViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dsa-Io-7uX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5c-ff-M4F">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5c-ff-M4F">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.4024507705479452" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -194,6 +195,10 @@ please log in or sign up</string>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="usernameEditChanged:" destination="qoF-Es-Elo" eventType="editingDidEnd" id="17H-HH-i1p"/>
+                                    <action selector="usernameValueChagned:" destination="qoF-Es-Elo" eventType="valueChanged" id="S0S-CW-2jM"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hhy-pk-UfR">
                                 <rect key="frame" x="20" y="246" width="374" height="33"/>
@@ -223,28 +228,28 @@ please log in or sign up</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGB-KY-n9G">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGB-KY-n9G">
                                 <rect key="frame" x="20" y="287" width="36" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-8g-2qF">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHl-8g-2qF">
                                 <rect key="frame" x="20" y="353" width="36" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqh-W5-MsX">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqh-W5-MsX">
                                 <rect key="frame" x="20" y="419" width="36" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC4-5k-NaB">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC4-5k-NaB">
                                 <rect key="frame" x="20" y="221" width="36" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -264,11 +269,15 @@ please log in or sign up</string>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="confirmPswHintLabel" destination="ZHl-8g-2qF" id="Fwl-US-92a"/>
                         <outlet property="confirmTF" destination="Yl6-y8-CnI" id="20y-qH-0Mc"/>
                         <outlet property="firstNameTF" destination="zRk-za-oO5" id="JIn-cb-fOg"/>
                         <outlet property="lastNameTF" destination="RnR-o1-V95" id="47B-tr-USv"/>
+                        <outlet property="nameHintLabel" destination="jqh-W5-MsX" id="efh-23-0pt"/>
+                        <outlet property="passwordHintLabel" destination="JGB-KY-n9G" id="e20-hK-0io"/>
                         <outlet property="pswTF" destination="Hhy-pk-UfR" id="eYH-Ls-06c"/>
                         <outlet property="signUpButton" destination="UFp-Ap-AIW" id="2cG-oh-Vzs"/>
+                        <outlet property="usernameHintLabel" destination="kC4-5k-NaB" id="jBg-yp-GAl"/>
                         <outlet property="usernameTF" destination="wv7-KE-FRW" id="PkQ-4j-TFm"/>
                     </connections>
                 </viewController>

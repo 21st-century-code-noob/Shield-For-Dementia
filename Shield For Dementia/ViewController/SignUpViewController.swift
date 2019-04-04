@@ -16,6 +16,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var confirmTF: UITextField!
     @IBOutlet weak var firstNameTF: UITextField!
     @IBOutlet weak var lastNameTF: UITextField!
+    @IBOutlet weak var usernameHintLabel: UILabel!
+    @IBOutlet weak var passwordHintLabel: UILabel!
+    @IBOutlet weak var confirmPswHintLabel: UILabel!
+    @IBOutlet weak var nameHintLabel: UILabel!
     
     override func viewDidAppear(_ animated: Bool) {
         usernameTF.becomeFirstResponder()
@@ -26,6 +30,18 @@ class SignUpViewController: UIViewController {
         signUpButton.layer.cornerRadius = 10
 
         // Do any additional setup after loading the view.
+    }
+    
+
+
+    @IBAction func usernameEditChanged(_ sender: Any) {
+        let inputUsername = usernameTF.text! + ""
+        let validated:Bool = ValidationUtils.validateUsername(username: inputUsername)
+        if  validated == false{
+            usernameHintLabel.isHidden = false
+            usernameHintLabel.text = "7-20 characters, no symbols"
+        }
+        print("username validated, the result is: " + String(describing: validated))
     }
     
 

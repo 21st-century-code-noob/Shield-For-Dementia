@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var pswTF: UITextField!
     @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var loginHintLabel: UILabel!
     
     override func viewDidAppear(_ animated: Bool) {
         userNameTF.becomeFirstResponder()
