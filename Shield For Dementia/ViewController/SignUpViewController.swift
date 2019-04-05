@@ -113,7 +113,7 @@ class SignUpViewController: UIViewController {
         if !availabilityChecked{
             displayAlert(title: "Username Availability Not Checked", message: "Please check username availability before signing up.")
         }
--        else if usernameHintLabel.isHidden && passwordHintLabel.isHidden && confirmPswHintLabel.isHidden &&
+        else if usernameHintLabel.isHidden && passwordHintLabel.isHidden && confirmPswHintLabel.isHidden &&
             nameHintLabel.isHidden{
             signUpButton.setTitle("", for: .normal)
             signupLoadingIndicator.startAnimating()
@@ -150,7 +150,9 @@ class SignUpViewController: UIViewController {
                 }
                 else{
                     DispatchQueue.main.sync{
+                        self.navigationController?.popViewController(animated: true)
                         self.displayAlert(title: "Successful", message: "Your account has been created.")
+                        
                     }
                 }
             }
