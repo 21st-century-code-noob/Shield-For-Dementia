@@ -114,8 +114,7 @@
 			children = (
 				ABC91E3322575E3300964626 /* CarerPanelCollectionViewCell.swift */,
 			);
-			name = ReusableCell;
-			path = ReusableCe;
+			path = ReusableCell;
 			sourceTree = "<group>";
 		};
 		B96C0E48537EE60BD243FEE2 /* Pods */ = {
