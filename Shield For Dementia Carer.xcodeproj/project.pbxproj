@@ -12,8 +12,10 @@
 		2A5045B1E8B14B86831249A2 /* Pods_Shield_For_DementiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A9CF3B9C3B479A0488B12D /* Pods_Shield_For_DementiaTests.framework */; };
 		43EF146BCA407CC3B5C555E1 /* Pods_Shield_For_DementiaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB748431E958BFEEF13320BD /* Pods_Shield_For_DementiaUITests.framework */; };
 		ABB721B7225632FA000EF648 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB721B6225632FA000EF648 /* SHA1.swift */; };
-		ABC91E3422575E3300964626 /* CarerPanelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC91E3322575E3300964626 /* CarerPanelCollectionViewCell.swift */; };
-		ABC91E362257615800964626 /* CarerPanelCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC91E352257615800964626 /* CarerPanelCollectionViewController.swift */; };
+		ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */; };
+		ABC0EDE522577FEE00CFEFC4 /* MemoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE422577FEE00CFEFC4 /* MemoryTableViewController.swift */; };
+		ABC0EDE82257801700CFEFC4 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */; };
+		ABC0EDEA2257802800CFEFC4 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE92257802800CFEFC4 /* MemoryTableViewCell.swift */; };
 		BD96EABE2252D90C0042F236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EABD2252D90C0042F236 /* AppDelegate.swift */; };
 		BD96EAC32252D90C0042F236 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96EAC12252D90C0042F236 /* Main.storyboard */; };
 		BD96EAC62252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD96EAC42252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld */; };
@@ -53,8 +55,10 @@
 		6490D335997F1C0E98E8027D /* Pods_Shield_For_Dementia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shield_For_Dementia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A9CF3B9C3B479A0488B12D /* Pods_Shield_For_DementiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shield_For_DementiaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB721B6225632FA000EF648 /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
-		ABC91E3322575E3300964626 /* CarerPanelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarerPanelCollectionViewCell.swift; path = "Shield For Dementia/ReusableCell/CarerPanelCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
-		ABC91E352257615800964626 /* CarerPanelCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerPanelCollectionViewController.swift; sourceTree = "<group>"; };
+		ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
+		ABC0EDE422577FEE00CFEFC4 /* MemoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewController.swift; sourceTree = "<group>"; };
+		ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		ABC0EDE92257802800CFEFC4 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		B4D6B6FA7D8939F2B516DDA2 /* Pods-Shield For DementiaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For DementiaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For DementiaUITests/Pods-Shield For DementiaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD96EABA2252D90B0042F236 /* Shield For Dementia Carer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shield For Dementia Carer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD96EABD2252D90C0042F236 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,12 +113,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ABC91E3222575E0A00964626 /* ReusableCell */ = {
+		ABC0EDE622577FF800CFEFC4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				ABC91E3322575E3300964626 /* CarerPanelCollectionViewCell.swift */,
+				ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */,
+				ABC0EDE92257802800CFEFC4 /* MemoryTableViewCell.swift */,
 			);
-			path = ReusableCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		B96C0E48537EE60BD243FEE2 /* Pods */ = {
@@ -155,7 +160,7 @@
 		BD96EABC2252D90B0042F236 /* Shield For Dementia */ = {
 			isa = PBXGroup;
 			children = (
-				ABC91E3222575E0A00964626 /* ReusableCell */,
+				ABC0EDE622577FF800CFEFC4 /* Cell */,
 				BD96EB3E2254E0480042F236 /* Utils */,
 				BD96EB2D22548D9D0042F236 /* ViewController */,
 				BD96EABD2252D90C0042F236 /* AppDelegate.swift */,
@@ -194,7 +199,8 @@
 				BD96EB2E22548EE90042F236 /* WelcomeViewController.swift */,
 				BD96EB32225497490042F236 /* LoginNavigationController.swift */,
 				BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */,
-				ABC91E352257615800964626 /* CarerPanelCollectionViewController.swift */,
+				ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */,
+				ABC0EDE422577FEE00CFEFC4 /* MemoryTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -454,10 +460,12 @@
 				BD96EB2C22548D820042F236 /* LoginViewController.swift in Sources */,
 				BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */,
 				ABB721B7225632FA000EF648 /* SHA1.swift in Sources */,
-				ABC91E362257615800964626 /* CarerPanelCollectionViewController.swift in Sources */,
-				ABC91E3422575E3300964626 /* CarerPanelCollectionViewCell.swift in Sources */,
 				BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */,
+				ABC0EDEA2257802800CFEFC4 /* MemoryTableViewCell.swift in Sources */,
+				ABC0EDE522577FEE00CFEFC4 /* MemoryTableViewController.swift in Sources */,
 				BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */,
+				ABC0EDE82257801700CFEFC4 /* ReminderTableViewCell.swift in Sources */,
+				ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */,
 				BD96EB2F22548EE90042F236 /* WelcomeViewController.swift in Sources */,
 				BD96EABE2252D90C0042F236 /* AppDelegate.swift in Sources */,
 				BD96EAC62252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld in Sources */,
