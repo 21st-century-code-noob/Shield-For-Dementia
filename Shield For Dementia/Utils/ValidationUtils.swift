@@ -5,8 +5,9 @@
 //  Created by 彭孝诚 on 2019/4/3.
 //  Copyright © 2019 彭孝诚. All rights reserved.
 //
-
+import CommonCrypto
 import Foundation
+
 class ValidationUtils{
     static func validateUsername(username: String!) -> Bool{
         var validated: Bool! = true
@@ -28,7 +29,7 @@ class ValidationUtils{
     
     static func validatePsw(psw: String!) -> Bool{
         var validated: Bool! = true
-        let RegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+        let RegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,24}$"
         let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
         if psw.isEmpty{
             validated = false
@@ -51,4 +52,7 @@ class ValidationUtils{
         }
         return validated
     }
+    
+
 }
+
