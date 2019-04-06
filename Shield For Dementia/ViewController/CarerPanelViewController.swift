@@ -44,9 +44,11 @@ class CarerPanelViewController: UIViewController {
     }
     
     func setWelcomeLabel(){
-        if UserDefaults.standard.value(forKey: "lastName") == nil{
-            
+        var lastName = ""
+        if UserDefaults.standard.value(forKey: "lastName") != nil{
+            lastName = UserDefaults.standard.value(forKey: "lastName") as! String
         }
+        greetingLabel.text = "Good " + getTimeOfTheDay() + ", " + lastName
     }
     
     func retriveLname(){
@@ -57,4 +59,19 @@ class CarerPanelViewController: UIViewController {
         return ""
     }
 
+    func getTimeOfTheDay() -> String{
+        let dateComponents = Calendar.current.dateComponents([.hour], from: Date())
+        var timeOfDay: String = ""
+        if let hour = dateComponents.hour {
+            switch hour {
+            case 0..<12:
+                timeOfDay = "Morning"
+            case 12..<17:
+                timeOfDay = "Afternoon"
+            default:
+                timeOfDay = "Night"
+            }
+        }
+        return timeOfDay
+    }
 }
