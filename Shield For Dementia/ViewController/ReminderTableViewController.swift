@@ -12,7 +12,6 @@ class ReminderTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "test", style: .done, target: self, action: #selector(addTapped))
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,6 +32,9 @@ class ReminderTableViewController: UITableViewController {
         return 0
     }
 
+    func a(){
+        
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
