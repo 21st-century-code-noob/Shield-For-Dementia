@@ -152,6 +152,14 @@
                                     <constraint firstItem="b97-ke-9xJ" firstAttribute="centerX" secondItem="skQ-O6-siy" secondAttribute="centerX" id="qN1-NT-XSH"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-WR-amv">
+                                <rect key="frame" x="177" y="433" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="test json"/>
+                                <connections>
+                                    <action selector="testJsonButton:" destination="hBU-dN-q96" eventType="touchUpInside" id="YAM-Nw-K4A"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -173,6 +181,7 @@
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="greetingLabel" destination="aZ4-EN-EOP" id="rou-jO-VQ5"/>
+                        <outlet property="pairedPatientLabel" destination="rNL-ld-qgT" id="u5Y-kx-65K"/>
                         <segue destination="qPl-nt-Dkq" kind="unwind" identifier="logoutUnwindSegue" unwindAction="unwindToWelcomeWithSegue:" id="2Nn-Gd-jkm"/>
                     </connections>
                 </viewController>

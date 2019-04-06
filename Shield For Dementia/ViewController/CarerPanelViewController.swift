@@ -10,11 +10,15 @@ import UIKit
 
 class CarerPanelViewController: UIViewController {
     @IBOutlet weak var greetingLabel: UILabel!
-    @IBOutlet weak var pairedPatientLabel: UINavigationItem!
+    @IBOutlet weak var pairedPatientLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true;
+        if UserDefaults.standard.object(forKey: "firstName") == nil{
+            retriveFname()
+        }
+        setWelcomeLabel()
 
         // Do any additional setup after loading the view.
     }
@@ -28,7 +32,7 @@ class CarerPanelViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "username")
             UserDefaults.standard.removeObject(forKey: "password")
             UserDefaults.standard.removeObject(forKey: "patientId")
-            UserDefaults.standard.removeObject(forKey: "lastName")
+            UserDefaults.standard.removeObject(forKey: "firstName")
             self.performSegue(withIdentifier: "logoutUnwindSegue", sender: self)
         })
         
@@ -45,14 +49,44 @@ class CarerPanelViewController: UIViewController {
     
     func setWelcomeLabel(){
         var lastName = ""
-        if UserDefaults.standard.value(forKey: "lastName") != nil{
-            lastName = UserDefaults.standard.value(forKey: "lastName") as! String
+        if UserDefaults.standard.value(forKey: "firstName") != nil{
+            lastName = UserDefaults.standard.value(forKey: "firstName") as! String
         }
         greetingLabel.text = "Good " + getTimeOfTheDay() + ", " + lastName
     }
     
-    func retriveLname(){
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId="
+    func retriveFname(){
+        let username = UserDefaults.standard.value(forKey: "username") as! String
+        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
+        let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
+            if error != nil{
+                print("error occured")
+                DispatchQueue.main.sync{
+                    
+                }
+            }
+            else{
+                var firstName: String = ""
+                let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
+                DispatchQueue.main.sync{
+                    if responseString != "[]"{
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
+                            if let carer1 = json![0] as? [String: Any]{
+                                firstName = (carer1["first_name"] as? String)!
+                                UserDefaults.standard.set(firstName, forKey: "firstName")
+                                self.greetingLabel.text = "Good " + self.getTimeOfTheDay() + ", " + firstName
+                            }
+                        }
+                        catch {
+                            print(error)
+                        }
+                        
+                    }
+                }
+            }
+        }
+        task.resume()
     }
     
     func checkPairedPatient() -> String{
@@ -73,5 +107,9 @@ class CarerPanelViewController: UIViewController {
             }
         }
         return timeOfDay
+    }
+    
+    @IBAction func testJsonButton(_ sender: Any) {
+        retriveFname()
     }
 }
