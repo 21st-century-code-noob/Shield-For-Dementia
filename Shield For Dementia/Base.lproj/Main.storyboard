@@ -557,10 +557,56 @@ please log in or sign up</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wWK-eI-7aj">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reminderCell" rowHeight="77" id="wWK-eI-7aj" customClass="ReminderTableViewCell" customModule="Shield_For_Dementia_Carer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wWK-eI-7aj" id="7JI-fW-xM4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="76.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5P-mC-Hzc">
+                                            <rect key="frame" x="20" y="11" width="162" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="33" id="qW1-2u-0wq"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIL-K8-fKi">
+                                            <rect key="frame" x="272" y="45" width="122" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HS-mf-7gw">
+                                            <rect key="frame" x="20" y="43" width="162" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1HS-mf-7gw" firstAttribute="top" secondItem="7JI-fW-xM4" secondAttribute="topMargin" constant="32" id="9Yg-Xq-4ef"/>
+                                        <constraint firstItem="UIL-K8-fKi" firstAttribute="leading" secondItem="1HS-mf-7gw" secondAttribute="trailing" constant="90" id="AxH-nb-hvn"/>
+                                        <constraint firstItem="UIL-K8-fKi" firstAttribute="trailing" secondItem="7JI-fW-xM4" secondAttribute="trailingMargin" id="CLA-DW-Pk9"/>
+                                        <constraint firstItem="B5P-mC-Hzc" firstAttribute="top" secondItem="7JI-fW-xM4" secondAttribute="topMargin" id="Eas-UT-sjf"/>
+                                        <constraint firstItem="B5P-mC-Hzc" firstAttribute="leading" secondItem="1HS-mf-7gw" secondAttribute="leading" id="Vtg-Ff-Jzd"/>
+                                        <constraint firstItem="UIL-K8-fKi" firstAttribute="bottom" secondItem="7JI-fW-xM4" secondAttribute="bottomMargin" id="Z9O-MM-QK2"/>
+                                        <constraint firstItem="B5P-mC-Hzc" firstAttribute="leading" secondItem="7JI-fW-xM4" secondAttribute="leadingMargin" id="ndQ-VU-lvQ"/>
+                                        <constraint firstItem="B5P-mC-Hzc" firstAttribute="trailing" secondItem="1HS-mf-7gw" secondAttribute="trailing" id="pDS-ET-q2s"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="medicineNameLabel" destination="B5P-mC-Hzc" id="SNn-jx-6Bs"/>
+                                    <outlet property="statusLabel" destination="UIL-K8-fKi" id="IVW-Wq-eAX"/>
+                                    <outlet property="timeLabel" destination="1HS-mf-7gw" id="aNH-G9-HCq"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="i0J-sd-Z07">
+                                <rect key="frame" x="0.0" y="105" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0J-sd-Z07" id="Kuu-g3-Jf0">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
@@ -574,7 +620,7 @@ please log in or sign up</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSA-P3-YT6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2652" y="622"/>
+            <point key="canvasLocation" x="2653.6231884057975" y="534.375"/>
         </scene>
         <!--Camera-->
         <scene sceneID="21g-mR-vNS">

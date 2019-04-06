@@ -9,7 +9,12 @@
 import UIKit
 
 class ReminderTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var medicineNameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

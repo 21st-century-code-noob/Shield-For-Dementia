@@ -9,9 +9,20 @@
 import UIKit
 
 class ReminderTableViewController: UITableViewController {
+    
+    var reminders: [Reminder] = []
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: true)
+        var items = [UIBarButtonItem]()
+        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil))
+        items.append( UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil))
+        items.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil))
+        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
+        items.append( UIBarButtonItem(title: "History", style: .plain, target: self, action: nil))
+        items[1].width = 15
+        self.toolbarItems = items
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -21,6 +32,7 @@ class ReminderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrieveReminderData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,26 +44,46 @@ class ReminderTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return reminders.count
     }
 
-    func a(){
-        
-    }
-    /*
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reminderCell", for: indexPath) as! ReminderTableViewCell
+        cell.medicineNameLabel.text = reminders[indexPath.row].drugName
+        cell.timeLabel.text = reminders[indexPath.row].reminderTime
+        
+        let strDate = reminders[indexPath.row].startDate
+        let lastDays = reminders[indexPath.row].lastTime
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyymmdd"
+        let startDate = dateFormatter.date(from: strDate)
+        let endDate = Calendar.current.date(byAdding: .day, value: lastDays, to: startDate!)
+        let currentDate = Date()
+        
+        if startDate! > currentDate{
+            cell.statusLabel.text = "Not Started"
+            cell.statusLabel.textColor = UIColor.blue
+        }
+        else if(startDate! < currentDate && endDate! > currentDate){
+            cell.statusLabel.text = "In Process"
+            cell.statusLabel.textColor = UIColor.green
+        }
+        else{
+            cell.statusLabel.text = "Finished"
+            cell.statusLabel.textColor = UIColor.orange
+        }
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -98,4 +130,38 @@ class ReminderTableViewController: UITableViewController {
     }
     */
 
+    func retrieveReminderData(){
+        reminders.removeAll()
+        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/selectreminderbypatientid?patientId=" + (UserDefaults.standard.object(forKey: "patientId") as! String)
+        let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
+            if error != nil{
+                print("error occured")
+                
+            }
+            else{
+                let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
+                    for item in json!{
+                        let reminderJson = item as? [String: Any]
+                        
+                        let reminderId = reminderJson!["reminder_id"] as! Int
+                        let reminderTime = reminderJson!["time"] as! String
+                        let drugName = reminderJson!["drug_name"] as! String
+                        let startDate = reminderJson!["dates"] as! String
+                        let lastTime = reminderJson!["lasts"] as! Int
+                        let reminder: Reminder = Reminder(reminderId: reminderId, reminderTime: reminderTime, drugName: drugName, startDate: startDate, lastTime: lastTime)
+                        self.reminders.append(reminder)
+                    }
+                }
+                catch{
+                    print(error)
+                }
+                DispatchQueue.main.sync{
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        task.resume()
+    }
 }
