@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UBh-KE-jcA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UBh-KE-jcA">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,7 +65,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="180" height="140"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <connections>
-                                                            <segue destination="L2Z-P9-LlN" kind="show" id="P9Y-ou-UkG"/>
+                                                            <segue destination="due-rO-ZhL" kind="show" id="9aF-UQ-kKG"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -93,9 +93,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9k-w9-5Ga">
                                                         <rect key="frame" x="0.0" y="0.0" width="180" height="140"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <connections>
-                                                            <segue destination="gqR-vo-Alw" kind="show" id="Siu-fP-kdb"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -182,61 +179,20 @@
             </objects>
             <point key="canvasLocation" x="1600.0000000000002" y="516.96428571428567"/>
         </scene>
-        <!--Reminders-->
-        <scene sceneID="YLY-kv-y6E">
+        <!--View Controller-->
+        <scene sceneID="4SS-Sy-U7X">
             <objects>
-                <tableViewController title="Reminders" id="gqR-vo-Alw" customClass="ReminderTableViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6e9-Cu-tS7">
+                <viewController id="hWn-VV-hGZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m1q-WU-wgQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="N2B-ae-hl2">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N2B-ae-hl2" id="yB9-CU-nEj">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="gqR-vo-Alw" id="ZS2-iw-ipI"/>
-                            <outlet property="delegate" destination="gqR-vo-Alw" id="dtf-tB-1L6"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HUs-CI-9pi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <viewLayoutGuide key="safeArea" id="Mnx-Qd-em5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w27-uj-ha5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3984" y="-271"/>
-        </scene>
-        <!--Memory-->
-        <scene sceneID="OSL-9Q-zJE">
-            <objects>
-                <tableViewController title="Memory" id="L2Z-P9-LlN" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NqH-z8-7XI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2uu-wk-wPJ">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2uu-wk-wPJ" id="VhM-qi-vK6">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="L2Z-P9-LlN" id="8d5-y6-PcY"/>
-                            <outlet property="delegate" destination="L2Z-P9-LlN" id="S6P-u3-R54"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RJx-02-sWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3983" y="502"/>
+            <point key="canvasLocation" x="2401" y="544"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="8hz-yB-IcZ">
@@ -543,6 +499,110 @@ please log in or sign up</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lef-fl-0FT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1600.0000000000002" y="-831.02678571428567"/>
+        </scene>
+        <!--Memory Journey-->
+        <scene sceneID="6nl-OG-CWd">
+            <objects>
+                <collectionViewController title="Memory Journey" id="due-rO-ZhL" customClass="GalleryCollectionViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Azo-vx-fBA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uvt-an-jV5">
+                            <size key="itemSize" width="200" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="8lA-r4-QxE" customClass="ImageCollectionViewCell" customModule="Shield_For_Dementia_Carer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oZY-tu-5VH">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="oZY-tu-5VH" secondAttribute="trailing" id="giT-Du-KfH"/>
+                                    <constraint firstAttribute="bottom" secondItem="oZY-tu-5VH" secondAttribute="bottom" id="l3f-aO-0cK"/>
+                                    <constraint firstItem="oZY-tu-5VH" firstAttribute="top" secondItem="8lA-r4-QxE" secondAttribute="top" id="xus-za-yMt"/>
+                                    <constraint firstItem="oZY-tu-5VH" firstAttribute="leading" secondItem="8lA-r4-QxE" secondAttribute="leading" id="z8P-BY-SXi"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="oZY-tu-5VH" id="L0J-P9-d8P"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="due-rO-ZhL" id="4MH-V4-dQs"/>
+                            <outlet property="delegate" destination="due-rO-ZhL" id="zL5-eW-UGz"/>
+                        </connections>
+                    </collectionView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Memory Journey" id="iuV-zq-Sf8">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="DRt-IY-gjk">
+                            <connections>
+                                <segue destination="ynN-9P-TPU" kind="show" id="bMM-X9-4Ch"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sMd-AE-TxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2722" y="-204"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="21g-mR-vNS">
+            <objects>
+                <viewController title="Camera" id="ynN-9P-TPU" customClass="CameraViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fu2-dl-bAV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZN-pb-Zs5">
+                                <rect key="frame" x="169" y="612" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="ynN-9P-TPU" eventType="touchUpInside" id="Mr5-iV-zgX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5t1-Yp-PpI">
+                                <rect key="frame" x="168" y="686" width="78" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save Photo"/>
+                                <connections>
+                                    <action selector="savePhoto:" destination="ynN-9P-TPU" eventType="touchUpInside" id="rdt-gh-z9p"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yvK-Bn-XeJ">
+                                <rect key="frame" x="8" y="96" width="398" height="398"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yvK-Bn-XeJ" secondAttribute="height" multiplier="1:1" id="0mh-E3-B3q"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yvK-Bn-XeJ" firstAttribute="top" secondItem="nNM-wv-4ES" secondAttribute="top" constant="8" id="8Sv-hR-dHQ"/>
+                            <constraint firstItem="yvK-Bn-XeJ" firstAttribute="leading" secondItem="nNM-wv-4ES" secondAttribute="leading" constant="8" id="aOQ-pr-ace"/>
+                            <constraint firstItem="nNM-wv-4ES" firstAttribute="trailing" secondItem="yvK-Bn-XeJ" secondAttribute="trailing" constant="8" id="p1P-Ik-k0L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nNM-wv-4ES"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="yvK-Bn-XeJ" id="xIZ-LH-Qa2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Rx-NC-gKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3445" y="-202"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
