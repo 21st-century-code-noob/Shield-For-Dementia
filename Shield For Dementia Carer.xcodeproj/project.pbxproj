@@ -17,7 +17,6 @@
 		AB98EF6322584BE300286A9F /* CarerPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB98EF6222584BE300286A9F /* CarerPanelViewController.swift */; };
 		ABB721B7225632FA000EF648 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB721B6225632FA000EF648 /* SHA1.swift */; };
 		ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */; };
-		ABC0EDE522577FEE00CFEFC4 /* MemoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE422577FEE00CFEFC4 /* MemoryTableViewController.swift */; };
 		ABC0EDE82257801700CFEFC4 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */; };
 		ABC0EDEA2257802800CFEFC4 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE92257802800CFEFC4 /* MemoryTableViewCell.swift */; };
 		BD96EABE2252D90C0042F236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EABD2252D90C0042F236 /* AppDelegate.swift */; };
@@ -66,7 +65,6 @@
 		AB98EF6222584BE300286A9F /* CarerPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerPanelViewController.swift; sourceTree = "<group>"; };
 		ABB721B6225632FA000EF648 /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
 		ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
-		ABC0EDE422577FEE00CFEFC4 /* MemoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewController.swift; sourceTree = "<group>"; };
 		ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		ABC0EDE92257802800CFEFC4 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		BD96EABA2252D90B0042F236 /* Shield For Dementia Carer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shield For Dementia Carer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,7 +203,6 @@
 				BD96EB32225497490042F236 /* LoginNavigationController.swift */,
 				BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */,
 				ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */,
-				ABC0EDE422577FEE00CFEFC4 /* MemoryTableViewController.swift */,
 				AB98EF6222584BE300286A9F /* CarerPanelViewController.swift */,
 				18B26DFE22589B05005F024F /* CameraViewController.swift */,
 				18B26DFD22589B05005F024F /* GalleryCollectionViewController.swift */,
@@ -478,7 +475,6 @@
 				AB98EF6322584BE300286A9F /* CarerPanelViewController.swift in Sources */,
 				18B26DFF22589B05005F024F /* GalleryCollectionViewController.swift in Sources */,
 				ABC0EDEA2257802800CFEFC4 /* MemoryTableViewCell.swift in Sources */,
-				ABC0EDE522577FEE00CFEFC4 /* MemoryTableViewController.swift in Sources */,
 				BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */,
 				ABC0EDE82257801700CFEFC4 /* ReminderTableViewCell.swift in Sources */,
 				ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */,
