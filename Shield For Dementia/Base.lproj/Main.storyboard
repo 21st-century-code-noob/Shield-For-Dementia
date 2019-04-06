@@ -128,12 +128,12 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Good Morning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZ4-EN-EOP">
                                                 <rect key="frame" x="23" y="8" width="368" height="41"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have been paired with:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNL-ld-qgT">
-                                                <rect key="frame" x="23" y="353" width="368" height="27"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have been paired with:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNL-ld-qgT">
+                                                <rect key="frame" x="23" y="353" width="368" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -152,14 +152,6 @@
                                     <constraint firstItem="b97-ke-9xJ" firstAttribute="centerX" secondItem="skQ-O6-siy" secondAttribute="centerX" id="qN1-NT-XSH"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-WR-amv">
-                                <rect key="frame" x="177" y="433" width="59" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="test json"/>
-                                <connections>
-                                    <action selector="testJsonButton:" destination="hBU-dN-q96" eventType="touchUpInside" id="YAM-Nw-K4A"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -181,7 +173,9 @@
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="greetingLabel" destination="aZ4-EN-EOP" id="rou-jO-VQ5"/>
+                        <outlet property="memoryButton" destination="oxv-0z-f8U" id="dMM-eI-eNO"/>
                         <outlet property="pairedPatientLabel" destination="rNL-ld-qgT" id="u5Y-kx-65K"/>
+                        <outlet property="remindButton" destination="c9k-w9-5Ga" id="tyz-iH-7Ah"/>
                         <segue destination="qPl-nt-Dkq" kind="unwind" identifier="logoutUnwindSegue" unwindAction="unwindToWelcomeWithSegue:" id="2Nn-Gd-jkm"/>
                     </connections>
                 </viewController>

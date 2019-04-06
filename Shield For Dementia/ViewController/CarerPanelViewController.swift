@@ -11,6 +11,8 @@ import UIKit
 class CarerPanelViewController: UIViewController {
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var pairedPatientLabel: UILabel!
+    @IBOutlet weak var remindButton: UIButton!
+    @IBOutlet weak var memoryButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,7 @@ class CarerPanelViewController: UIViewController {
             retriveFname()
         }
         setWelcomeLabel()
+        checkPairedPatient()
 
         // Do any additional setup after loading the view.
     }
@@ -89,8 +92,48 @@ class CarerPanelViewController: UIViewController {
         task.resume()
     }
     
-    func checkPairedPatient() -> String{
-        return ""
+    func checkPairedPatient(){
+        let username = UserDefaults.standard.object(forKey: "username") as! String
+        if username != nil{
+            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkwhethercarerhaspatient?carerId=" + username
+            let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
+                if error != nil{
+                    print("error occured")
+                }
+                else{
+                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                    DispatchQueue.main.sync{
+                        if dataString != "[]"{
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
+                                var hasPatient:Bool = false
+                                for item in json!{
+                                    if let pair = item as? [String: Any]{
+                                        if pair["status"] as! Int == 1{
+                                            let patientId = pair["user_id"] as! String
+                                            self.enableButtonBecauseHasPatient()
+                                            UserDefaults.standard.set(patientId, forKey: "patientId")
+                                            self.pairedPatientLabel.text = "You have been paired with: " + patientId
+                                            hasPatient = true
+                                        }
+                                    }
+                                }
+                                if hasPatient == false{
+                                    UserDefaults.standard.removeObject(forKey: "patientId")
+                                    self.disableButtonsBecauseNoPatient()
+                                    self.pairedPatientLabel.text = "You have no paired patient. Please pair with a patient to use functions."
+                                }
+                            }
+                            catch{
+                                print(error)
+                            }
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+        
     }
 
     func getTimeOfTheDay() -> String{
@@ -107,6 +150,16 @@ class CarerPanelViewController: UIViewController {
             }
         }
         return timeOfDay
+    }
+    
+    func disableButtonsBecauseNoPatient(){
+        remindButton.isEnabled = false
+        memoryButton.isEnabled = false
+    }
+    
+    func enableButtonBecauseHasPatient(){
+        remindButton.isEnabled = true
+        memoryButton.isEnabled = true
     }
     
     @IBAction func testJsonButton(_ sender: Any) {
