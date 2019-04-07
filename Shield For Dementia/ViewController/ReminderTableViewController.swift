@@ -51,11 +51,16 @@ class ReminderTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reminders.count
+        if section == 0{
+            return reminders.count
+        }
+        else{
+            return 1
+        }
     }
 
     
@@ -63,40 +68,59 @@ class ReminderTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reminderCell", for: indexPath) as! ReminderTableViewCell
-        cell.medicineNameLabel.text = reminders[indexPath.row].drugName
-        cell.timeLabel.text = reminders[indexPath.row].reminderTime
-        
-        let strDate = reminders[indexPath.row].startDate
-        let lastDays = reminders[indexPath.row].lastTime
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let startDate = dateFormatter.date(from: strDate)
-        let endDate = Calendar.current.date(byAdding: .day, value: lastDays, to: startDate!)
-        let currentDate = Date()
-        
-        if startDate! > currentDate{
-            cell.statusLabel.text = "Not Started"
-            cell.statusLabel.textColor = UIColor.blue
-        }
-        else if(startDate! < currentDate && endDate! > currentDate){
-            cell.statusLabel.text = "In Process"
-            cell.statusLabel.textColor = UIColor.green
+        if indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reminderCell", for: indexPath) as! ReminderTableViewCell
+            cell.medicineNameLabel.text = reminders[indexPath.row].drugName
+            cell.timeLabel.text = reminders[indexPath.row].reminderTime
+            
+            let strDate = reminders[indexPath.row].startDate
+            let lastDays = reminders[indexPath.row].lastTime
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMdd"
+            let startDate = dateFormatter.date(from: strDate)
+            let endDate = Calendar.current.date(byAdding: .day, value: lastDays, to: startDate!)
+            let currentDate = Date()
+            
+            if startDate! > currentDate{
+                cell.statusLabel.text = "Not Started"
+                cell.statusLabel.textColor = UIColor.blue
+            }
+            else if(startDate! < currentDate && endDate! > currentDate){
+                cell.statusLabel.text = "In Process"
+                cell.statusLabel.textColor = UIColor.green
+            }
+            else{
+                cell.statusLabel.text = "Finished"
+                cell.statusLabel.textColor = UIColor.orange
+            }
+            
+            return cell
         }
         else{
-            cell.statusLabel.text = "Finished"
-            cell.statusLabel.textColor = UIColor.orange
+            let cell = tableView.dequeueReusableCell(withIdentifier: "totalNumberCell", for: indexPath) as! ReminderNumberTableViewCell
+            if reminders.count == 0{
+                cell.totalNumberLabel.text = "Currently no reminders."
+            }
+            else if reminders.count == 1{
+                cell.totalNumberLabel.text = "1 reminder in total"
+            }
+            else{
+                cell.totalNumberLabel.text = "\(reminders.count) reminders in total"
+            }
+            return cell
         }
-        
-        return cell
     }
 
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if indexPath.section == 0{
+            return true
+        }
+        else{
+            return false
+        }
     }
     
 
@@ -126,6 +150,8 @@ class ReminderTableViewController: UITableViewController {
                         DispatchQueue.main.sync {
                             self.reminders.remove(at: indexPath.row)
                             self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            let indexSet = IndexSet(integer: 1)
+                            self.tableView.reloadSections(indexSet, with: .automatic)
                         }
                     }
                 }
@@ -134,7 +160,6 @@ class ReminderTableViewController: UITableViewController {
         }
 
     }
-    
 
     /*
     // Override to support rearranging the table view.

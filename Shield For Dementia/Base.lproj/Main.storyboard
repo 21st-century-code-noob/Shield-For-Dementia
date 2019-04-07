@@ -468,12 +468,18 @@ please log in or sign up</string>
                                     <action selector="checkAvailablityButtonPressed:" destination="qoF-Es-Elo" eventType="touchUpInside" id="opR-kj-lkt"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="T1N-cb-E1Q">
+                                <rect key="frame" x="339" y="186" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69583516725352113" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="yMP-dH-C95"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="checkAvailabilityButton" destination="xSB-Tp-Qx5" id="oSn-AU-SHD"/>
+                        <outlet property="checkAvailabilityIndicator" destination="T1N-cb-E1Q" id="8bu-g9-uE1"/>
                         <outlet property="confirmPswHintLabel" destination="ZHl-8g-2qF" id="Fwl-US-92a"/>
                         <outlet property="confirmTF" destination="Yl6-y8-CnI" id="20y-qH-0Mc"/>
                         <outlet property="firstNameTF" destination="zRk-za-oO5" id="JIn-cb-fOg"/>
@@ -608,13 +614,25 @@ please log in or sign up</string>
                                     <outlet property="timeLabel" destination="1HS-mf-7gw" id="aNH-G9-HCq"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="i0J-sd-Z07">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="totalNumberCell" id="i0J-sd-Z07" customClass="ReminderNumberTableViewCell" customModule="Shield_For_Dementia_Carer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="112" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0J-sd-Z07" id="Kuu-g3-Jf0">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5Y-2i-zFP">
+                                            <rect key="frame" x="20" y="12" width="374" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="totalNumberLabel" destination="U5Y-2i-zFP" id="NMv-OS-09q"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

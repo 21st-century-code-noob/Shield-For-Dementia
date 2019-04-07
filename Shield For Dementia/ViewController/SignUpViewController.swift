@@ -21,6 +21,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var confirmPswHintLabel: UILabel!
     @IBOutlet weak var nameHintLabel: UILabel!
     @IBOutlet weak var signupLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var checkAvailabilityButton: UIButton!
+    @IBOutlet weak var checkAvailabilityIndicator: UIActivityIndicatorView!
     
     var availabilityChecked: Bool = false
     
@@ -185,24 +187,30 @@ class SignUpViewController: UIViewController {
     
     
     func checkUsernameAvailability(username: String!){
+        checkAvailabilityButton.isHidden = true
+        checkAvailabilityIndicator.startAnimating()
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
                 print("error occured")
                 DispatchQueue.main.sync{
-                    self.displayAlert(title: "Error", message: "An error occured, please try later.")
+                    self.checkAvailabilityButton.isHidden = false
+                    self.checkAvailabilityIndicator.stopAnimating()
+                    CBToast.showToast(message: "An error has occured", aLocationStr: "top", aShowTime: 2.0)
                 }
             }
             else{
                 let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
                 DispatchQueue.main.sync{
                     if "[]" != responseString{
-                        self.displayAlert(title: "Username Already Exists", message: "Please try another username.")
+                        CBToast.showToast(message: "The username already exists", aLocationStr: "top", aShowTime: 2.0)
                     }
                     else{
                         self.availabilityChecked = true
-                        self.displayAlert(title: "Congratulations", message: "This username is available.")
+                        CBToast.showToast(message: "This username is available", aLocationStr: "top", aShowTime: 2.0)
                     }
+                    self.checkAvailabilityButton.isHidden = false
+                    self.checkAvailabilityIndicator.stopAnimating()
                 }
             }
         }

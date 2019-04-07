@@ -80,7 +80,7 @@ class CBToast: NSObject {
             toastLabel?.frame = labFrame
             toastLabel?.text = message as String?
             toastLabel?.alpha = 1
-            UIView.animate(withDuration: aShowTime, animations: {
+            UIView.animate(withDuration: 0.5, delay: aShowTime, animations: {
                 toastLabel?.alpha = 0;
             })
         }else{
@@ -168,7 +168,7 @@ extension CBToast {
             toastView?.backgroundColor = UIColor.clear
             toastView?.layer.masksToBounds = true
             toastView?.layer.cornerRadius = 5.0
-            toastView?.alpha = 0
+            toastView?.alpha = 1
             let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             blurEffectView.frame = toastView!.bounds
