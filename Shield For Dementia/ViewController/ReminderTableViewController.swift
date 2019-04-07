@@ -9,20 +9,20 @@
 import UIKit
 
 class ReminderTableViewController: UITableViewController {
-    
     var reminders: [Reminder] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: true)
         var items = [UIBarButtonItem]()
-        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil))
+        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed)))
         items.append( UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil))
-        items.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil))
+        items.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTable)))
         items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
         items.append( UIBarButtonItem(title: "History", style: .plain, target: self, action: nil))
         items[1].width = 15
         self.toolbarItems = items
+        retrieveReminderData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -30,9 +30,16 @@ class ReminderTableViewController: UITableViewController {
         self.navigationController?.setToolbarHidden(true, animated: animated)
     }
     
+    @objc func addButtonPressed(){
+        self.performSegue(withIdentifier: "addNewReminderSegue", sender: self)
+    }
+    
+    @objc func refreshTable(){
+        retrieveReminderData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        retrieveReminderData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -64,7 +71,7 @@ class ReminderTableViewController: UITableViewController {
         let lastDays = reminders[indexPath.row].lastTime
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyymmdd"
+        dateFormatter.dateFormat = "yyyyMMdd"
         let startDate = dateFormatter.date(from: strDate)
         let endDate = Calendar.current.date(byAdding: .day, value: lastDays, to: startDate!)
         let currentDate = Date()
@@ -85,25 +92,49 @@ class ReminderTableViewController: UITableViewController {
         return cell
     }
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/deletereminderbyreminderid?reminderId=" + String(describing: reminders[indexPath.row].reminderId)
+            var urlRequest = URLRequest(url: URL(string: requestURL)!)
+            urlRequest.httpMethod = "DELETE"
+            let task = URLSession.shared.dataTask(with: urlRequest){ data, response, error in
+                if error != nil{
+                    print("error occured")
+                    DispatchQueue.main.sync{
+                        //dispplay alert
+                    }
+                }
+                else{
+                    let resultString = String(data: data!, encoding: String.Encoding.utf8)
+                    if resultString != "\"success!\""{
+                        DispatchQueue.main.sync{
+                            //alert
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.sync {
+                            self.reminders.remove(at: indexPath.row)
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -131,20 +162,19 @@ class ReminderTableViewController: UITableViewController {
     */
 
     func retrieveReminderData(){
+        CBToast.showToastAction()
         reminders.removeAll()
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/selectreminderbypatientid?patientId=" + (UserDefaults.standard.object(forKey: "patientId") as! String)
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
+                CBToast.hiddenToastAction()
                 print("error occured")
-                
             }
             else{
-                let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
                     for item in json!{
                         let reminderJson = item as? [String: Any]
-                        
                         let reminderId = reminderJson!["reminder_id"] as! Int
                         let reminderTime = reminderJson!["time"] as! String
                         let drugName = reminderJson!["drug_name"] as! String
@@ -158,6 +188,7 @@ class ReminderTableViewController: UITableViewController {
                     print(error)
                 }
                 DispatchQueue.main.sync{
+                    CBToast.hiddenToastAction()
                     self.tableView.reloadData()
                 }
             }

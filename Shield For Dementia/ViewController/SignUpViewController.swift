@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
         let psw = pswTF.text
         if !passwordHintLabel.isHidden{
             confirmPswHintLabel.isHidden = false
-            confirmPswHintLabel.text = "Enter validated password first"
+            confirmPswHintLabel.text = "Enter valid password first"
         }
         else if confirmTF.text != psw{
             confirmPswHintLabel.isHidden = false
@@ -86,7 +86,7 @@ class SignUpViewController: UIViewController {
         let validated:Bool = ValidationUtils.nameValidate(name: fnInput!) && ValidationUtils.nameValidate(name: lnInput!)
         if  validated == false{
             nameHintLabel.isHidden = false
-            nameHintLabel.text = "Your name must be in validated format."
+            nameHintLabel.text = "Your name must be in valid format."
         }
         else{
             nameHintLabel.isHidden = true
@@ -101,7 +101,7 @@ class SignUpViewController: UIViewController {
         let validated:Bool = ValidationUtils.nameValidate(name: fnInput!) && ValidationUtils.nameValidate(name: lnInput!)
         if  validated == false{
             nameHintLabel.isHidden = false
-            nameHintLabel.text = "Your name must be in validated format."
+            nameHintLabel.text = "Your name must be in valid format."
         }
         else{
             nameHintLabel.isHidden = true
@@ -110,7 +110,9 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func SignUpButtonPressed(_ sender: Any) {
+        CBToast.showToastAction()
         if !availabilityChecked{
+            CBToast.hiddenToastAction()
             displayAlert(title: "Username Availability Not Checked", message: "Please check username availability before signing up.")
         }
         else if usernameHintLabel.isHidden && passwordHintLabel.isHidden && confirmPswHintLabel.isHidden &&
@@ -120,7 +122,7 @@ class SignUpViewController: UIViewController {
             signUpButton.isEnabled = false
             
             let username = usernameTF.text!
-            var passwordHash = SHA1.hexString(from: pswTF.text!)
+            let passwordHash = SHA1.hexString(from: pswTF.text!)
             let firstName = firstNameTF.text!
             let lastName = lastNameTF.text!
             
@@ -135,31 +137,34 @@ class SignUpViewController: UIViewController {
             request.httpMethod = "POST"
             
             let task = URLSession.shared.dataTask(with: request){ data, response, error in
-                var dataString = String(data: data!, encoding: String.Encoding.utf8)! + ""
+                let dataString = String(data: data!, encoding: String.Encoding.utf8)! + ""
                 if error != nil{
                     print("error occured")
                     DispatchQueue.main.sync{
+                        CBToast.hiddenToastAction()
                         self.displayAlert(title: "Error", message: "An error occured, please try later.")
                     }
                 }
                 else if "\"success!\"" != dataString{
                     DispatchQueue.main.sync{
                         print(dataString)
+                        CBToast.hiddenToastAction()
                         self.displayAlert(title: "Sign Up Failed", message: "Please check your input")
                     }
                 }
                 else{
                     DispatchQueue.main.sync{
+                        CBToast.hiddenToastAction()
+                        CBToast.showToast(message: "Account successfully created.", aLocationStr: "center", aShowTime: 5.0)
                         self.navigationController?.popViewController(animated: true)
-                        self.displayAlert(title: "Successful", message: "Your account has been created.")
-                        
                     }
                 }
             }
             task.resume()
         }
         else{
-                displayAlert(title: "Information Not Correct", message: "Please provide all information in correct format to sign up.")
+            CBToast.hiddenToastAction()
+            displayAlert(title: "Information Not Correct", message: "Please provide all information in correct format to sign up.")
         }
         signUpButton.setTitle("Submit", for: .normal)
         signupLoadingIndicator.stopAnimating()
@@ -174,7 +179,7 @@ class SignUpViewController: UIViewController {
             checkUsernameAvailability(username: usernameTF.text)
         }
         else{
-            self.displayAlert(title: "Username Not Validated", message: "Please enter a validated username before checking.")
+            self.displayAlert(title: "Username Not Valid", message: "Please enter a valid username before checking.")
         }
     }
     

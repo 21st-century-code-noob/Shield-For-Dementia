@@ -53,6 +53,31 @@ class ValidationUtils{
         return validated
     }
     
+    static func drugNameValidate(name:String) -> Bool{
+        var validated:Bool = true
+        let RegEx = "^[0-9a-zA-Z ]*$"
+        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+        if name.isEmpty{
+            validated = false
+        }
+        else if Test.evaluate(with: name) == false{
+            validated = false
+        }
+        return validated
+    }
+    
+    static func lastDaysValidate(days: String) -> Bool{
+        var validated:Bool = true
+        let RegEx = "^[0-9]*$"
+        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+        if days.isEmpty{
+            validated = false
+        }
+        else if Test.evaluate(with: days) == false{
+            validated = false
+        }
+        return validated
+    }
 
 }
 
