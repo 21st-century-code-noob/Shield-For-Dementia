@@ -165,10 +165,15 @@ extension CBToast {
         objc_sync_enter(self)
         if toastView == nil {
             toastView = UIView.init()
-            toastView?.backgroundColor = UIColor.darkGray
+            toastView?.backgroundColor = UIColor.clear
             toastView?.layer.masksToBounds = true
             toastView?.layer.cornerRadius = 5.0
             toastView?.alpha = 0
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = toastView!.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            toastView!.addSubview(blurEffectView)
             
             let indicatorView = UIActivityIndicatorView.init(style: .whiteLarge)
             indicatorView.tag = 10
