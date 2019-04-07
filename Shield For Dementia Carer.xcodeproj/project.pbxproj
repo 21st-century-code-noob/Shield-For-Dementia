@@ -13,8 +13,6 @@
 		5806B2941EC516ACBE8CCB0F /* Pods_Shield_For_Dementia_CarerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EFCD39AE4AB2D9FB2EE61 /* Pods_Shield_For_Dementia_CarerTests.framework */; };
 		94819C7F2C50936C0B3DD45E /* Pods_Shield_For_Dementia_Carer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76568CD8C40BAE1FF0F9C2CE /* Pods_Shield_For_Dementia_Carer.framework */; };
 		AB444E7F2258D5BD002571A5 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB444E7E2258D5BD002571A5 /* Reminder.swift */; };
-		AB668CF8225A96E40082BEF3 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB668CF7225A96E40082BEF3 /* MemoryTableViewCell.swift */; };
-		AB668CFA225A97180082BEF3 /* FencedAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB668CF9225A97170082BEF3 /* FencedAnnotation.swift */; };
 		AB6A42832259BF2D00060FF7 /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6A42822259BF2D00060FF7 /* AddReminderViewController.swift */; };
 		AB78BCC4225A417400556586 /* CBToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78BCC3225A417400556586 /* CBToast.swift */; };
 		AB78BCC6225A4E2D00556586 /* ReminderNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78BCC5225A4E2D00556586 /* ReminderNumberTableViewCell.swift */; };
@@ -23,6 +21,8 @@
 		AB899DAA225AA76400336103 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB899DA9225AA76400336103 /* MapViewController.swift */; };
 		AB899DAC225AA7B800336103 /* MemoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB899DAB225AA7B800336103 /* MemoryTableViewController.swift */; };
 		AB899DAE225AA81300336103 /* PictureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB899DAD225AA81300336103 /* PictureDetailViewController.swift */; };
+		AB899DB0225AB03D00336103 /* FencedAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB899DAF225AB03D00336103 /* FencedAnnotation.swift */; };
+		AB899DB2225AB08300336103 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB899DB1225AB08300336103 /* MemoryTableViewCell.swift */; };
 		AB98EF6322584BE300286A9F /* CarerPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB98EF6222584BE300286A9F /* CarerPanelViewController.swift */; };
 		ABB721B7225632FA000EF648 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB721B6225632FA000EF648 /* SHA1.swift */; };
 		ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */; };
@@ -69,8 +69,6 @@
 		9A2851E2EE10F5483B836552 /* Pods-Shield For Dementia Carer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For Dementia Carer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For Dementia Carer/Pods-Shield For Dementia Carer.debug.xcconfig"; sourceTree = "<group>"; };
 		A55EFCD39AE4AB2D9FB2EE61 /* Pods_Shield_For_Dementia_CarerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shield_For_Dementia_CarerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB444E7E2258D5BD002571A5 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
-		AB668CF7225A96E40082BEF3 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryTableViewCell.swift; path = "../../../../../../../../../../Users/xpen0006/Downloads/Shield-For-Dementia/Shield For Dementia/Cell/MemoryTableViewCell.swift"; sourceTree = "<group>"; };
-		AB668CF9225A97170082BEF3 /* FencedAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FencedAnnotation.swift; path = "../../../../../../../../../../Users/xpen0006/Downloads/Shield-For-Dementia/Shield For Dementia/Cell/FencedAnnotation.swift"; sourceTree = "<group>"; };
 		AB6A42822259BF2D00060FF7 /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		AB78BCC3225A417400556586 /* CBToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBToast.swift; sourceTree = "<group>"; };
 		AB78BCC5225A4E2D00556586 /* ReminderNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderNumberTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +77,8 @@
 		AB899DA9225AA76400336103 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AB899DAB225AA7B800336103 /* MemoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewController.swift; sourceTree = "<group>"; };
 		AB899DAD225AA81300336103 /* PictureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetailViewController.swift; sourceTree = "<group>"; };
+		AB899DAF225AB03D00336103 /* FencedAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FencedAnnotation.swift; sourceTree = "<group>"; };
+		AB899DB1225AB08300336103 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		AB98EF6222584BE300286A9F /* CarerPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarerPanelViewController.swift; sourceTree = "<group>"; };
 		ABB721B6225632FA000EF648 /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
 		ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
@@ -165,9 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */,
-				AB668CF7225A96E40082BEF3 /* MemoryTableViewCell.swift */,
-				AB668CF9225A97170082BEF3 /* FencedAnnotation.swift */,
 				AB78BCC5225A4E2D00556586 /* ReminderNumberTableViewCell.swift */,
+				AB899DAF225AB03D00336103 /* FencedAnnotation.swift */,
+				AB899DB1225AB08300336103 /* MemoryTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -517,19 +517,19 @@
 				AB98EF6322584BE300286A9F /* CarerPanelViewController.swift in Sources */,
 				AB78BCC4225A417400556586 /* CBToast.swift in Sources */,
 				BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */,
-				AB668CFA225A97180082BEF3 /* FencedAnnotation.swift in Sources */,
 				AB6A42832259BF2D00060FF7 /* AddReminderViewController.swift in Sources */,
 				ABC0EDE82257801700CFEFC4 /* ReminderTableViewCell.swift in Sources */,
 				ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */,
 				BD96EB2F22548EE90042F236 /* WelcomeViewController.swift in Sources */,
 				AB899DAA225AA76400336103 /* MapViewController.swift in Sources */,
+				AB899DB2225AB08300336103 /* MemoryTableViewCell.swift in Sources */,
 				BD96EABE2252D90C0042F236 /* AppDelegate.swift in Sources */,
 				BD96EAC62252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld in Sources */,
 				AB899DA8225AA71C00336103 /* GalleryCollectionViewController.swift in Sources */,
 				AB78BCC6225A4E2D00556586 /* ReminderNumberTableViewCell.swift in Sources */,
 				AB899DA6225AA6BB00336103 /* CameraViewController.swift in Sources */,
-				AB668CF8225A96E40082BEF3 /* MemoryTableViewCell.swift in Sources */,
 				AB444E7F2258D5BD002571A5 /* Reminder.swift in Sources */,
+				AB899DB0225AB03D00336103 /* FencedAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
