@@ -139,6 +139,34 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-sI-sjV">
+                                                <rect key="frame" x="23" y="205" width="180" height="140"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5I-NK-UU1">
+                                                        <rect key="frame" x="35" y="38" width="145" height="102"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hospital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAx-2C-NB0">
+                                                        <rect key="frame" x="8" y="8" width="105" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paH-dq-xbq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="140"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <segue destination="z6U-bQ-zFl" kind="show" id="unB-bC-Fj5"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <gestureRecognizers/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -519,7 +547,7 @@ please log in or sign up</string>
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oZY-tu-5VH">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oZY-tu-5VH">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         </imageView>
                                     </subviews>
@@ -549,6 +577,9 @@ please log in or sign up</string>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="cdc-h6-NS3" kind="show" identifier="pictureDetails" id="TSS-9X-gNm"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMd-AE-TxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -818,6 +849,77 @@ please log in or sign up</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Rx-NC-gKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3445" y="-202"/>
+        </scene>
+        <!--Memory Detail-->
+        <scene sceneID="Dqz-jm-IZZ">
+            <objects>
+                <viewController title="Memory Detail" id="cdc-h6-NS3" customClass="PictureDetailViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Irz-5n-nms">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jbW-91-0BZ">
+                                <rect key="frame" x="8" y="96" width="398" height="398"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jbW-91-0BZ" secondAttribute="height" multiplier="1:1" id="jnB-cL-Wlz"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIE-mN-vJg">
+                                <rect key="frame" x="20" y="539" width="374" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93990677600000005" green="0.64201354980000003" blue="0.2586052418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteMemory:" destination="cdc-h6-NS3" eventType="touchUpInside" id="mLE-3H-iPc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jbW-91-0BZ" firstAttribute="leading" secondItem="NzF-hO-k0h" secondAttribute="leading" constant="8" id="1VE-vg-Ibc"/>
+                            <constraint firstItem="NzF-hO-k0h" firstAttribute="trailing" secondItem="jbW-91-0BZ" secondAttribute="trailing" constant="8" id="Rdd-Du-3dR"/>
+                            <constraint firstItem="jbW-91-0BZ" firstAttribute="top" secondItem="NzF-hO-k0h" secondAttribute="top" constant="8" id="wXx-PQ-RnE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NzF-hO-k0h"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageDetail" destination="jbW-91-0BZ" id="ToS-0F-Ww3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GRQ-2A-413" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2721.739130434783" y="-874.55357142857144"/>
+        </scene>
+        <!--Hospital Map-->
+        <scene sceneID="V1G-Ox-HwB">
+            <objects>
+                <viewController title="Hospital Map" id="z6U-bQ-zFl" customClass="MapViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GMq-TB-uk7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LVA-we-dAo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LVA-we-dAo" firstAttribute="trailing" secondItem="OtI-th-Lj5" secondAttribute="trailing" id="6l5-hs-v0l"/>
+                            <constraint firstItem="LVA-we-dAo" firstAttribute="leading" secondItem="OtI-th-Lj5" secondAttribute="leading" id="Qll-F3-T7p"/>
+                            <constraint firstItem="LVA-we-dAo" firstAttribute="top" secondItem="GMq-TB-uk7" secondAttribute="top" id="YqB-iP-7db"/>
+                            <constraint firstAttribute="bottom" secondItem="LVA-we-dAo" secondAttribute="bottom" id="cEE-Vq-5y6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OtI-th-Lj5"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="LVA-we-dAo" id="VuD-wg-4mw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJk-md-gaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600" y="1277"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

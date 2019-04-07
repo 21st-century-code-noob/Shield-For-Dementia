@@ -13,6 +13,7 @@ class ReminderTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        retrieveReminderData()
         self.navigationController?.setToolbarHidden(false, animated: true)
         var items = [UIBarButtonItem]()
         items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed)))
@@ -22,7 +23,6 @@ class ReminderTableViewController: UITableViewController {
         items.append( UIBarButtonItem(title: "History", style: .plain, target: self, action: nil))
         items[1].width = 15
         self.toolbarItems = items
-        retrieveReminderData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -162,7 +162,7 @@ class CarerPanelViewController: UIViewController {
         memoryButton.isEnabled = true
     }
     
-    @IBAction func testJsonButton(_ sender: Any) {
-        retriveFname()
-    }
+
+    
+    
 }
