@@ -19,7 +19,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     var imageList = [UIImage]()
     var imagePathList = [String]()
     var imageNameList = [String]()
-    let username = UserDefaults.standard.object(forKey: "username") as! String
+    let username = UserDefaults.standard.object(forKey: "patientId") as! String
     var databaseRef = Database.database().reference().child("users")
     var storageRef = Storage.storage()
     
@@ -123,6 +123,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         //        })
     }
     
+    //Advance mobile development, moodle (2018)
     func localFileExists(fileName: String) -> Bool{
         
         var localFileExists = false
@@ -136,6 +137,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         return localFileExists
     }
     
+    //Advance mobile development, moodle (2018)
     func saveLocalData(fileName: String, imageData: Data){
         
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) [0] as String
@@ -146,7 +148,8 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
             fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         }
     }
-    
+   
+    //Advance mobile development, moodle (2018)
     func loadImageData(fileName: String) -> UIImage?{
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let url = NSURL(fileURLWithPath: path)

@@ -15,7 +15,7 @@ class PictureDetailViewController: UIViewController {
     var imageName: String?
     var imageUrl: String?
     
-    let username = UserDefaults.standard.object(forKey: "username") as! String
+    let username = UserDefaults.standard.object(forKey: "patientId") as! String
     var databaseRef = Database.database().reference().child("users")
     var storageRef = Storage.storage()
     

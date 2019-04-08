@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    //all below listen to textfield change and validate
     @IBAction func pswEditChanged(_ sender: Any) {
         let inputPsw = pswTF.text! + ""
         let validated:Bool = ValidationUtils.validatePsw(psw: inputPsw)
@@ -111,6 +111,7 @@ class SignUpViewController: UIViewController {
         print("name validated, the result is: " + String(describing: validated))
     }
     
+    //handle sign up behaviour
     @IBAction func SignUpButtonPressed(_ sender: Any) {
         CBToast.showToastAction()
         if !availabilityChecked{
@@ -175,7 +176,7 @@ class SignUpViewController: UIViewController {
     }
 
 
-    
+    //button action handling
     @IBAction func checkAvailablityButtonPressed(_ sender: Any) {
         if usernameHintLabel.isHidden {
             checkUsernameAvailability(username: usernameTF.text)
@@ -185,7 +186,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    
+    //using API checking username availability
     func checkUsernameAvailability(username: String!){
         checkAvailabilityButton.isHidden = true
         checkAvailabilityIndicator.startAnimating()
@@ -216,6 +217,7 @@ class SignUpViewController: UIViewController {
         }
         task.resume()
     }
+    
     
     func displayAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
