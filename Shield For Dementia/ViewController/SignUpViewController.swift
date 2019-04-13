@@ -8,111 +8,18 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     
-    @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var usernameTF: UITextField!
-    @IBOutlet weak var pswTF: UITextField!
-    @IBOutlet weak var confirmTF: UITextField!
-    @IBOutlet weak var firstNameTF: UITextField!
-    @IBOutlet weak var lastNameTF: UITextField!
-    @IBOutlet weak var usernameHintLabel: UILabel!
-    @IBOutlet weak var passwordHintLabel: UILabel!
-    @IBOutlet weak var confirmPswHintLabel: UILabel!
-    @IBOutlet weak var nameHintLabel: UILabel!
-    @IBOutlet weak var signupLoadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var checkAvailabilityButton: UIButton!
-    @IBOutlet weak var checkAvailabilityIndicator: UIActivityIndicatorView!
     
-    var availabilityChecked: Bool = false
     
-    override func viewDidAppear(_ animated: Bool) {
-        usernameTF.becomeFirstResponder()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        signUpButton.layer.cornerRadius = 10
-
-        // Do any additional setup after loading the view.
-    }
     
-    //all below listen to textfield change and validate
-    @IBAction func pswEditChanged(_ sender: Any) {
-        let inputPsw = pswTF.text! + ""
-        let validated:Bool = ValidationUtils.validatePsw(psw: inputPsw)
-        if  validated == false{
-            passwordHintLabel.isHidden = false
-            passwordHintLabel.text = "Password must be 8-24 characters, with at least one uppercase, lowercase and number, no symbol"
-        }
-        else{
-            passwordHintLabel.isHidden = true
-        }
-        
-        print("password validated, the result is: " + String(describing: validated))
-    }
-    
-    @IBAction func confirmEditChanged(_ sender: Any) {
-        let psw = pswTF.text
-        if !passwordHintLabel.isHidden{
-            confirmPswHintLabel.isHidden = false
-            confirmPswHintLabel.text = "Enter valid password first"
-        }
-        else if confirmTF.text != psw{
-            confirmPswHintLabel.isHidden = false
-            confirmPswHintLabel.text = "Must be the same as the password you entered above"
-        }
-        else{
-            confirmPswHintLabel.isHidden = true
-        }
-    }
-    
-    @IBAction func usernameEditChanged(_ sender: Any) {
-        self.availabilityChecked = false
-        let inputUsername = usernameTF.text!
-        let validated:Bool = ValidationUtils.validateUsername(username: inputUsername)
-        if  validated == false{
-            usernameHintLabel.isHidden = false
-            usernameHintLabel.text = "Username must be 6-20 characters, with no symbol."
-        }
-        else{
-            usernameHintLabel.isHidden = true
-        }
-        print("username validated, the result is: " + String(describing: validated))
-    }
-
-    @IBAction func fnameEditChanged(_ sender: Any) {
-        let fnInput = firstNameTF.text
-        let lnInput = lastNameTF.text
-        
-        let validated:Bool = ValidationUtils.nameValidate(name: fnInput!) && ValidationUtils.nameValidate(name: lnInput!)
-        if  validated == false{
-            nameHintLabel.isHidden = false
-            nameHintLabel.text = "Your name must be in valid format."
-        }
-        else{
-            nameHintLabel.isHidden = true
-        }
-        print("name validated, the result is: " + String(describing: validated))
-    }
-    
-    @IBAction func lnameEditChanged(_ sender: Any) {
-        let lnInput = lastNameTF.text
-        let fnInput = firstNameTF.text
-        
-        let validated:Bool = ValidationUtils.nameValidate(name: fnInput!) && ValidationUtils.nameValidate(name: lnInput!)
-        if  validated == false{
-            nameHintLabel.isHidden = false
-            nameHintLabel.text = "Your name must be in valid format."
-        }
-        else{
-            nameHintLabel.isHidden = true
-        }
-        print("name validated, the result is: " + String(describing: validated))
-    }
-    
-    //handle sign up behaviour
-    @IBAction func SignUpButtonPressed(_ sender: Any) {
+    /*@IBAction func SignUpButtonPressed(_ sender: Any) {
         CBToast.showToastAction()
         if !availabilityChecked{
             CBToast.hiddenToastAction()
@@ -169,9 +76,7 @@ class SignUpViewController: UIViewController {
             CBToast.hiddenToastAction()
             displayAlert(title: "Information Not Correct", message: "Please provide all information in correct format to sign up.")
         }
-        signUpButton.setTitle("Submit", for: .normal)
-        signupLoadingIndicator.stopAnimating()
-        signUpButton.isEnabled = true
+        
         
     }
 
@@ -217,7 +122,7 @@ class SignUpViewController: UIViewController {
         }
         task.resume()
     }
-    
+    */
     
     func displayAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
