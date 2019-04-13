@@ -71,7 +71,7 @@ class MapViewController: UIViewController {
         configureLocationServices()
         
         
-        // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,10 +84,12 @@ class MapViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //Advance mobile development, moodle (2018)
     func addAnnotation(annotation: MKAnnotation){
         self.mapView.addAnnotation(annotation)
     }
     
+    //Advance mobile development, moodle (2018)
     func focusOn(annotation: MKAnnotation){
         self.mapView.centerCoordinate = annotation.coordinate
         self.mapView.selectAnnotation(annotation,animated: true)
@@ -95,12 +97,14 @@ class MapViewController: UIViewController {
         self.mapView.setRegion(zoomRegion, animated: true)
     }
     
+    //Advance mobile development, moodle (2018)
     func displayAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true)
     }
     
+    //Advance mobile development, moodle (2018)
     private func configureLocationServices(){
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -122,6 +126,7 @@ class MapViewController: UIViewController {
     
 }
 
+//Yunfeng Song, assignment1/advance moble development, (2018)
 extension MapViewController: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -131,6 +136,7 @@ extension MapViewController: CLLocationManagerDelegate{
     }
 }
 
+//Yunfeng Song, assignment1/advance moble development, (2018)
 extension MapViewController: MKMapViewDelegate{
     
     

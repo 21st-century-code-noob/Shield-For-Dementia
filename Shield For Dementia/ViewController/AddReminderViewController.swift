@@ -16,10 +16,16 @@ class AddReminderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    //handles the button behaviour
     @IBAction func addReminderPressed(_ sender: Any) {
         CBToast.showToastAction()
         if !ValidationUtils.drugNameValidate(name: medicineNameTF.text!){

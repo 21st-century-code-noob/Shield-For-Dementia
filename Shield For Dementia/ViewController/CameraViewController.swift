@@ -17,20 +17,54 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var imageView: UIImageView!
     
     
+//    @IBAction func takePhotoFromLibrary(_ sender: Any) {
+//        let controller = UIImagePickerController()
+//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
+//            controller.sourceType = UIImagePickerController.SourceType.photoLibrary
+//        }
+//        else{
+//            controller.sourceType = UIImagePickerController.SourceType.photoLibrary
+//        }
+//    }
+//    
+
+        
+    //Advance mobile development, moodle (2018)
     @IBAction func takePhoto(_ sender: Any) {
         let controller = UIImagePickerController()
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
-            controller.sourceType = UIImagePickerController.SourceType.camera
-        }
-        else{
-            controller.sourceType = UIImagePickerController.SourceType.photoLibrary
-        }
-        
-        controller.allowsEditing = false
         controller.delegate = self
-        self.present(controller,animated: true,completion: nil)
+//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
+//            controller.sourceType = UIImagePickerController.SourceType.camera
+//        }
+//        else{
+//            controller.sourceType = UIImagePickerController.SourceType.photoLibrary
+//        }
+//
+//        controller.allowsEditing = false
+//        controller.delegate = self
+//        self.present(controller,animated: true,completion: nil)
+        
+        
+        //adam kanekd youtube (2016)
+        let actionSheet = UIAlertController(title: "Photo Sourse", message: "Choose a sourse", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler:{(action:UIAlertAction)in
+                controller.sourceType = .camera
+            self.present(controller,animated: true,completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler:{(action:UIAlertAction)in
+                controller.sourceType = .photoLibrary
+            self.present(controller,animated: true,completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+        
     }
     
+    //Advance mobile development, moodle (2018)
     @IBAction func savePhoto(_ sender: Any) {
         guard let image = imageView.image else{
             displayMessage("Cannot save until a photo has been taken!", "Error")
@@ -44,9 +78,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let userID = "10wRyo7S8AcF0dhhyxWhEJsAuB12"
         let date = NSUUID().uuidString
         var data = Data()
-        let username = UserDefaults.standard.object(forKey: "username") as! String
-        //data = UIImageJPEGRepresentation(image, 0.8)!
+        let username = UserDefaults.standard.object(forKey: "patientId") as! String
         data = image.jpegData(compressionQuality: 0.8)!
+        //data = image.pngData()!
         
         let imageRef = storageRef.child("users").child(username).child("images").child(date)
         let metadata = StorageMetadata()
@@ -99,6 +133,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
+    //Advance mobile development, moodle (2018)
     func displayMessage(_ message: String,_ title: String){
         let alertController = UIAlertController(title:title, message: message,
                                                 preferredStyle: UIAlertController.Style.alert)
@@ -106,6 +141,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //Advance mobile development, moodle (2018)
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             imageView.image = pickedImage
@@ -113,6 +149,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         dismiss(animated: true, completion: nil)
     }
     
+    //Advance mobile development, moodle (2018)
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         displayMessage("There was an error in getting the photo", "Error")
         self.dismiss(animated: true, completion: nil)

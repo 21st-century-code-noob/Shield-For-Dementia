@@ -10,10 +10,10 @@ import UIKit
 
 class ReminderTableViewController: UITableViewController {
     var reminders: [Reminder] = []
+    var canRefresh: Bool = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        retrieveReminderData()
         self.navigationController?.setToolbarHidden(false, animated: true)
         var items = [UIBarButtonItem]()
         items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed)))
@@ -23,6 +23,7 @@ class ReminderTableViewController: UITableViewController {
         items.append( UIBarButtonItem(title: "History", style: .plain, target: self, action: nil))
         items[1].width = 15
         self.toolbarItems = items
+        retrieveReminderData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,7 +36,16 @@ class ReminderTableViewController: UITableViewController {
     }
     
     @objc func refreshTable(){
-        retrieveReminderData()
+        if canRefresh{
+            retrieveReminderData()
+            canRefresh = false
+            //timer to avoid frequent data request
+            Timer.scheduledTimer(timeInterval:3, target: self, selector: #selector(setCanRefresh), userInfo: nil, repeats: false)
+        }
+    }
+    
+    @objc func setCanRefresh(){
+        canRefresh = true
     }
     
     override func viewDidLoad() {
@@ -186,38 +196,45 @@ class ReminderTableViewController: UITableViewController {
     }
     */
 
+    //retrive remind data from API
     func retrieveReminderData(){
         CBToast.showToastAction()
         reminders.removeAll()
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/selectreminderbypatientid?patientId=" + (UserDefaults.standard.object(forKey: "patientId") as! String)
-        let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
-            if error != nil{
-                CBToast.hiddenToastAction()
-                print("error occured")
-            }
-            else{
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
-                    for item in json!{
-                        let reminderJson = item as? [String: Any]
-                        let reminderId = reminderJson!["reminder_id"] as! Int
-                        let reminderTime = reminderJson!["time"] as! String
-                        let drugName = reminderJson!["drug_name"] as! String
-                        let startDate = reminderJson!["dates"] as! String
-                        let lastTime = reminderJson!["lasts"] as! Int
-                        let reminder: Reminder = Reminder(reminderId: reminderId, reminderTime: reminderTime, drugName: drugName, startDate: startDate, lastTime: lastTime)
-                        self.reminders.append(reminder)
+        if UserDefaults.standard.value(forKey: "patientId") != nil{
+            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/selectreminderbypatientid?patientId=" + (UserDefaults.standard.object(forKey: "patientId") as! String)
+            let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
+                if error != nil{
+                    CBToast.hiddenToastAction()
+                    print("error occured")
+                }
+                else{
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
+                        for item in json!{
+                            let reminderJson = item as? [String: Any]
+                            let reminderId = reminderJson!["reminder_id"] as! Int
+                            let reminderTime = reminderJson!["time"] as! String
+                            let drugName = reminderJson!["drug_name"] as! String
+                            let startDate = reminderJson!["dates"] as! String
+                            let lastTime = reminderJson!["lasts"] as! Int
+                            let reminder: Reminder = Reminder(reminderId: reminderId, reminderTime: reminderTime, drugName: drugName, startDate: startDate, lastTime: lastTime)
+                            self.reminders.append(reminder)
+                        }
+                    }
+                    catch{
+                        print(error)
+                    }
+                    DispatchQueue.main.sync{
+                        CBToast.hiddenToastAction()
+                        self.tableView.reloadData()
                     }
                 }
-                catch{
-                    print(error)
-                }
-                DispatchQueue.main.sync{
-                    CBToast.hiddenToastAction()
-                    self.tableView.reloadData()
-                }
             }
+            task.resume()
         }
-        task.resume()
+        else{
+            CBToast.hiddenToastAction()
+
+        }
     }
 }
