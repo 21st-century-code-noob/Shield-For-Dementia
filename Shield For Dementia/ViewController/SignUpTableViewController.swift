@@ -10,6 +10,18 @@ import UIKit
 
 class SignUpTableViewController: UITableViewController {
 
+    @IBOutlet weak var usernameTF: UITextField!
+    @IBOutlet weak var pswTF: UITextField!
+    @IBOutlet weak var confirmTF: UITextField!
+    @IBOutlet weak var fnameTF: UITextField!
+    @IBOutlet weak var lnameTF: UITextField!
+    
+    @IBOutlet weak var usernameIndicator: UIImageView!
+    @IBOutlet weak var pswIndicator: UIImageView!
+    @IBOutlet weak var confirmIndicator: UIImageView!
+    @IBOutlet weak var fnameIndicator: UIImageView!
+    @IBOutlet weak var lnameIndicator: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,12 +36,17 @@ class SignUpTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if section == 0{
+            return 1
+        }
+        else{
+            return 2
+        }
     }
 
     /*
@@ -86,5 +103,95 @@ class SignUpTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+   
+    
+    @IBAction func usernameEndEdit(_ sender: Any) {
+        let username = usernameTF.text
+        if ValidationUtils.validateUsername(username: username){
+            usernameIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
+        }
+        else{
+            usernameIndicator.image = UIImage(named: "Close_Icon_Dark-512")
+        }
+    }
+    
+    @IBAction func pswEndEdit(_ sender: Any) {
+        let psw = pswTF.text
+        if ValidationUtils.validatePsw(psw: psw){
+            pswIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
+        }
+        else{
+            pswIndicator.image = UIImage(named: "Close_Icon_Dark-512")
+        }
+    }
+    
+    @IBAction func confirmEndEdit(_ sender: Any) {
+        let confirm = confirmTF.text
+        if confirm == pswTF.text && !(confirm?.isEmpty)!{
+            confirmIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
+        }
+        else{
+            confirmIndicator.image = UIImage(named: "Close_Icon_Dark-512")
+        }
+    }
+    
+    @IBAction func fnameEndEdit(_ sender: Any) {
+        let fname = fnameTF.text
+        if ValidationUtils.nameValidate(name: fname!){
+            fnameIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
+        }
+        else{
+            fnameIndicator.image = UIImage(named: "Close_Icon_Dark-512")
+        }
+    }
+    
+    @IBAction func lnameEndEdit(_ sender: Any) {
+        let lname = lnameTF.text
+        if ValidationUtils.nameValidate(name: lname!){
+            lnameIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
+        }
+        else{
+            lnameIndicator.image = UIImage(named: "Close_Icon_Dark-512")
+        }
+    }
+    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        if ValidationUtils.validateUsername(username: usernameTF.text) &&
+            ValidationUtils.validatePsw(psw: pswTF.text) &&
+            pswTF.text == confirmTF.text &&
+            ValidationUtils.nameValidate(name: fnameTF.text!) &&
+            ValidationUtils.nameValidate(name: lnameTF.text!){
+            
+        }
+        else{
+            CBToast.showToast(message: "Please check your input", aLocationStr: "bottom", aShowTime: 2.0)
+        }
+    }
+    
+    
+    func checkUsernameAvailability(username: String!){
+        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
+        let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
+            if error != nil{
+                print("error occured")
+                DispatchQueue.main.sync{
+                    CBToast.showToast(message: "An error has occured", aLocationStr: "top", aShowTime: 2.0)
+                }
+            }
+            else{
+                let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
+                DispatchQueue.main.sync{
+                    if "[]" != responseString{
+                        CBToast.showToast(message: "The username already exists", aLocationStr: "top", aShowTime: 2.0)
+                    }
+                    else{
+                        CBToast.showToast(message: "This username is available", aLocationStr: "top", aShowTime: 2.0)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
 }
