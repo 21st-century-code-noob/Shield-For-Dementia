@@ -27,6 +27,8 @@
 		ABB721B7225632FA000EF648 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB721B6225632FA000EF648 /* SHA1.swift */; };
 		ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */; };
 		ABC0EDE82257801700CFEFC4 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */; };
+		ABC674AF2261DFAF0020639F /* InputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC674AE2261DFAF0020639F /* InputTableViewCell.swift */; };
+		ABC674B12261EBDB0020639F /* SignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC674B02261EBDB0020639F /* SignUpTableViewController.swift */; };
 		BD96EABE2252D90C0042F236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EABD2252D90C0042F236 /* AppDelegate.swift */; };
 		BD96EAC32252D90C0042F236 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD96EAC12252D90C0042F236 /* Main.storyboard */; };
 		BD96EAC62252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD96EAC42252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld */; };
@@ -83,6 +85,8 @@
 		ABB721B6225632FA000EF648 /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
 		ABC0EDE222577FE200CFEFC4 /* ReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
 		ABC0EDE72257801700CFEFC4 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		ABC674AE2261DFAF0020639F /* InputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTableViewCell.swift; sourceTree = "<group>"; };
+		ABC674B02261EBDB0020639F /* SignUpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTableViewController.swift; sourceTree = "<group>"; };
 		BD96EABA2252D90B0042F236 /* Shield For Dementia Carer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shield For Dementia Carer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD96EABD2252D90C0042F236 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD96EAC22252D90C0042F236 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				AB78BCC5225A4E2D00556586 /* ReminderNumberTableViewCell.swift */,
 				AB899DAF225AB03D00336103 /* FencedAnnotation.swift */,
 				AB899DB1225AB08300336103 /* MemoryTableViewCell.swift */,
+				ABC674AE2261DFAF0020639F /* InputTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				AB899DA9225AA76400336103 /* MapViewController.swift */,
 				AB899DAB225AA7B800336103 /* MemoryTableViewController.swift */,
 				AB899DAD225AA81300336103 /* PictureDetailViewController.swift */,
+				ABC674B02261EBDB0020639F /* SignUpTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -527,8 +533,10 @@
 				BD96EAC62252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld in Sources */,
 				AB899DA8225AA71C00336103 /* GalleryCollectionViewController.swift in Sources */,
 				AB78BCC6225A4E2D00556586 /* ReminderNumberTableViewCell.swift in Sources */,
+				ABC674B12261EBDB0020639F /* SignUpTableViewController.swift in Sources */,
 				AB899DA6225AA6BB00336103 /* CameraViewController.swift in Sources */,
 				AB444E7F2258D5BD002571A5 /* Reminder.swift in Sources */,
+				ABC674AF2261DFAF0020639F /* InputTableViewCell.swift in Sources */,
 				AB899DB0225AB03D00336103 /* FencedAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
