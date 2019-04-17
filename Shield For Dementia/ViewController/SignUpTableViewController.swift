@@ -10,6 +10,7 @@ import UIKit
 
 class SignUpTableViewController: UITableViewController {
 
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var pswTF: UITextField!
     @IBOutlet weak var confirmTF: UITextField!
@@ -24,7 +25,6 @@ class SignUpTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -162,7 +162,7 @@ class SignUpTableViewController: UITableViewController {
             pswTF.text == confirmTF.text &&
             ValidationUtils.nameValidate(name: fnameTF.text!) &&
             ValidationUtils.nameValidate(name: lnameTF.text!){
-            
+            signUp(username: usernameTF.text!)
         }
         else{
             CBToast.showToast(message: "Please check your input", aLocationStr: "bottom", aShowTime: 2.0)
@@ -170,28 +170,88 @@ class SignUpTableViewController: UITableViewController {
     }
     
     
-    func checkUsernameAvailability(username: String!){
+    func checkUsernameAvailability(username: String!, finished: @escaping((Bool)->Void)){
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
                 print("error occured")
                 DispatchQueue.main.sync{
-                    CBToast.showToast(message: "An error has occured", aLocationStr: "top", aShowTime: 2.0)
+                    CBToast.showToast(message: "An error has occured", aLocationStr: "center", aShowTime: 2.0)
+                    CBToast.hiddenToastAction()
                 }
+                finished(false)
             }
             else{
                 let responseString = String(data: data!, encoding: String.Encoding.utf8) as String?
-                DispatchQueue.main.sync{
-                    if "[]" != responseString{
-                        CBToast.showToast(message: "The username already exists", aLocationStr: "top", aShowTime: 2.0)
+                if "[]" != responseString{
+                    DispatchQueue.main.sync{
+                        CBToast.showToast(message: "The username already exists", aLocationStr: "center", aShowTime: 2.0)
                     }
-                    else{
-                        CBToast.showToast(message: "This username is available", aLocationStr: "top", aShowTime: 2.0)
+                    finished(false)
+                }
+                else{
+                    DispatchQueue.main.sync{
+                        CBToast.showToast(message: "This username is available", aLocationStr: "center", aShowTime: 2.0)
                     }
+                    finished(true)
                 }
             }
         }
         task.resume()
+    }
+    
+    func signUp(username: String){
+        submitButton.isEnabled = false
+        CBToast.showToastAction()
+        let passwordHash = SHA1.hexString(from: self.pswTF.text!)
+        let firstName = self.fnameTF.text!
+        let lastName = self.lnameTF.text!
+        checkUsernameAvailability(username: username) {finished in
+            if finished{
+                var requestURL3 = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/addaewcarer?carerId="
+                requestURL3 = requestURL3 + username
+                requestURL3 = requestURL3 + "&password="
+                requestURL3 = requestURL3 + passwordHash! + "&firstName=" + firstName + "&lastName=" + lastName
+                
+                let url = URL(string: requestURL3)!
+                
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                
+                let task = URLSession.shared.dataTask(with: request){ data, response, error in
+                    let dataString = String(data: data!, encoding: String.Encoding.utf8)! + ""
+                    if error != nil{
+                        print("error occured")
+                        DispatchQueue.main.sync{
+                            CBToast.hiddenToastAction()
+                            self.submitButton.isEnabled = true
+                        }
+                    }
+                    else if "\"success!\"" != dataString{
+                        DispatchQueue.main.sync{
+                            print(dataString)
+                            CBToast.hiddenToastAction()
+                            self.submitButton.isEnabled = true
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.sync{
+                            CBToast.hiddenToastAction()
+                            CBToast.showToast(message: "Account successfully created.", aLocationStr: "center", aShowTime: 5.0)
+                            self.submitButton.isEnabled = true
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }
+                task.resume()
+            }
+            else{
+                DispatchQueue.main.sync{
+                    self.submitButton.isEnabled = true
+                    CBToast.hiddenToastAction()
+                }
+            }
+        }
     }
     
 }
