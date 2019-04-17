@@ -106,7 +106,7 @@ class SignUpTableViewController: UITableViewController {
     
    
     
-    @IBAction func usernameEndEdit(_ sender: Any) {
+    @IBAction func usernameEditingChanged(_ sender: Any) {
         let username = usernameTF.text
         if ValidationUtils.validateUsername(username: username){
             usernameIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
@@ -116,7 +116,7 @@ class SignUpTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func pswEndEdit(_ sender: Any) {
+    @IBAction func pswEditChanged(_ sender: Any) {
         let psw = pswTF.text
         if ValidationUtils.validatePsw(psw: psw){
             pswIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
@@ -125,8 +125,9 @@ class SignUpTableViewController: UITableViewController {
             pswIndicator.image = UIImage(named: "Close_Icon_Dark-512")
         }
     }
-    
-    @IBAction func confirmEndEdit(_ sender: Any) {
+
+
+    @IBAction func confirmEditChanged(_ sender: Any) {
         let confirm = confirmTF.text
         if confirm == pswTF.text && !(confirm?.isEmpty)!{
             confirmIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
@@ -136,7 +137,7 @@ class SignUpTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func fnameEndEdit(_ sender: Any) {
+    @IBAction func fnameEditChanged(_ sender: Any) {
         let fname = fnameTF.text
         if ValidationUtils.nameValidate(name: fname!){
             fnameIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
@@ -145,8 +146,8 @@ class SignUpTableViewController: UITableViewController {
             fnameIndicator.image = UIImage(named: "Close_Icon_Dark-512")
         }
     }
-    
-    @IBAction func lnameEndEdit(_ sender: Any) {
+
+    @IBAction func lnameEditChanged(_ sender: Any) {
         let lname = lnameTF.text
         if ValidationUtils.nameValidate(name: lname!){
             lnameIndicator.image = UIImage(named: "Tick_Mark_Dark-512 copy")
@@ -155,6 +156,8 @@ class SignUpTableViewController: UITableViewController {
             lnameIndicator.image = UIImage(named: "Close_Icon_Dark-512")
         }
     }
+
+    
     
     @IBAction func submitButtonTapped(_ sender: Any) {
         if ValidationUtils.validateUsername(username: usernameTF.text) &&
@@ -165,7 +168,7 @@ class SignUpTableViewController: UITableViewController {
             signUp(username: usernameTF.text!)
         }
         else{
-            CBToast.showToast(message: "Please check your input", aLocationStr: "bottom", aShowTime: 2.0)
+            CBToast.showToast(message: "Please check your input", aLocationStr: "center", aShowTime: 2.0)
         }
     }
     
@@ -204,8 +207,8 @@ class SignUpTableViewController: UITableViewController {
         submitButton.isEnabled = false
         CBToast.showToastAction()
         let passwordHash = SHA1.hexString(from: self.pswTF.text!)
-        let firstName = self.fnameTF.text!
-        let lastName = self.lnameTF.text!
+        let firstName = self.fnameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastName = self.lnameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         checkUsernameAvailability(username: username) {finished in
             if finished{
                 var requestURL3 = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/addaewcarer?carerId="
