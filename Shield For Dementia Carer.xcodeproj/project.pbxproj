@@ -12,6 +12,7 @@
 		1CFA174FD83D69EB8A43BBEE /* Pods_Shield_For_Dementia_CarerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E940F0B195C9BCE41FE7854 /* Pods_Shield_For_Dementia_CarerUITests.framework */; };
 		5806B2941EC516ACBE8CCB0F /* Pods_Shield_For_Dementia_CarerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EFCD39AE4AB2D9FB2EE61 /* Pods_Shield_For_Dementia_CarerTests.framework */; };
 		94819C7F2C50936C0B3DD45E /* Pods_Shield_For_Dementia_Carer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76568CD8C40BAE1FF0F9C2CE /* Pods_Shield_For_Dementia_Carer.framework */; };
+		AB16740522674C8600E397CA /* AddNewReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16740422674C8600E397CA /* AddNewReminderTableViewController.swift */; };
 		AB444E7F2258D5BD002571A5 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB444E7E2258D5BD002571A5 /* Reminder.swift */; };
 		AB6A42832259BF2D00060FF7 /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6A42822259BF2D00060FF7 /* AddReminderViewController.swift */; };
 		AB78BCC4225A417400556586 /* CBToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB78BCC3225A417400556586 /* CBToast.swift */; };
@@ -70,6 +71,7 @@
 		76568CD8C40BAE1FF0F9C2CE /* Pods_Shield_For_Dementia_Carer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shield_For_Dementia_Carer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2851E2EE10F5483B836552 /* Pods-Shield For Dementia Carer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For Dementia Carer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For Dementia Carer/Pods-Shield For Dementia Carer.debug.xcconfig"; sourceTree = "<group>"; };
 		A55EFCD39AE4AB2D9FB2EE61 /* Pods_Shield_For_Dementia_CarerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shield_For_Dementia_CarerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB16740422674C8600E397CA /* AddNewReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewReminderTableViewController.swift; sourceTree = "<group>"; };
 		AB444E7E2258D5BD002571A5 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		AB6A42822259BF2D00060FF7 /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		AB78BCC3225A417400556586 /* CBToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBToast.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				AB899DAB225AA7B800336103 /* MemoryTableViewController.swift */,
 				AB899DAD225AA81300336103 /* PictureDetailViewController.swift */,
 				ABC674B02261EBDB0020639F /* SignUpTableViewController.swift */,
+				AB16740422674C8600E397CA /* AddNewReminderTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				BD96EB2C22548D820042F236 /* LoginViewController.swift in Sources */,
 				BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */,
 				18B26E022258AB52005F024F /* ImageCollectionViewCell.swift in Sources */,
+				AB16740522674C8600E397CA /* AddNewReminderTableViewController.swift in Sources */,
 				AB899DAE225AA81300336103 /* PictureDetailViewController.swift in Sources */,
 				ABB721B7225632FA000EF648 /* SHA1.swift in Sources */,
 				BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */,
