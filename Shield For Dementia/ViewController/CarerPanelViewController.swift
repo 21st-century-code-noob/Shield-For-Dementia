@@ -24,8 +24,9 @@ class CarerPanelViewController: UIViewController {
     }
     
     override func  viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
         disableButtonsBecauseNoPatient()
-        fakeCheckPairedPatient()
+        checkPairedPatient()
     }
     
     //handle log out button behaviour
@@ -119,8 +120,10 @@ class CarerPanelViewController: UIViewController {
                                     if let pair = item as? [String: Any]{
                                         if pair["status"] as! Int == 1{
                                             let patientId = pair["user_id"] as! String
+                                            let requestId = pair["request_id"] as! Int
                                             self.enableButtonBecauseHasPatient()
                                             UserDefaults.standard.set(patientId, forKey: "patientId")
+                                            UserDefaults.standard.set(requestId, forKey: "requestId")
                                             self.pairedPatientLabel.text = "You have been paired with: " + patientId
                                             hasPatient = true
                                         }
@@ -270,6 +273,8 @@ class CarerPanelViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindToCarePanel(segue:UIStoryboardSegue) { }
     
     
 }
