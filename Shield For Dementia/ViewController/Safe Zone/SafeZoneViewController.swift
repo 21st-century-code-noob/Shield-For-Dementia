@@ -27,7 +27,9 @@ class SafeZoneViewController: UIViewController {
     var storageRef = Storage.storage()
     
     @IBAction func findPatientButton(_ sender: Any) {
-        focusOn(annotation: patientLocation!)
+        if (patientLocation != nil){
+            focusOn(annotation: patientLocation!)
+        }
     }
     
     
