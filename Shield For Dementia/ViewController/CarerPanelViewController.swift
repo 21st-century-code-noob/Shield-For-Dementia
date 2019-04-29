@@ -13,11 +13,12 @@ class CarerPanelViewController: UIViewController {
     @IBOutlet weak var pairedPatientLabel: UILabel!
     @IBOutlet weak var remindButton: UIButton!
     @IBOutlet weak var memoryButton: UIButton!
+    @IBOutlet weak var safeZoneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true;
-
+        disableButtonsBecauseNoPatient()
         setWelcomeLabel()
 
         // Do any additional setup after loading the view.
@@ -25,7 +26,6 @@ class CarerPanelViewController: UIViewController {
     
     override func  viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        disableButtonsBecauseNoPatient()
         checkPairedPatient()
     }
     
@@ -102,6 +102,7 @@ class CarerPanelViewController: UIViewController {
     
     //check paired patient using API
     func checkPairedPatient(){
+        CBToast.showToastAction()
         let username = UserDefaults.standard.object(forKey: "username") as! String
         var hasPatient:Bool = false
         if username != nil{
@@ -109,6 +110,9 @@ class CarerPanelViewController: UIViewController {
             let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
                 if error != nil{
                     print("error occured")
+                    DispatchQueue.main.sync{
+                        CBToast.hiddenToastAction()
+                    }
                 }
                 else{
                     let dataString = String(data: data!, encoding: String.Encoding.utf8)
@@ -118,58 +122,21 @@ class CarerPanelViewController: UIViewController {
                                 let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
                                 for item in json!{
                                     if let pair = item as? [String: Any]{
-                                        if pair["status"] as! Int == 1{
-                                            let patientId = pair["user_id"] as! String
-                                            let requestId = pair["request_id"] as! Int
-                                            self.enableButtonBecauseHasPatient()
-                                            UserDefaults.standard.set(patientId, forKey: "patientId")
-                                            UserDefaults.standard.set(requestId, forKey: "requestId")
-                                            self.pairedPatientLabel.text = "You have been paired with: " + patientId
-                                            hasPatient = true
+                                        if !(pair["status"] is NSNull){
+                                            if pair["status"] as! Int == 1{
+                                                let patientId = pair["user_id"] as! String
+                                                let requestId = pair["request_id"] as! Int
+                                                self.enableButtonBecauseHasPatient()
+                                                UserDefaults.standard.set(patientId, forKey: "patientId")
+                                                UserDefaults.standard.set(requestId, forKey: "requestId")
+                                                self.pairedPatientLabel.text = "You have been paired with: " + patientId
+                                                hasPatient = true
+                                                CBToast.hiddenToastAction()
+                                                break
+                                            }
                                         }
                                     }
                                 }
-                                if !hasPatient{
-                                    UserDefaults.standard.removeObject(forKey: "patientId")
-                                    self.disableButtonsBecauseNoPatient()
-                                    self.pairedPatientLabel.text = "You have no paired patient. Please pair with a patient to use functions."
-                                }
-                            }
-                            catch{
-                                print(error)
-                            }
-                        }
-                    }
-                }
-            }
-            task.resume()
-        }
-        
-    }
-    
-    //fake method used for now to pair patient and carer
-    func fakeCheckPairedPatient(){
-        let username = UserDefaults.standard.object(forKey: "username") as! String
-        let ids = ((UserDefaults.standard.value(forKey: "carerIDS") as? Int)!)
-        var hasPatient:Bool = false
-        if username != nil{
-            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/fake/searchpatientbycarerids?carerIDS=" + String(ids)
-            let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
-                if error != nil{
-                    print("error occured")
-                }
-                else{
-                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
-                    DispatchQueue.main.sync{
-                        if dataString != "[]"{
-                            do {
-                                let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
-                                let user = json![0] as! [String: Any]
-                                let patientId = user["user_id"] as! String
-                                UserDefaults.standard.set(patientId, forKey: "patientId")
-                                self.pairedPatientLabel.text = "You have been paired with: " + patientId
-                                hasPatient = true
-                                self.enableButtonBecauseHasPatient()
                             }
                             catch{
                                 print(error)
@@ -179,6 +146,8 @@ class CarerPanelViewController: UIViewController {
                             UserDefaults.standard.removeObject(forKey: "patientId")
                             self.disableButtonsBecauseNoPatient()
                             self.pairedPatientLabel.text = "You have no paired patient. Please pair with a patient to use functions."
+                            CBToast.showToastAction(message: "Some functions are disabled because you don't have paired patient.")
+                            CBToast.hiddenToastAction()
                         }
                     }
                 }
@@ -187,7 +156,6 @@ class CarerPanelViewController: UIViewController {
         }
         
     }
-
 
     func getTimeOfTheDay() -> String{
         let dateComponents = Calendar.current.dateComponents([.hour], from: Date())
@@ -209,11 +177,14 @@ class CarerPanelViewController: UIViewController {
     func disableButtonsBecauseNoPatient(){
         remindButton.isEnabled = false
         memoryButton.isEnabled = false
+        safeZoneButton.isEnabled = false
     }
     
     func enableButtonBecauseHasPatient(){
         remindButton.isEnabled = true
         memoryButton.isEnabled = true
+        safeZoneButton.isEnabled = true
+        
     }
     
     @IBAction func pairingButtonPressed(_ sender: Any) {
@@ -239,6 +210,7 @@ class CarerPanelViewController: UIViewController {
                                             status.append("0")
                                             CBToast.hiddenToastAction()
                                             self.performSegue(withIdentifier: "pairedSegue", sender: status)
+                                            break
                                         }
                                         else if pair["status"] as! Int != 0{
                                             var status:[String] = [String]()
@@ -246,6 +218,7 @@ class CarerPanelViewController: UIViewController {
                                             status.append(String(pair["status"] as! Int))
                                             CBToast.hiddenToastAction()
                                             self.performSegue(withIdentifier: "pairedSegue", sender: status)
+                                            break
                                         }
                                     }
                                 }

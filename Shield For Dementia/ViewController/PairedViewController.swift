@@ -106,10 +106,12 @@ class PairedViewController: UIViewController {
                                         if pair["status"] is NSNull{
                                             self.statusLabel.text = "Your request has been sent to " + (pair["user_id"] as! String) + ", please accept on patient app"
                                             self.refreshStatusButton.isEnabled = true
+                                            CBToast.hiddenToastAction()
                                         }
                                         else if pair["status"] as! Int == 1{
                                             self.statusLabel.text = "You have been paired with " + (pair["user_id"] as! String)
                                             self.refreshStatusButton.isEnabled = true
+                                            CBToast.hiddenToastAction()
 
                                         }
                                     }
@@ -123,6 +125,7 @@ class PairedViewController: UIViewController {
                         else {
                             self.statusLabel.text = "Your last pairing request has been canceled or rejected. Back to carer panel and pair again."
                             self.refreshStatusButton.isEnabled = true
+                            CBToast.hiddenToastAction()
                         }
                     }
                 }
