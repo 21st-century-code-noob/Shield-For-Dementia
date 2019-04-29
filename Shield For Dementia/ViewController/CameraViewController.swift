@@ -97,8 +97,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                         return
                         
                     }
-                    
-                    
                     self.databaseRef.child("users").child(username).child("images").updateChildValues(["\(date)": downloadURL.absoluteString])
                     self.databaseRef.child("users").child(username).child("notifications").updateChildValues(["notification": 1])
                     self.displayMessage("Image saved to the cloud", "Success")

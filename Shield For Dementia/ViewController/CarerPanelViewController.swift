@@ -17,17 +17,16 @@ class CarerPanelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true;
-        if UserDefaults.standard.object(forKey: "firstName") == nil{
-           // retriveFname()
-        }
+
         setWelcomeLabel()
-        fakeCheckPairedPatient()
 
         // Do any additional setup after loading the view.
     }
     
     override func  viewWillAppear(_ animated: Bool) {
-        fakeCheckPairedPatient()
+        self.navigationController?.isNavigationBarHidden = false
+        disableButtonsBecauseNoPatient()
+        checkPairedPatient()
     }
     
     //handle log out button behaviour
@@ -121,12 +120,19 @@ class CarerPanelViewController: UIViewController {
                                     if let pair = item as? [String: Any]{
                                         if pair["status"] as! Int == 1{
                                             let patientId = pair["user_id"] as! String
+                                            let requestId = pair["request_id"] as! Int
                                             self.enableButtonBecauseHasPatient()
                                             UserDefaults.standard.set(patientId, forKey: "patientId")
+                                            UserDefaults.standard.set(requestId, forKey: "requestId")
                                             self.pairedPatientLabel.text = "You have been paired with: " + patientId
                                             hasPatient = true
                                         }
                                     }
+                                }
+                                if !hasPatient{
+                                    UserDefaults.standard.removeObject(forKey: "patientId")
+                                    self.disableButtonsBecauseNoPatient()
+                                    self.pairedPatientLabel.text = "You have no paired patient. Please pair with a patient to use functions."
                                 }
                             }
                             catch{
@@ -137,11 +143,6 @@ class CarerPanelViewController: UIViewController {
                 }
             }
             task.resume()
-            if !hasPatient{
-                UserDefaults.standard.removeObject(forKey: "patientId")
-                self.disableButtonsBecauseNoPatient()
-                self.pairedPatientLabel.text = "You have no paired patient. Please pair with a patient to use functions."
-            }
         }
         
     }
@@ -174,15 +175,15 @@ class CarerPanelViewController: UIViewController {
                                 print(error)
                             }
                         }
+                        if !hasPatient{
+                            UserDefaults.standard.removeObject(forKey: "patientId")
+                            self.disableButtonsBecauseNoPatient()
+                            self.pairedPatientLabel.text = "You have no paired patient. Please pair with a patient to use functions."
+                        }
                     }
                 }
             }
             task.resume()
-            if !hasPatient{
-                UserDefaults.standard.removeObject(forKey: "patientId")
-                self.disableButtonsBecauseNoPatient()
-                self.pairedPatientLabel.text = "You have no paired patient. Please pair with a patient to use functions."
-            }
         }
         
     }
@@ -215,7 +216,65 @@ class CarerPanelViewController: UIViewController {
         memoryButton.isEnabled = true
     }
     
-
+    @IBAction func pairingButtonPressed(_ sender: Any) {
+        CBToast.showToastAction()
+        let username = UserDefaults.standard.object(forKey: "username") as? String
+        if username != nil{
+            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkwhethercarerhaspatient?carerId=" + username!
+            let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
+                if error != nil{
+                    print("error occured")
+                }
+                else{
+                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                    DispatchQueue.main.sync{
+                        if dataString != "[]"{
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
+                                for item in json!{
+                                    if let pair = item as? [String: Any]{
+                                        if pair["status"] is NSNull{
+                                            var status:[String] = [String]()
+                                            status.append(pair["user_id"] as! String)
+                                            status.append("0")
+                                            CBToast.hiddenToastAction()
+                                            self.performSegue(withIdentifier: "pairedSegue", sender: status)
+                                        }
+                                        else if pair["status"] as! Int != 0{
+                                            var status:[String] = [String]()
+                                            status.append(pair["user_id"] as! String)
+                                            status.append(String(pair["status"] as! Int))
+                                            CBToast.hiddenToastAction()
+                                            self.performSegue(withIdentifier: "pairedSegue", sender: status)
+                                        }
+                                    }
+                                }
+                            }
+                        
+                            catch{
+                                print(error)
+                            }
+                        }
+                        else {
+                            CBToast.hiddenToastAction()
+                            self.performSegue(withIdentifier: "pairingSegue", sender: self)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pairedSegue"{
+            if let vc = segue.destination as? PairedViewController, let status = sender as? [String] {
+                vc.status = status
+            }
+        }
+    }
+    
+    @IBAction func unwindToCarePanel(segue:UIStoryboardSegue) { }
     
     
 }
