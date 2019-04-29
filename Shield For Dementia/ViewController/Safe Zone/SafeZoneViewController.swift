@@ -159,18 +159,18 @@ class SafeZoneViewController: UIViewController {
                                 newAnnotation.subtitle = "Familiarity: " + newAnnotation.subtitle!
                                 self.addAnnotation(annotation: newAnnotation)
                                 self.locationList.append(newAnnotation)
-                                let geoLocation: CLCircularRegion? = CLCircularRegion(center: newAnnotation.coordinate, radius: 30, identifier: newAnnotation.title!)
+                                var geoLocation: CLCircularRegion? = CLCircularRegion(center: newAnnotation.coordinate, radius: 75, identifier: newAnnotation.title!)
                                 //geoLocation!.notifyOnExit = true
                                 geoLocation!.notifyOnEntry = true
                                 
-                                let circle: MKCircle = MKCircle.init(center: newAnnotation.coordinate, radius: 75)
+                                var circle: MKCircle = MKCircle.init(center: newAnnotation.coordinate, radius: 75)
                                 
                                 if(newAnnotation.subtitle == "Familiarity: Low"){
-                                    
+                                    geoLocation = CLCircularRegion(center: newAnnotation.coordinate, radius: 50, identifier: newAnnotation.title!)
                                     circle.setValue(50, forKey: "radius")
                                 }
                                 else if(newAnnotation.subtitle == "Familiarity: High"){
-                                    
+                                    geoLocation = CLCircularRegion(center: newAnnotation.coordinate, radius: 100, identifier: newAnnotation.title!)
                                     circle.setValue(100, forKey: "radius")
                                 }
                                 
@@ -219,6 +219,7 @@ extension SafeZoneViewController: MKMapViewDelegate{
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
+
         let circle = MKCircleRenderer(overlay: overlay)
         circle.strokeColor = UIColor(red: 50/255, green: 205/255, blue: 50/255, alpha: 1)
         circle.fillColor = UIColor(red: 50/255, green: 205/255, blue: 50/255, alpha: 0.2)
