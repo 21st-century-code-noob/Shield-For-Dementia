@@ -55,12 +55,22 @@ class HeatMapViewController: UIViewController {
                             let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
                             
                             for a in json!{
+                                var newAnnotation : FencedAnnotation?
                                 var b = a as! NSDictionary
-                                var newAnnotation = FencedAnnotation(newTitle: "Postcode: " +  (b.value(forKey: "postcode") as! String),newSubtitle: "Grade: " + String(b.value(forKey: "graded_value") as! Double),lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
+                                var graded_value = b.value(forKey: "graded_value") as! Double
+                                if(graded_value > 66){
+                                     newAnnotation = FencedAnnotation(newTitle: "Postcode: " +  (b.value(forKey: "postcode") as! String),newSubtitle: "Safety Level: Dangerous",lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
+                                }
+                                else if(graded_value <= 66 && graded_value >= 33){
+                                     newAnnotation = FencedAnnotation(newTitle: "Postcode: " +  (b.value(forKey: "postcode") as! String),newSubtitle: "Safety Level: Medium",lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
+                                }else{
+                                    newAnnotation = FencedAnnotation(newTitle: "Postcode: " +  (b.value(forKey: "postcode") as! String),newSubtitle: "Safety Level: Safe",lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
+                                }
+                               
                                 
                                 
-                                self.addAnnotation(annotation: newAnnotation)
-                                var circle: MKCircle = MKCircle.init(center: newAnnotation.coordinate, radius: 800)
+                                self.addAnnotation(annotation: newAnnotation!)
+                                var circle: MKCircle = MKCircle.init(center: newAnnotation!.coordinate, radius: 800)
                                 circle.subtitle = String(b.value(forKey: "graded_value") as! Double)
                                 self.overlayList.append(circle)
                                 self.mapView.addOverlay(circle)
@@ -150,33 +160,19 @@ extension HeatMapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         
-        var bili = 100 - Double(overlay.subtitle!!)!
+        var bili = 255 - Double(overlay.subtitle!!)! * 2.55
         if(bili < 0){
             bili = 0
         }
-        var one = (255+255) / 100;
-        var r=0;
-        var g=0;
-        var b=0;
         
-        if ( bili < 50 ) {
-            // 比例小于50的时候红色是越来越多的,直到红色为255时(红+绿)变为黄色.
-            r = one * Int(bili);
-            g=255;
-        }
-        if ( bili >= 50 ) {
-            // 比例大于50的时候绿色是越来越少的,直到0 变为纯红
-            g =  255 - ( Int(bili - 50 ) * one) ;
-            r = 255;
-        }
-        r = Int(r);// 取整
-        g = Int(g);// 取整
-        b = Int(b);// 取整
+        
 
+        
+        
         let circle = MKCircleRenderer(overlay: overlay)
-        circle.strokeColor = UIColor(red: CGFloat(r/255), green: CGFloat(g/255), blue: CGFloat(b/255), alpha: 1)
-        circle.fillColor = UIColor(red: CGFloat(r/255), green: CGFloat(g/255), blue: CGFloat(b/255), alpha: 0.2)
-        circle.lineWidth = 1.5
+        circle.strokeColor = UIColor(red: CGFloat(bili/255), green: CGFloat(bili/255), blue: CGFloat(bili/255), alpha: 1)
+        circle.fillColor = UIColor(red: CGFloat(bili/255), green: CGFloat(bili/255), blue: CGFloat(bili/255), alpha: 0.5)
+        circle.lineWidth = 2
         
         return circle
         
