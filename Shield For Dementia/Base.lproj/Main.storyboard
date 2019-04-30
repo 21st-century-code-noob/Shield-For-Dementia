@@ -1525,7 +1525,7 @@ please log in or sign up</string>
         <!--Heat Map-->
         <scene sceneID="UrH-Wd-Wl0">
             <objects>
-                <viewController id="IOE-NS-ocX" sceneMemberID="viewController">
+                <viewController id="IOE-NS-ocX" customClass="HeatMapViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vZc-un-9NS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1533,11 +1533,21 @@ please log in or sign up</string>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="65K-Vl-uAy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owa-54-8hH">
+                                <rect key="frame" x="183" y="705" width="48" height="48"/>
+                                <state key="normal" image="find_patient"/>
+                                <connections>
+                                    <action selector="ShowUserLocation:" destination="IOE-NS-ocX" eventType="touchUpInside" id="A4e-z9-KdP"/>
+                                    <action selector="findPatientButton:" destination="KC7-MQ-ylR" eventType="touchUpInside" id="x2E-WA-Smz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="65K-Vl-uAy" firstAttribute="leading" secondItem="KGj-B7-Qe0" secondAttribute="leading" id="4ys-Hi-qvJ"/>
                             <constraint firstItem="65K-Vl-uAy" firstAttribute="trailing" secondItem="KGj-B7-Qe0" secondAttribute="trailing" id="7xW-3d-lPU"/>
+                            <constraint firstItem="owa-54-8hH" firstAttribute="centerX" secondItem="vZc-un-9NS" secondAttribute="centerX" id="CSi-7V-sSB"/>
+                            <constraint firstItem="KGj-B7-Qe0" firstAttribute="bottom" secondItem="owa-54-8hH" secondAttribute="bottom" constant="60" id="RAn-PD-lum"/>
                             <constraint firstItem="65K-Vl-uAy" firstAttribute="centerY" secondItem="vZc-un-9NS" secondAttribute="centerY" id="Vfv-ZJ-lBa"/>
                             <constraint firstItem="65K-Vl-uAy" firstAttribute="top" secondItem="vZc-un-9NS" secondAttribute="top" id="Y2i-in-7QW"/>
                             <constraint firstItem="65K-Vl-uAy" firstAttribute="centerX" secondItem="vZc-un-9NS" secondAttribute="centerX" id="khp-JU-KVd"/>
@@ -1547,6 +1557,9 @@ please log in or sign up</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Safe Zone" id="Lpt-gE-PwS"/>
                     <navigationItem key="navigationItem" title="Heat Map" largeTitleDisplayMode="always" id="Sq6-jC-Xpr"/>
+                    <connections>
+                        <outlet property="mapView" destination="65K-Vl-uAy" id="2JL-ZS-0DM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrB-Ra-NnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
