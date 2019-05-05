@@ -22,6 +22,7 @@ class PictureDetailViewController: UIViewController {
     @IBOutlet weak var imageDetail: UIImageView!
     
     @IBAction func deleteMemory(_ sender: Any) {
+        CBToast.showToastAction()
         databaseRef.child(username).child("images").child(imageName!).removeValue()
         let storageRef1 = storageRef.reference(forURL: imageUrl!)
         
@@ -31,6 +32,7 @@ class PictureDetailViewController: UIViewController {
                 print(error)
             } else {
                 // File deleted successfully
+                CBToast.hiddenToastAction()
                 self.displayMessage("Image has been deleted", "Success")
             }
         }

@@ -66,7 +66,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     //Advance mobile development, moodle (2018)
     @IBAction func savePhoto(_ sender: Any) {
+        CBToast.showToastAction()
         guard let image = imageView.image else{
+            CBToast.hiddenToastAction()
             displayMessage("Cannot save until a photo has been taken!", "Error")
             return
         }
@@ -87,6 +89,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         metadata.contentType = "image/jpg"
         imageRef.putData(data, metadata: metadata){(metaData,error) in
             if error != nil {
+                CBToast.hiddenToastAction()
                 self.displayMessage("Could not upload image", "Error")
             }
             else{
@@ -99,6 +102,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                     }
                     self.databaseRef.child("users").child(username).child("images").updateChildValues(["\(date)": downloadURL.absoluteString])
                     self.databaseRef.child("users").child(username).child("notifications").updateChildValues(["notification": 1])
+                    CBToast.hiddenToastAction()
                     self.displayMessage("Image saved to the cloud", "Success")
                 }
                 

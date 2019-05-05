@@ -46,6 +46,8 @@ class SafeZoneViewController: UIViewController {
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         mapView.delegate = self
         
+        //MKOverlayPathView
+        
         
         
         let patientId = UserDefaults.standard.value(forKey: "patientId") as! String

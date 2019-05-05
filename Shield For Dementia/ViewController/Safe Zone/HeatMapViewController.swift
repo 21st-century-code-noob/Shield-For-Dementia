@@ -27,7 +27,7 @@ class HeatMapViewController: UIViewController {
             focusOn(annotation: userlocation)
         }
         else{
-            displayMessage("Patient has not started the location service, please wait.", "Alert")
+            displayMessage("the location service is turned off, please check.", "Alert")
         }
     }
     override func viewDidLoad() {

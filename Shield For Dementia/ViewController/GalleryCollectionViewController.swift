@@ -29,6 +29,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        CBToast.showToastAction()
         //UserDefaults
         let userID = "10wRyo7S8AcF0dhhyxWhEJsAuB12"
         let userRef = databaseRef.child(username).child("images")
@@ -74,7 +75,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
                 
                 
             }
-            
+            CBToast.hiddenToastAction()
         }
         
         self.collectionView?.reloadSections([0])
@@ -83,44 +84,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Register cell classes
-        
-        // Do any additional setup after loading the view.
-        //        userRef.observe(.value, with:{(snapshot) in
-        //            self.parcelList = [Parcel]()
-        //            let value2 = snapshot.value as? NSDictionary
-        //            if value2 != nil{
-        //
-        //                for (key,valuedata) in value2!{
-        //                    var parcel = Parcel()
-        //                    parcel.uniqueId = key as? String
-        //                    let dataset = valuedata as! NSDictionary
-        //                    var dataList = [String]()
-        //
-        //                    for (_, value) in dataset{
-        //                        dataList.append(value as! String)
-        //                    }
-        //
-        //                    parcel.parcelNumber = dataList[0]
-        //                    parcel.sender = dataList[1]
-        //                    parcel.senderLocation = dataList[3]
-        //                    parcel.senderPostcode = dataList[7]
-        //                    parcel.senderState = dataList[5]
-        //                    parcel.receiver = dataList[9]
-        //                    parcel.receiverLocation = dataList[8]
-        //                    parcel.receiverPostcode = dataList[2]
-        //                    parcel.receiverState = dataList[6]
-        //                    parcel.status = dataList[4]
-        //                    self.parcelList.append(parcel)
-        //
-        //                }
-        //            }
-        //            self.tableView.reloadData()
-        //        })
+    
     }
     
     //Advance mobile development, moodle (2018)
