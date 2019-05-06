@@ -15,7 +15,17 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     var storageRef = Storage.storage().reference()
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
+    @IBAction func validateMessage(_ sender: Any) {
+        if (messageTextField.text!.count > 40){
+            errorLabel.text = "Maximum number of character is 40"
+        }
+        else{
+            errorLabel.text = ""
+        }
+    }
     
 //    @IBAction func takePhotoFromLibrary(_ sender: Any) {
 //        let controller = UIImagePickerController()
@@ -33,17 +43,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func takePhoto(_ sender: Any) {
         let controller = UIImagePickerController()
         controller.delegate = self
-//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
-//            controller.sourceType = UIImagePickerController.SourceType.camera
-//        }
-//        else{
-//            controller.sourceType = UIImagePickerController.SourceType.photoLibrary
-//        }
-//
-//        controller.allowsEditing = false
-//        controller.delegate = self
-//        self.present(controller,animated: true,completion: nil)
-        
         
         //adam kanekd youtube (2016)
         let actionSheet = UIAlertController(title: "Photo Sourse", message: "Choose a sourse", preferredStyle: .actionSheet)
@@ -67,6 +66,13 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     //Advance mobile development, moodle (2018)
     @IBAction func savePhoto(_ sender: Any) {
         CBToast.showToastAction()
+        
+        if(errorLabel.text != ""){
+            CBToast.hiddenToastAction()
+            displayMessage("Please check the message", "Alert")
+            return
+        }
+
         guard let image = imageView.image else{
             CBToast.hiddenToastAction()
             displayMessage("Cannot save until a photo has been taken!", "Error")
@@ -77,7 +83,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         //            return
         //        }
         
-        let userID = "10wRyo7S8AcF0dhhyxWhEJsAuB12"
         let date = NSUUID().uuidString
         var data = Data()
         let username = UserDefaults.standard.object(forKey: "patientId") as! String
@@ -100,7 +105,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                         return
                         
                     }
-                    self.databaseRef.child("users").child(username).child("images").updateChildValues(["\(date)": downloadURL.absoluteString])
+                    self.databaseRef.child("users").child(username).child("images").child(date).updateChildValues(["url": downloadURL.absoluteString, "message": self.messageTextField.text])
                     self.databaseRef.child("users").child(username).child("notifications").updateChildValues(["notification": 1])
                     CBToast.hiddenToastAction()
                     self.displayMessage("Image saved to the cloud", "Success")
@@ -133,6 +138,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self.displayMessage(error!.localizedDescription,"Error")
             }
         }
+        messageTextField.text = ""
+        errorLabel.text = ""
     }
     
     //Advance mobile development, moodle (2018)

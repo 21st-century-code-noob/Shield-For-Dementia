@@ -985,7 +985,7 @@ please log in or sign up</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="w7N-sL-f9U"/>
                                 </constraints>
-                                <state key="normal" title="Save Photo">
+                                <state key="normal" title="Save Memory">
                                     <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
@@ -998,15 +998,43 @@ please log in or sign up</string>
                                     <constraint firstAttribute="width" secondItem="yvK-Bn-XeJ" secondAttribute="height" multiplier="1:1" id="0mh-E3-B3q"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQa-Nn-VsH">
+                                <rect key="frame" x="8" y="543" width="398" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="validateMessage:" destination="ynN-9P-TPU" eventType="editingChanged" id="dUO-lu-sKB"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message for patient: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gon-vz-kJi">
+                                <rect key="frame" x="8" y="514" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FL-xp-Xol">
+                                <rect key="frame" x="178" y="523" width="228" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="YQa-Nn-VsH" firstAttribute="top" secondItem="Gon-vz-kJi" secondAttribute="bottom" constant="8" id="54g-49-Oiv"/>
+                            <constraint firstItem="YQa-Nn-VsH" firstAttribute="top" secondItem="3FL-xp-Xol" secondAttribute="bottom" constant="8" id="7sP-Mm-vQ9"/>
                             <constraint firstItem="yvK-Bn-XeJ" firstAttribute="top" secondItem="nNM-wv-4ES" secondAttribute="top" constant="8" id="8Sv-hR-dHQ"/>
+                            <constraint firstItem="Gon-vz-kJi" firstAttribute="leading" secondItem="nNM-wv-4ES" secondAttribute="leading" constant="8" id="9yn-DA-SOP"/>
                             <constraint firstItem="FZN-pb-Zs5" firstAttribute="centerX" secondItem="Fu2-dl-bAV" secondAttribute="centerX" id="BDx-MC-B3M"/>
+                            <constraint firstItem="nNM-wv-4ES" firstAttribute="trailing" secondItem="3FL-xp-Xol" secondAttribute="trailing" constant="8" id="DbS-I0-RQx"/>
+                            <constraint firstItem="YQa-Nn-VsH" firstAttribute="leading" secondItem="nNM-wv-4ES" secondAttribute="leading" constant="8" id="EmB-xo-Jfc"/>
+                            <constraint firstItem="YQa-Nn-VsH" firstAttribute="centerX" secondItem="Fu2-dl-bAV" secondAttribute="centerX" id="M6o-Pt-iGN"/>
                             <constraint firstItem="nNM-wv-4ES" firstAttribute="trailing" secondItem="FZN-pb-Zs5" secondAttribute="trailing" constant="20" id="Ubq-L4-w9c"/>
                             <constraint firstItem="nNM-wv-4ES" firstAttribute="trailing" secondItem="5t1-Yp-PpI" secondAttribute="trailing" constant="20" id="Uy7-Of-jN3"/>
                             <constraint firstItem="yvK-Bn-XeJ" firstAttribute="leading" secondItem="nNM-wv-4ES" secondAttribute="leading" constant="8" id="aOQ-pr-ace"/>
                             <constraint firstItem="5t1-Yp-PpI" firstAttribute="centerX" secondItem="Fu2-dl-bAV" secondAttribute="centerX" id="ap6-DN-bzK"/>
+                            <constraint firstItem="Gon-vz-kJi" firstAttribute="top" secondItem="yvK-Bn-XeJ" secondAttribute="bottom" constant="20" id="kG8-wV-Gvc"/>
                             <constraint firstItem="nNM-wv-4ES" firstAttribute="trailing" secondItem="yvK-Bn-XeJ" secondAttribute="trailing" constant="8" id="p1P-Ik-k0L"/>
                             <constraint firstItem="5t1-Yp-PpI" firstAttribute="top" secondItem="FZN-pb-Zs5" secondAttribute="bottom" constant="20" id="uFC-ug-Gqm"/>
                             <constraint firstItem="nNM-wv-4ES" firstAttribute="bottom" secondItem="5t1-Yp-PpI" secondAttribute="bottom" constant="20" id="xRU-b1-a0K"/>
@@ -1014,12 +1042,14 @@ please log in or sign up</string>
                         <viewLayoutGuide key="safeArea" id="nNM-wv-4ES"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="3FL-xp-Xol" id="h9Z-sb-hcr"/>
                         <outlet property="imageView" destination="yvK-Bn-XeJ" id="xIZ-LH-Qa2"/>
+                        <outlet property="messageTextField" destination="YQa-Nn-VsH" id="aMk-0W-W8u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Rx-NC-gKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3545" y="-204"/>
+            <point key="canvasLocation" x="3544.9275362318845" y="-204.24107142857142"/>
         </scene>
         <!--Sign Up Table View Controller-->
         <scene sceneID="yz4-pr-fz8">
@@ -1346,20 +1376,33 @@ please log in or sign up</string>
                                     <action selector="deleteMemory:" destination="cdc-h6-NS3" eventType="touchUpInside" id="mLE-3H-iPc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOZ-pN-KWq">
+                                <rect key="frame" x="20" y="514" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="yiX-ub-8Au"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jbW-91-0BZ" firstAttribute="leading" secondItem="NzF-hO-k0h" secondAttribute="leading" constant="8" id="1VE-vg-Ibc"/>
                             <constraint firstItem="fIE-mN-vJg" firstAttribute="leading" secondItem="NzF-hO-k0h" secondAttribute="leading" constant="20" id="8cv-3q-hpI"/>
                             <constraint firstItem="fIE-mN-vJg" firstAttribute="centerX" secondItem="Irz-5n-nms" secondAttribute="centerX" id="NDg-U7-USu"/>
+                            <constraint firstItem="NOZ-pN-KWq" firstAttribute="leading" secondItem="NzF-hO-k0h" secondAttribute="leading" constant="20" id="QBx-6M-iy7"/>
                             <constraint firstItem="NzF-hO-k0h" firstAttribute="bottom" secondItem="fIE-mN-vJg" secondAttribute="bottom" constant="20" id="QV7-pC-cao"/>
                             <constraint firstItem="NzF-hO-k0h" firstAttribute="trailing" secondItem="jbW-91-0BZ" secondAttribute="trailing" constant="8" id="Rdd-Du-3dR"/>
+                            <constraint firstItem="NOZ-pN-KWq" firstAttribute="top" secondItem="jbW-91-0BZ" secondAttribute="bottom" constant="20" id="UWN-TK-TXe"/>
+                            <constraint firstItem="NOZ-pN-KWq" firstAttribute="centerX" secondItem="Irz-5n-nms" secondAttribute="centerX" id="bWE-2f-nF9"/>
                             <constraint firstItem="jbW-91-0BZ" firstAttribute="top" secondItem="NzF-hO-k0h" secondAttribute="top" constant="8" id="wXx-PQ-RnE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NzF-hO-k0h"/>
                     </view>
                     <connections>
                         <outlet property="imageDetail" destination="jbW-91-0BZ" id="ToS-0F-Ww3"/>
+                        <outlet property="messageLabel" destination="NOZ-pN-KWq" id="9D2-ql-aIk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRQ-2A-413" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1506,7 +1549,7 @@ please log in or sign up</string>
                         <viewLayoutGuide key="safeArea" id="9Rg-gK-v2e"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Heat Map" id="9dW-hA-Tid"/>
-                    <navigationItem key="navigationItem" title="Safe Zone" largeTitleDisplayMode="always" id="9a3-cH-pxf">
+                    <navigationItem key="navigationItem" title="Safe Zone" id="9a3-cH-pxf">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="VzE-54-4nd">
                             <connections>
                                 <segue destination="MTx-eT-5DA" kind="unwind" unwindAction="unwindToCarePanelWithSegue:" id="GX8-Sp-GvP"/>
@@ -1557,7 +1600,7 @@ please log in or sign up</string>
                         <viewLayoutGuide key="safeArea" id="KGj-B7-Qe0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Safe Zone" id="Lpt-gE-PwS"/>
-                    <navigationItem key="navigationItem" title="Heat Map" largeTitleDisplayMode="always" id="Sq6-jC-Xpr"/>
+                    <navigationItem key="navigationItem" title="Heat Map" id="Sq6-jC-Xpr"/>
                     <connections>
                         <outlet property="mapView" destination="65K-Vl-uAy" id="2JL-ZS-0DM"/>
                     </connections>
@@ -1644,7 +1687,7 @@ please log in or sign up</string>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Route" id="xnK-Xq-bGy"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Location List" largeTitleDisplayMode="always" id="i5V-ZK-qZA">
+                    <navigationItem key="navigationItem" title="Location List" id="i5V-ZK-qZA">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="qlz-jT-iCO">
                             <connections>
                                 <segue destination="dqv-L9-Ooj" kind="show" id="w7B-dY-Mgf"/>

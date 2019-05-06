@@ -191,7 +191,7 @@ extension HeatMapViewController: MKMapViewDelegate{
         }
         //annotationView?.leftCalloutAccessoryView = UIButton(type: .detailDisclosure)
         
-        
+    
         var sizeChange : CGSize?
         let origin = CGPoint(x: 0, y: 0)
         

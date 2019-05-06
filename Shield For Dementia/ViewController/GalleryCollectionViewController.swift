@@ -19,6 +19,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     var imageList = [UIImage]()
     var imagePathList = [String]()
     var imageNameList = [String]()
+    var imageMessageList = [String]()
     let username = UserDefaults.standard.object(forKey: "patientId") as! String
     var databaseRef = Database.database().reference().child("users")
     var storageRef = Storage.storage()
@@ -26,6 +27,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     var passingImage : UIImage?
     var passingImageName: String?
     var passingImagePathName : String?
+    var passingImageMessage: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,14 +38,19 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         imageList = []
         imagePathList = []
         imageNameList = []
+        imageMessageList = []
         
         userRef.observeSingleEvent(of: .value){(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
+                CBToast.hiddenToastAction()
                 return
             }
             
             for(name, link) in value{
-                let url = link as! String
+                
+                let detail = link as! NSDictionary
+                let url = detail.value(forKey: "url") as! String
+                let message = detail.value(forKey: "message") as! String
                 let fileName = name as! String
                 
                 if(!self.imagePathList.contains(url)){
@@ -54,6 +61,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
                             
                             self.imageList.append(image)
                             self.imageNameList.append(fileName)
+                            self.imageMessageList.append(message)
                             self.collectionView?.reloadSections([0])
                         }
                     }
@@ -67,6 +75,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
                                 self.saveLocalData(fileName: fileName, imageData: data!)
                                 self.imageList.append(image)
                                 self.imageNameList.append(fileName)
+                                self.imageMessageList.append(message)
                                 self.collectionView?.reloadSections([0])
                             }
                         })
@@ -174,6 +183,8 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         passingImage = imageList[indexPath.row]
         passingImageName = imageNameList[indexPath.row]
         passingImagePathName = imagePathList[indexPath.row]
+        passingImageMessage = imageMessageList[indexPath.row]
+        
         performSegue(withIdentifier: "pictureDetails", sender: nil)
         return true
     }
@@ -201,6 +212,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
             controller.image = passingImage
             controller.imageName = passingImageName
             controller.imageUrl = passingImagePathName
+            controller.imageMessage = passingImageMessage
         }
     }
     
