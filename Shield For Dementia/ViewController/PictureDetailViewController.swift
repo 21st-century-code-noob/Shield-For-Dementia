@@ -14,15 +14,19 @@ class PictureDetailViewController: UIViewController {
     var image: UIImage?
     var imageName: String?
     var imageUrl: String?
+    var imageMessage: String?
     
     let username = UserDefaults.standard.object(forKey: "patientId") as! String
     var databaseRef = Database.database().reference().child("users")
     var storageRef = Storage.storage()
     
     @IBOutlet weak var imageDetail: UIImageView!
+    @IBOutlet weak var messageLabel: UILabel!
     
     @IBAction func deleteMemory(_ sender: Any) {
+        CBToast.showToastAction()
         databaseRef.child(username).child("images").child(imageName!).removeValue()
+        databaseRef.child(username).child("imageMessages").child(imageName!).removeValue()
         let storageRef1 = storageRef.reference(forURL: imageUrl!)
         
         //Removes image from storage
@@ -31,6 +35,7 @@ class PictureDetailViewController: UIViewController {
                 print(error)
             } else {
                 // File deleted successfully
+                CBToast.hiddenToastAction()
                 self.displayMessage("Image has been deleted", "Success")
             }
         }
@@ -40,12 +45,20 @@ class PictureDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageLabel.text = ""
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         imageDetail.image = image
+        if(imageMessage == ""){
+            messageLabel.text = "This picture does not have a message."
+        }
+        else{
+            messageLabel.text = "Behind the picture: " + imageMessage!
+        }
+       
     }
     
     func displayMessage(_ message: String,_ title: String){

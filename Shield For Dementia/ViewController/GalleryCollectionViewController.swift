@@ -19,6 +19,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     var imageList = [UIImage]()
     var imagePathList = [String]()
     var imageNameList = [String]()
+    var imageMessageList = [String]()
     let username = UserDefaults.standard.object(forKey: "patientId") as! String
     var databaseRef = Database.database().reference().child("users")
     var storageRef = Storage.storage()
@@ -26,23 +27,30 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     var passingImage : UIImage?
     var passingImageName: String?
     var passingImagePathName : String?
+    var passingImageMessage: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        CBToast.showToastAction()
         //UserDefaults
         let userID = "10wRyo7S8AcF0dhhyxWhEJsAuB12"
         let userRef = databaseRef.child(username).child("images")
         imageList = []
         imagePathList = []
         imageNameList = []
+        imageMessageList = []
         
         userRef.observeSingleEvent(of: .value){(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
+                CBToast.hiddenToastAction()
                 return
             }
             
             for(name, link) in value{
-                let url = link as! String
+                
+                let detail = link as! NSDictionary
+                let url = detail.value(forKey: "url") as! String
+                let message = detail.value(forKey: "message") as! String
                 let fileName = name as! String
                 
                 if(!self.imagePathList.contains(url)){
@@ -53,6 +61,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
                             
                             self.imageList.append(image)
                             self.imageNameList.append(fileName)
+                            self.imageMessageList.append(message)
                             self.collectionView?.reloadSections([0])
                         }
                     }
@@ -66,6 +75,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
                                 self.saveLocalData(fileName: fileName, imageData: data!)
                                 self.imageList.append(image)
                                 self.imageNameList.append(fileName)
+                                self.imageMessageList.append(message)
                                 self.collectionView?.reloadSections([0])
                             }
                         })
@@ -74,7 +84,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
                 
                 
             }
-            
+            CBToast.hiddenToastAction()
         }
         
         self.collectionView?.reloadSections([0])
@@ -83,44 +93,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Register cell classes
-        
-        // Do any additional setup after loading the view.
-        //        userRef.observe(.value, with:{(snapshot) in
-        //            self.parcelList = [Parcel]()
-        //            let value2 = snapshot.value as? NSDictionary
-        //            if value2 != nil{
-        //
-        //                for (key,valuedata) in value2!{
-        //                    var parcel = Parcel()
-        //                    parcel.uniqueId = key as? String
-        //                    let dataset = valuedata as! NSDictionary
-        //                    var dataList = [String]()
-        //
-        //                    for (_, value) in dataset{
-        //                        dataList.append(value as! String)
-        //                    }
-        //
-        //                    parcel.parcelNumber = dataList[0]
-        //                    parcel.sender = dataList[1]
-        //                    parcel.senderLocation = dataList[3]
-        //                    parcel.senderPostcode = dataList[7]
-        //                    parcel.senderState = dataList[5]
-        //                    parcel.receiver = dataList[9]
-        //                    parcel.receiverLocation = dataList[8]
-        //                    parcel.receiverPostcode = dataList[2]
-        //                    parcel.receiverState = dataList[6]
-        //                    parcel.status = dataList[4]
-        //                    self.parcelList.append(parcel)
-        //
-        //                }
-        //            }
-        //            self.tableView.reloadData()
-        //        })
+    
     }
     
     //Advance mobile development, moodle (2018)
@@ -210,6 +183,8 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         passingImage = imageList[indexPath.row]
         passingImageName = imageNameList[indexPath.row]
         passingImagePathName = imagePathList[indexPath.row]
+        passingImageMessage = imageMessageList[indexPath.row]
+        
         performSegue(withIdentifier: "pictureDetails", sender: nil)
         return true
     }
@@ -237,6 +212,7 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
             controller.image = passingImage
             controller.imageName = passingImageName
             controller.imageUrl = passingImagePathName
+            controller.imageMessage = passingImageMessage
         }
     }
     

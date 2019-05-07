@@ -27,7 +27,7 @@ class HeatMapViewController: UIViewController {
             focusOn(annotation: userlocation)
         }
         else{
-            displayMessage("Patient has not started the location service, please wait.", "Alert")
+            displayMessage("the location service is turned off, please check.", "Alert")
         }
     }
     override func viewDidLoad() {
@@ -191,7 +191,7 @@ extension HeatMapViewController: MKMapViewDelegate{
         }
         //annotationView?.leftCalloutAccessoryView = UIButton(type: .detailDisclosure)
         
-        
+    
         var sizeChange : CGSize?
         let origin = CGPoint(x: 0, y: 0)
         

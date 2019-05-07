@@ -15,7 +15,8 @@ class LocationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+
         
         
         
@@ -100,7 +101,9 @@ class LocationTableViewController: UITableViewController {
     }
     
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
     
     /*
      // Override to support conditional editing of the table view.
