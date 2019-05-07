@@ -772,7 +772,7 @@ please log in or sign up</string>
                             </connections>
                         </button>
                         <sections>
-                            <tableViewSection headerTitle="Medician Name" id="F6A-RF-5GJ">
+                            <tableViewSection headerTitle="Medicine Name" id="F6A-RF-5GJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xyh-bf-IhS">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
@@ -998,10 +998,6 @@ please log in or sign up</string>
                                     <constraint firstAttribute="width" secondItem="yvK-Bn-XeJ" secondAttribute="height" multiplier="1:1" id="0mh-E3-B3q"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fIA-r5-BY2">
-                                <rect key="frame" x="197" y="763" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
