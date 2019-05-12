@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Fitness" representedClassName="Fitness" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="NewsCoreData" representedClassName="NewsCoreData" syncable="YES" codeGenerationType="class">
         <attribute name="newsDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="newsLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="newsPubDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="newsTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Parks" representedClassName="Parks" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="suburb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Volunterring" representedClassName="Volunterring" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="YogaNTaichi" representedClassName="YogaNTaichi" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="NewsCoreData" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="YogaNTaichi" positionX="-63" positionY="9" width="128" height="105"/>
+        <element name="Fitness" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="Volunterring" positionX="-36" positionY="27" width="128" height="105"/>
+        <element name="Parks" positionX="-18" positionY="36" width="128" height="105"/>
     </elements>
 </model>

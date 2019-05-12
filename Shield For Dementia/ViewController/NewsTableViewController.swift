@@ -32,7 +32,7 @@ class NewsTableViewController: UITableViewController {
         self.toolbarItems = items
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) { 
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
     
