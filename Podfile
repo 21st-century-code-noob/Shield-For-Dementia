@@ -1,4 +1,5 @@
 # Uncomment the next line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git'
 # platform :ios, '9.0'
 
 target 'Shield For Dementia Carer' do
@@ -11,6 +12,9 @@ target 'Shield For Dementia Carer' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Kingfisher', '~> 5.0'
+  
+
   target 'Shield For Dementia CarerTests' do
     inherit! :search_paths
     # Pods for testing

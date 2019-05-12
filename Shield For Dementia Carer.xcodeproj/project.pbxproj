@@ -54,6 +54,14 @@
 		BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB32225497490042F236 /* LoginNavigationController.swift */; };
 		BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB3A2254B4FE0042F236 /* SignUpViewController.swift */; };
 		BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */; };
+		BDBCAD0922842DC400E8172A /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCAD0822842DC400E8172A /* NewsTableViewController.swift */; };
+		BDBCAD0B22846C9600E8172A /* NewsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCAD0A22846C9600E8172A /* NewsParser.swift */; };
+		BDBCAD0D2284859A00E8172A /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCAD0C2284859A00E8172A /* NewsTableViewCell.swift */; };
+		BDBCAD0F22848DE200E8172A /* NewsSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCAD0E22848DE200E8172A /* NewsSourceTableViewCell.swift */; };
+		BDBCAD1122857FB700E8172A /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCAD1022857FB700E8172A /* NewsDetailViewController.swift */; };
+		BDBCAD132285CB6E00E8172A /* FavoriteNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCAD122285CB6E00E8172A /* FavoriteNewsTableViewController.swift */; };
+		BDBCAD152286F7EA00E8172A /* RecreationalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBCAD142286F7EA00E8172A /* RecreationalMapViewController.swift */; };
+		BDD1ADBF22881070007EA50C /* RecreationalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1ADBE22881070007EA50C /* RecreationalAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +141,15 @@
 		BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
 		BD96EB412254E48D0042F236 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		BD96EB422254E48D0042F236 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		BDBCAD042281A7AC00E8172A /* Shield For Dementia Carer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shield For Dementia Carer.entitlements"; sourceTree = "<group>"; };
+		BDBCAD0822842DC400E8172A /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		BDBCAD0A22846C9600E8172A /* NewsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsParser.swift; sourceTree = "<group>"; };
+		BDBCAD0C2284859A00E8172A /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		BDBCAD0E22848DE200E8172A /* NewsSourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceTableViewCell.swift; sourceTree = "<group>"; };
+		BDBCAD1022857FB700E8172A /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		BDBCAD122285CB6E00E8172A /* FavoriteNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNewsTableViewController.swift; sourceTree = "<group>"; };
+		BDBCAD142286F7EA00E8172A /* RecreationalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecreationalMapViewController.swift; sourceTree = "<group>"; };
+		BDD1ADBE22881070007EA50C /* RecreationalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecreationalAnnotation.swift; sourceTree = "<group>"; };
 		BF561977BC4805D9C2DD1C50 /* Pods-Shield For Dementia CarerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For Dementia CarerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For Dementia CarerTests/Pods-Shield For Dementia CarerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FDE698E2E9BAC1D0C30E3DB3 /* Pods-Shield For Dementia CarerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shield For Dementia CarerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shield For Dementia CarerUITests/Pods-Shield For Dementia CarerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +232,8 @@
 				AB899DAF225AB03D00336103 /* FencedAnnotation.swift */,
 				AB899DB1225AB08300336103 /* MemoryTableViewCell.swift */,
 				ABC674AE2261DFAF0020639F /* InputTableViewCell.swift */,
+				BDBCAD0C2284859A00E8172A /* NewsTableViewCell.swift */,
+				BDBCAD0E22848DE200E8172A /* NewsSourceTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -222,6 +241,7 @@
 		BD96EAB12252D90B0042F236 = {
 			isa = PBXGroup;
 			children = (
+				BDBCAD042281A7AC00E8172A /* Shield For Dementia Carer.entitlements */,
 				BD96EABC2252D90B0042F236 /* Shield For Dementia */,
 				BD96EAD42252D90D0042F236 /* Shield For DementiaTests */,
 				BD96EADF2252D90D0042F236 /* Shield For DementiaUITests */,
@@ -244,6 +264,7 @@
 		BD96EABC2252D90B0042F236 /* Shield For Dementia */ = {
 			isa = PBXGroup;
 			children = (
+				BDD1ADBD2288103D007EA50C /* Annotation */,
 				AB78BCC0225A3BC500556586 /* Libraries */,
 				AB444E7D2258D5A2002571A5 /* Entities */,
 				ABC0EDE622577FF800CFEFC4 /* Cell */,
@@ -299,6 +320,10 @@
 				AB16740422674C8600E397CA /* AddNewReminderTableViewController.swift */,
 				AB5853D9226DE0B000BF84F9 /* PairingViewController.swift */,
 				AB5853DB226DE4C000BF84F9 /* PairedViewController.swift */,
+				BDBCAD0822842DC400E8172A /* NewsTableViewController.swift */,
+				BDBCAD1022857FB700E8172A /* NewsDetailViewController.swift */,
+				BDBCAD122285CB6E00E8172A /* FavoriteNewsTableViewController.swift */,
+				BDBCAD142286F7EA00E8172A /* RecreationalMapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -308,9 +333,17 @@
 			children = (
 				BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */,
 				ABB721B6225632FA000EF648 /* SHA1.swift */,
-				18AE3370228687F30068BF99 /* SBCardPopupViewController.swift */,
+				BDBCAD0A22846C9600E8172A /* NewsParser.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BDD1ADBD2288103D007EA50C /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				BDD1ADBE22881070007EA50C /* RecreationalAnnotation.swift */,
+			);
+			path = Annotation;
 			sourceTree = "<group>";
 		};
 		FF96423DC81ADF32F46AEB4F /* Pods */ = {
@@ -398,6 +431,11 @@
 				TargetAttributes = {
 					BD96EAB92252D90B0042F236 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					BD96EAD02252D90D0042F236 = {
 						CreatedOnToolsVersion = 10.1;
@@ -492,6 +530,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Shield For Dementia Carer/Pods-Shield For Dementia Carer-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -501,6 +540,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -567,6 +607,8 @@
 				BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */,
 				AB5853DA226DE0B000BF84F9 /* PairingViewController.swift in Sources */,
 				18B26E022258AB52005F024F /* ImageCollectionViewCell.swift in Sources */,
+				BDBCAD0D2284859A00E8172A /* NewsTableViewCell.swift in Sources */,
+				BDBCAD1122857FB700E8172A /* NewsDetailViewController.swift in Sources */,
 				AB16740522674C8600E397CA /* AddNewReminderTableViewController.swift in Sources */,
 				AB899DAE225AA81300336103 /* PictureDetailViewController.swift in Sources */,
 				ABB721B7225632FA000EF648 /* SHA1.swift in Sources */,
@@ -583,11 +625,15 @@
 				ABC0EDE322577FE200CFEFC4 /* ReminderTableViewController.swift in Sources */,
 				18C7CB2C22740A6700C2BCDE /* LocationTableViewController.swift in Sources */,
 				BD96EB2F22548EE90042F236 /* WelcomeViewController.swift in Sources */,
+				BDBCAD152286F7EA00E8172A /* RecreationalMapViewController.swift in Sources */,
 				18C7CB3022740AD500C2BCDE /* CustomViewController.swift in Sources */,
+				BDBCAD0F22848DE200E8172A /* NewsSourceTableViewCell.swift in Sources */,
+				BDBCAD0B22846C9600E8172A /* NewsParser.swift in Sources */,
 				AB899DAA225AA76400336103 /* MapViewController.swift in Sources */,
 				AB5853DC226DE4C000BF84F9 /* PairedViewController.swift in Sources */,
 				18C7CB282274066300C2BCDE /* TabBarViewController.swift in Sources */,
 				AB899DB2225AB08300336103 /* MemoryTableViewCell.swift in Sources */,
+				BDBCAD132285CB6E00E8172A /* FavoriteNewsTableViewController.swift in Sources */,
 				BD96EABE2252D90C0042F236 /* AppDelegate.swift in Sources */,
 				BD96EAC62252D90C0042F236 /* Shield_For_Dementia.xcdatamodeld in Sources */,
 				AB899DA8225AA71C00336103 /* GalleryCollectionViewController.swift in Sources */,
@@ -597,6 +643,8 @@
 				AB899DA6225AA6BB00336103 /* CameraViewController.swift in Sources */,
 				AB444E7F2258D5BD002571A5 /* Reminder.swift in Sources */,
 				ABC674AF2261DFAF0020639F /* InputTableViewCell.swift in Sources */,
+				BDD1ADBF22881070007EA50C /* RecreationalAnnotation.swift in Sources */,
+				BDBCAD0922842DC400E8172A /* NewsTableViewController.swift in Sources */,
 				AB899DB0225AB03D00336103 /* FencedAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,6 +825,7 @@
 			baseConfigurationReference = 9A2851E2EE10F5483B836552 /* Pods-Shield For Dementia Carer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shield For Dementia Carer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4E88Q87ES;
 				INFOPLIST_FILE = "Shield For Dementia/Info.plist";
@@ -796,6 +845,7 @@
 			baseConfigurationReference = 537EF4AEF6844F7E6D5B2A8A /* Pods-Shield For Dementia Carer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Shield For Dementia Carer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4E88Q87ES;
 				INFOPLIST_FILE = "Shield For Dementia/Info.plist";
