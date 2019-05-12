@@ -89,6 +89,7 @@ class LocationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as UITableViewCell
         
+        
         let annotation = locationList[indexPath.row]
         cell.textLabel?.text = annotation.title!
         cell.detailTextLabel?.text = "Lat: " + String(annotation.coordinate.latitude) + "; Long: " + String(annotation.coordinate.longitude)
@@ -98,6 +99,10 @@ class LocationTableViewController: UITableViewController {
         
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
     
     

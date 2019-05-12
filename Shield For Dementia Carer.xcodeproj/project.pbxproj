@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182E45392285B39B0066E93F /* RouteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E45382285B39B0066E93F /* RouteListTableViewController.swift */; };
+		182E453B2285B3C60066E93F /* RouteDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E453A2285B3C60066E93F /* RouteDetailTableViewController.swift */; };
 		185893D622536F36006A5C17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185893D522536F36006A5C17 /* GoogleService-Info.plist */; };
+		18AE3371228687F30068BF99 /* SBCardPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE3370228687F30068BF99 /* SBCardPopupViewController.swift */; };
+		18AE3373228688F50068BF99 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE3372228688F50068BF99 /* PopupViewController.swift */; };
 		18B26E022258AB52005F024F /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B26E012258AB52005F024F /* ImageCollectionViewCell.swift */; };
 		18C7CB282274066300C2BCDE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7CB272274066300C2BCDE /* TabBarViewController.swift */; };
 		18C7CB2A22740A2700C2BCDE /* SafeZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7CB2922740A2700C2BCDE /* SafeZoneViewController.swift */; };
@@ -70,7 +74,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182E45382285B39B0066E93F /* RouteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListTableViewController.swift; sourceTree = "<group>"; };
+		182E453A2285B3C60066E93F /* RouteDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailTableViewController.swift; sourceTree = "<group>"; };
 		185893D522536F36006A5C17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18AE3370228687F30068BF99 /* SBCardPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBCardPopupViewController.swift; sourceTree = "<group>"; };
+		18AE3372228688F50068BF99 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		18B26E012258AB52005F024F /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		18C7CB272274066300C2BCDE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18C7CB2922740A2700C2BCDE /* SafeZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeZoneViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +174,9 @@
 				18C7CB2D22740AA300C2BCDE /* NewLocationTableViewController.swift */,
 				18C7CB2F22740AD500C2BCDE /* CustomViewController.swift */,
 				18F9BECC22773BA4009D7B57 /* HeatMapViewController.swift */,
+				182E45382285B39B0066E93F /* RouteListTableViewController.swift */,
+				182E453A2285B3C60066E93F /* RouteDetailTableViewController.swift */,
+				18AE3372228688F50068BF99 /* PopupViewController.swift */,
 			);
 			path = "Safe Zone";
 			sourceTree = "<group>";
@@ -297,6 +308,7 @@
 			children = (
 				BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */,
 				ABB721B6225632FA000EF648 /* SHA1.swift */,
+				18AE3370228687F30068BF99 /* SBCardPopupViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -549,6 +561,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB899DAC225AA7B800336103 /* MemoryTableViewController.swift in Sources */,
+				18AE3373228688F50068BF99 /* PopupViewController.swift in Sources */,
+				18AE3371228687F30068BF99 /* SBCardPopupViewController.swift in Sources */,
 				BD96EB2C22548D820042F236 /* LoginViewController.swift in Sources */,
 				BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */,
 				AB5853DA226DE0B000BF84F9 /* PairingViewController.swift in Sources */,
@@ -556,6 +570,8 @@
 				AB16740522674C8600E397CA /* AddNewReminderTableViewController.swift in Sources */,
 				AB899DAE225AA81300336103 /* PictureDetailViewController.swift in Sources */,
 				ABB721B7225632FA000EF648 /* SHA1.swift in Sources */,
+				182E453B2285B3C60066E93F /* RouteDetailTableViewController.swift in Sources */,
+				182E45392285B39B0066E93F /* RouteListTableViewController.swift in Sources */,
 				BD96EB33225497490042F236 /* LoginNavigationController.swift in Sources */,
 				AB98EF6322584BE300286A9F /* CarerPanelViewController.swift in Sources */,
 				AB78BCC4225A417400556586 /* CBToast.swift in Sources */,
@@ -762,7 +778,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 78X84Q73N4;
+				DEVELOPMENT_TEAM = D4E88Q87ES;
 				INFOPLIST_FILE = "Shield For Dementia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -781,7 +797,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 78X84Q73N4;
+				DEVELOPMENT_TEAM = D4E88Q87ES;
 				INFOPLIST_FILE = "Shield For Dementia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

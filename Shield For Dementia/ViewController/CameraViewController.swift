@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CameraViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
@@ -108,7 +108,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                     self.databaseRef.child("users").child(username).child("images").child(date).updateChildValues(["url": downloadURL.absoluteString, "message": self.messageTextField.text])
                     self.databaseRef.child("users").child(username).child("notifications").updateChildValues(["notification": 1])
                     CBToast.hiddenToastAction()
-                    self.displayMessage("Image saved to the cloud", "Success")
+                    self.displayMessage("Memory saved to the cloud", "Success")
                 }
                 
             }
@@ -129,6 +129,11 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        
         // Do any additional setup after loading the view.
     }
     
@@ -140,6 +145,19 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         messageTextField.text = ""
         errorLabel.text = ""
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+    @objc func keyboardWillHide(_ notification:Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
     
     //Advance mobile development, moodle (2018)
@@ -162,6 +180,16 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         displayMessage("There was an error in getting the photo", "Error")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 1
     }
     
     /*

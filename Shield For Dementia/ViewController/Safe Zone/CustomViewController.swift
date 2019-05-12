@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class CustomViewController: UIViewController, UIGestureRecognizerDelegate{
+class CustomViewController: UITableViewController, UIGestureRecognizerDelegate,UISearchBarDelegate{
     
     var latTextField : UITextField?
     var longTextField : UITextField?
@@ -33,6 +33,49 @@ class CustomViewController: UIViewController, UIGestureRecognizerDelegate{
     }
     
     @IBOutlet weak var mkMapView: MKMapView!
+    @IBAction func searchLocationButton(_ sender: Any) {
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        present(searchController,animated: true, completion: nil)
+        
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        CBToast.showToastAction()
+        
+        searchBar.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
+        
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = searchBar.text
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        
+        activeSearch.start { (response, error) in
+            CBToast.hiddenToastAction()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            if(response == nil){
+                self.displayMessage("Cannot find the location, please try again", "Error")
+            }
+            else{
+                let annotations = self.mkMapView.annotations
+                self.mkMapView.removeAnnotations(annotations)
+                
+                let lat = response?.boundingRegion.center.latitude
+                let long = response?.boundingRegion.center.longitude
+                
+                let annotation = MKPointAnnotation()
+                annotation.title = searchBar.text
+                annotation.coordinate = CLLocationCoordinate2DMake(lat!, long!)
+                self.mkMapView.addAnnotation(annotation)
+                
+                self.foucusOn(annotation: annotation)
+    
+            }
+        }
+    }
     
     
     override func viewDidLoad() {

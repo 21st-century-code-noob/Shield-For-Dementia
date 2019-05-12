@@ -52,8 +52,7 @@ class MapViewController: UIViewController {
                             
                             for a in json!{
                                 var b = a as! NSDictionary
-                                var newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "name") as! String,newSubtitle: b.value(forKey: "road_name") as! String + ", " + (b.value(forKey: "postcode") as! String),lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
-                                
+                                var newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "H_Name") as! String,newSubtitle: b.value(forKey: "H_roadname") as! String + ", " + (b.value(forKey: "H_Postcode") as! String),lat: b.value(forKey: "H_Latitude") as! Double, long: b.value(forKey: "H_Longitude") as! Double)
                                 
                                 self.addAnnotation(annotation: newAnnotation)
                                 

@@ -185,7 +185,7 @@ class NewLocationTableViewController: UITableViewController, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.distanceFilter = 10
         locationManger.delegate = self
         locationManger.requestAlwaysAuthorization()

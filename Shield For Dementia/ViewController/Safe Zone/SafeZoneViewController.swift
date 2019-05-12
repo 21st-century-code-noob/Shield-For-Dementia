@@ -116,6 +116,38 @@ class SafeZoneViewController: UIViewController {
             
         })
         
+        databaseRef.child("users").child("\(patientId)").child("notificationWhenNoRoute").observe(.value, with:{(snapshot) in
+            guard let value = snapshot.value as? NSDictionary else{
+                return
+            }
+            
+            let destination = value.value(forKey: "destination") as! String
+            let status = value.value(forKey: "notification") as! Int
+            let start = value.value(forKey: "start") as! String
+            
+            if(status == 1){
+                self.databaseRef.child("users").child("\(patientId)").child("notificationWhenNoRoute").updateChildValues(["notification":0])
+                    self.displayMessage("\(patientId) wants to go from \(start) to \(destination), But there is no route available please check.", "Alert")
+                
+            }
+        })
+        
+        databaseRef.child("users").child("\(patientId)").child("notificationWhenDeviate").observe(.value, with:{(snapshot) in
+            guard let value = snapshot.value as? NSDictionary else{
+                return
+            }
+            
+            let destination = value.value(forKey: "destination") as! String
+            let status = value.value(forKey: "notification") as! Int
+            let start = value.value(forKey: "start") as! String
+            
+            if(status == 1){
+                self.databaseRef.child("users").child("\(patientId)").child("notificationWhenDeviate").updateChildValues(["notification":0])
+                self.displayMessage("\(patientId) wants to go from \(start) to \(destination), But he is deviating from the safe route please check.", "Alert")
+                
+            }
+        })
+        
         // Do any additional setup after loading the view.
     }
     

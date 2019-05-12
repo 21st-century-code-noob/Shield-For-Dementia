@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class PictureDetailViewController: UIViewController {
+class PictureDetailViewController: UITableViewController {
     
     var image: UIImage?
     var imageName: String?
@@ -36,7 +36,7 @@ class PictureDetailViewController: UIViewController {
             } else {
                 // File deleted successfully
                 CBToast.hiddenToastAction()
-                self.displayMessage("Image has been deleted", "Success")
+                self.displayMessage("Memory has been deleted", "Success")
             }
         }
         
@@ -53,10 +53,10 @@ class PictureDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         imageDetail.image = image
         if(imageMessage == ""){
-            messageLabel.text = "This picture does not have a message."
+            messageLabel.text = "This Memory does not have a message."
         }
         else{
-            messageLabel.text = "Behind the picture: " + imageMessage!
+            messageLabel.text = imageMessage!
         }
        
     }
@@ -66,6 +66,16 @@ class PictureDetailViewController: UIViewController {
                                                 preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 1
     }
     
     
