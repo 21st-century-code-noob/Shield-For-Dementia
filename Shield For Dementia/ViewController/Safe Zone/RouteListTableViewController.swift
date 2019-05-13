@@ -110,13 +110,9 @@ class RouteListTableViewController: UITableViewController {
             if response != nil{
                 self.availableList = response?.allKeys as! [String]
             }
-
-
-            // ...
         }) { (error) in
             print(error.localizedDescription)
         }
-        
     }
     
     // MARK: - Table view data source
@@ -173,10 +169,6 @@ class RouteListTableViewController: UITableViewController {
             }
         }
         
-        
-
-        // Configure the cell...
-
         return cell
     }
     

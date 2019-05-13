@@ -33,14 +33,14 @@ class RouteDetailTableViewController: UITableViewController {
     
     @IBAction func deleteRoute(_ sender: Any) {
         
-    self.databaseRef.child("users").child(patientId).child("routeList").child(routeName!).removeValue()
-    mkMapView.removeOverlay(mkMapView!.overlays[0])
-    mkMapView.removeAnnotations(startEndPoint)
-    DurationLabel.text = "0 seconds"
 
+        if(mkMapView.overlays.count != 0){
+            self.databaseRef.child("users").child(patientId).child("routeList").child(routeName!).removeValue()
+            mkMapView.removeOverlay(mkMapView!.overlays[0])
+            mkMapView.removeAnnotations(startEndPoint)
+            DurationLabel.text = "0 seconds"
+        }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,13 +93,8 @@ class RouteDetailTableViewController: UITableViewController {
                     self.startEndPoint.append(b)
                     self.mkMapView.addAnnotations(self.startEndPoint)
                     self.focusOn(annotation: FencedAnnotation(newTitle: "End", newSubtitle: "", lat: (self.pointList[self.pointList.count-1].latitude + self.pointList[0].latitude)/2, long: (self.pointList[self.pointList.count-1].longitude + self.pointList[0].longitude)/2))
-                    
                 }
-                
             }
-            
-            
-            // ...
         }) { (error) in
             print(error.localizedDescription)
         }
