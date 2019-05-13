@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		182E45392285B39B0066E93F /* RouteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E45382285B39B0066E93F /* RouteListTableViewController.swift */; };
 		182E453B2285B3C60066E93F /* RouteDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E453A2285B3C60066E93F /* RouteDetailTableViewController.swift */; };
+		1841FBDB2288EDC80060C69E /* SBCardPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841FBDA2288EDC70060C69E /* SBCardPopupViewController.swift */; };
 		185893D622536F36006A5C17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185893D522536F36006A5C17 /* GoogleService-Info.plist */; };
-		18AE3371228687F30068BF99 /* SBCardPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE3370228687F30068BF99 /* SBCardPopupViewController.swift */; };
 		18AE3373228688F50068BF99 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE3372228688F50068BF99 /* PopupViewController.swift */; };
 		18B26E022258AB52005F024F /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B26E012258AB52005F024F /* ImageCollectionViewCell.swift */; };
 		18C7CB282274066300C2BCDE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7CB272274066300C2BCDE /* TabBarViewController.swift */; };
@@ -84,8 +84,8 @@
 /* Begin PBXFileReference section */
 		182E45382285B39B0066E93F /* RouteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListTableViewController.swift; sourceTree = "<group>"; };
 		182E453A2285B3C60066E93F /* RouteDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailTableViewController.swift; sourceTree = "<group>"; };
+		1841FBDA2288EDC70060C69E /* SBCardPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBCardPopupViewController.swift; sourceTree = "<group>"; };
 		185893D522536F36006A5C17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		18AE3370228687F30068BF99 /* SBCardPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBCardPopupViewController.swift; sourceTree = "<group>"; };
 		18AE3372228688F50068BF99 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		18B26E012258AB52005F024F /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		18C7CB272274066300C2BCDE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +182,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1841FBD92288EA0A0060C69E /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		18C7CB262274062A00C2BCDE /* Safe Zone */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +255,7 @@
 				BD96EABB2252D90B0042F236 /* Products */,
 				FF96423DC81ADF32F46AEB4F /* Pods */,
 				8394A337AF980757738A1D95 /* Frameworks */,
+				1841FBD92288EA0A0060C69E /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -331,6 +339,7 @@
 		BD96EB3E2254E0480042F236 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1841FBDA2288EDC70060C69E /* SBCardPopupViewController.swift */,
 				BD96EB3F2254E07A0042F236 /* ValidationUtils.swift */,
 				ABB721B6225632FA000EF648 /* SHA1.swift */,
 				BDBCAD0A22846C9600E8172A /* NewsParser.swift */,
@@ -602,7 +611,6 @@
 			files = (
 				AB899DAC225AA7B800336103 /* MemoryTableViewController.swift in Sources */,
 				18AE3373228688F50068BF99 /* PopupViewController.swift in Sources */,
-				18AE3371228687F30068BF99 /* SBCardPopupViewController.swift in Sources */,
 				BD96EB2C22548D820042F236 /* LoginViewController.swift in Sources */,
 				BD96EB402254E07A0042F236 /* ValidationUtils.swift in Sources */,
 				AB5853DA226DE0B000BF84F9 /* PairingViewController.swift in Sources */,
@@ -619,6 +627,7 @@
 				AB78BCC4225A417400556586 /* CBToast.swift in Sources */,
 				18C7CB2A22740A2700C2BCDE /* SafeZoneViewController.swift in Sources */,
 				BD96EB3B2254B4FE0042F236 /* SignUpViewController.swift in Sources */,
+				1841FBDB2288EDC80060C69E /* SBCardPopupViewController.swift in Sources */,
 				18F9BECD22773BA4009D7B57 /* HeatMapViewController.swift in Sources */,
 				AB6A42832259BF2D00060FF7 /* AddReminderViewController.swift in Sources */,
 				ABC0EDE82257801700CFEFC4 /* ReminderTableViewCell.swift in Sources */,
