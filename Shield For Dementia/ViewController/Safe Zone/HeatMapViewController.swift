@@ -91,15 +91,7 @@ class HeatMapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configureLocationServices()
-        self.mapView.removeOverlays(overlayList)
-        overlayList = []
-        self.mapView.removeAnnotations(locationList)
-        locationList = []
-        for geoLocation in geoLocationList{
-            locationManager.stopMonitoring(for: geoLocation)
-        }
-        geoLocationList = []
-        
+
         var mel = FencedAnnotation(newTitle: "",newSubtitle: "",lat:-37.8136, long:144.9631)
         focusOn(annotation: mel)
         

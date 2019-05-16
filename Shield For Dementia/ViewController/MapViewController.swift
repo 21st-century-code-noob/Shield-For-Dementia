@@ -18,6 +18,16 @@ class MapViewController: UIViewController {
     //
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewController.tapped(_:)))
     
+    @IBAction func ShowUserLocation(_ sender: Any) {
+        if(currentLocation != nil){
+            var userlocation = FencedAnnotation(newTitle: "user", newSubtitle: "", lat: currentLocation!.latitude, long: currentLocation!.longitude)
+            focusOn(annotation: userlocation)
+        }
+        else{
+            displayMessage("the location service is turned off, please check.", "Alert")
+        }
+    }
+    
     // Michael, Computer Program, (stackoverflow, 2018)
     @objc func tapped(_ sender: UITapGestureRecognizer)
     {
@@ -110,6 +120,13 @@ class MapViewController: UIViewController {
         mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+    }
+    
+    func displayMessage(_ message: String,_ title: String){
+        let alertController = UIAlertController(title:title, message: message,
+                                                preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     

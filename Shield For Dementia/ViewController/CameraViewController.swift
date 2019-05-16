@@ -108,7 +108,8 @@ class CameraViewController: UITableViewController, UIImagePickerControllerDelega
                     self.databaseRef.child("users").child(username).child("images").child(date).updateChildValues(["url": downloadURL.absoluteString, "message": self.messageTextField.text])
                     self.databaseRef.child("users").child(username).child("notifications").updateChildValues(["notification": 1])
                     CBToast.hiddenToastAction()
-                    self.displayMessage("Memory saved to the cloud", "Success")
+                    CBToast.showToastAction(message: "Success, Memory saved to the cloud")
+                    self.navigationController?.popViewController(animated: true)
                 }
                 
             }

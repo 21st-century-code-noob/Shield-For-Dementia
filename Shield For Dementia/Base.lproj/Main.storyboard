@@ -1581,11 +1581,24 @@ please log in or sign up</string>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LVA-we-dAo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLN-kI-i35">
+                                <rect key="frame" x="187" y="782" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="R5p-Vv-MrR"/>
+                                    <constraint firstAttribute="width" constant="40" id="qOC-Gu-JgG"/>
+                                </constraints>
+                                <state key="normal" image="find_patient"/>
+                                <connections>
+                                    <action selector="ShowUserLocation:" destination="z6U-bQ-zFl" eventType="touchUpInside" id="hfN-cI-yaQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="trailing" secondItem="OtI-th-Lj5" secondAttribute="trailing" id="6l5-hs-v0l"/>
+                            <constraint firstItem="bLN-kI-i35" firstAttribute="centerX" secondItem="GMq-TB-uk7" secondAttribute="centerX" id="HN8-6j-Fed"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="leading" secondItem="OtI-th-Lj5" secondAttribute="leading" id="Qll-F3-T7p"/>
+                            <constraint firstItem="OtI-th-Lj5" firstAttribute="bottom" secondItem="bLN-kI-i35" secondAttribute="bottom" constant="40" id="Qtq-cO-jmK"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="leading" secondItem="OtI-th-Lj5" secondAttribute="leading" id="RL8-Xh-a7I"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="trailing" secondItem="OtI-th-Lj5" secondAttribute="trailing" id="WoA-KU-917"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="top" secondItem="GMq-TB-uk7" secondAttribute="top" id="YqB-iP-7db"/>
@@ -1743,7 +1756,11 @@ please log in or sign up</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owa-54-8hH">
-                                <rect key="frame" x="183" y="705" width="48" height="48"/>
+                                <rect key="frame" x="187" y="713" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Bq7-9M-iGL"/>
+                                    <constraint firstAttribute="width" constant="40" id="Cap-kp-aP4"/>
+                                </constraints>
                                 <state key="normal" image="find_patient"/>
                                 <connections>
                                     <action selector="ShowUserLocation:" destination="IOE-NS-ocX" eventType="touchUpInside" id="A4e-z9-KdP"/>
