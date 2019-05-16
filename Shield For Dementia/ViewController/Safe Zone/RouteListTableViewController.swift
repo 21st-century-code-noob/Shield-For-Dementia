@@ -11,7 +11,7 @@ import Firebase
 
 class RouteCell: UITableViewCell{
     
-    var patientId = UserDefaults.standard.value(forKey: "username") as! String
+    var patientId = UserDefaults.standard.value(forKey: "patientId") as! String
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage()
     
@@ -43,7 +43,7 @@ class RouteListTableViewController: UITableViewController {
     
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage()
-    var patientId = UserDefaults.standard.value(forKey: "username") as! String
+    var patientId = UserDefaults.standard.value(forKey: "patientId") as! String
     
     override func viewDidLoad() {
         super.viewDidLoad()

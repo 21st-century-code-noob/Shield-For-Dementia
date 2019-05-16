@@ -18,15 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GI3-kk-MR7">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GI3-kk-MR7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7z-BI-Pl8">
+                                <rect key="frame" x="183" y="823" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="KlP-w3-k3o"/>
+                                    <constraint firstAttribute="width" constant="48" id="Png-Uq-TMq"/>
+                                </constraints>
+                                <state key="normal" image="find_patient"/>
+                                <connections>
+                                    <action selector="myLocationButtonPressed:" destination="yf2-jd-yyP" eventType="touchUpInside" id="rZO-Ai-Zj8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K7z-BI-Pl8" firstAttribute="centerX" secondItem="uHx-nc-rTU" secondAttribute="centerX" id="BdN-uY-JYK"/>
+                            <constraint firstAttribute="bottom" secondItem="K7z-BI-Pl8" secondAttribute="bottom" constant="25" id="Ek8-Xr-jVY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dIm-09-4mT"/>
                     </view>
                     <connections>
+                        <outlet property="currentLocationButton" destination="K7z-BI-Pl8" id="z7u-vz-1Sq"/>
                         <outlet property="mapKit" destination="GI3-kk-MR7" id="wxE-FT-ixm"/>
                     </connections>
                 </viewController>
@@ -856,7 +872,7 @@ please log in or sign up</string>
                             </connections>
                         </button>
                         <sections>
-                            <tableViewSection headerTitle="Medician Name" id="F6A-RF-5GJ">
+                            <tableViewSection headerTitle="Medicine Name" id="F6A-RF-5GJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xyh-bf-IhS">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
@@ -1581,10 +1597,23 @@ please log in or sign up</string>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LVA-we-dAo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyQ-Cd-IMA">
+                                <rect key="frame" x="183" y="823" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="7X3-c2-pvm"/>
+                                    <constraint firstAttribute="height" constant="48" id="vcT-UX-dqX"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="find_patient"/>
+                                <connections>
+                                    <action selector="currentLocationButtonTapped:" destination="z6U-bQ-zFl" eventType="touchUpInside" id="sqB-SF-4Te"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="trailing" secondItem="OtI-th-Lj5" secondAttribute="trailing" id="6l5-hs-v0l"/>
+                            <constraint firstItem="EyQ-Cd-IMA" firstAttribute="centerX" secondItem="GMq-TB-uk7" secondAttribute="centerX" id="Gmg-Qa-Lfw"/>
+                            <constraint firstAttribute="bottom" secondItem="EyQ-Cd-IMA" secondAttribute="bottom" constant="25" id="LXt-Xp-6LD"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="leading" secondItem="OtI-th-Lj5" secondAttribute="leading" id="Qll-F3-T7p"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="leading" secondItem="OtI-th-Lj5" secondAttribute="leading" id="RL8-Xh-a7I"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="trailing" secondItem="OtI-th-Lj5" secondAttribute="trailing" id="WoA-KU-917"/>
@@ -1596,6 +1625,7 @@ please log in or sign up</string>
                         <viewLayoutGuide key="safeArea" id="OtI-th-Lj5"/>
                     </view>
                     <connections>
+                        <outlet property="currentLocationButton" destination="EyQ-Cd-IMA" id="xhJ-UT-HeZ"/>
                         <outlet property="mapView" destination="LVA-we-dAo" id="VuD-wg-4mw"/>
                     </connections>
                 </viewController>
@@ -1743,7 +1773,7 @@ please log in or sign up</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owa-54-8hH">
-                                <rect key="frame" x="183" y="705" width="48" height="48"/>
+                                <rect key="frame" x="199" y="731" width="16" height="22"/>
                                 <state key="normal" image="find_patient"/>
                                 <connections>
                                     <action selector="ShowUserLocation:" destination="IOE-NS-ocX" eventType="touchUpInside" id="A4e-z9-KdP"/>
@@ -2794,7 +2824,7 @@ please log in or sign up</string>
         <image name="Tick_Mark_Dark-512 copy" width="197.5" height="197.5"/>
         <image name="baseline_adjust_black_24pt" width="24" height="24"/>
         <image name="find_patient" width="48" height="48"/>
-        <image name="hospital" width="512" height="512"/>
+        <image name="hospital" width="256" height="256"/>
         <image name="link" width="256" height="256"/>
         <image name="old_man" width="1300" height="1300"/>
         <image name="outline_map_black_24pt" width="24" height="24"/>

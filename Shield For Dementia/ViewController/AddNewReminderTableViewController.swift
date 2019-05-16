@@ -100,13 +100,13 @@ class AddNewReminderTableViewController: UITableViewController {
         addButton.isEnabled = false
         if !ValidationUtils.drugNameValidate(name: medicineNameTF.text!){
             CBToast.hiddenToastAction()
-            CBToast.showToast(message: "Drug name can only contain letters, number and space.", aLocationStr: "center", aShowTime: 3.0)
+            displayAlert(title: "Invalid Medicine Name", message: "Drug name can only contain numbers and letter, and cannot be empty")
             addButton.isEnabled = true
             
         }
         else if !ValidationUtils.lastDaysValidate(days: lastDayTF.text!){
             CBToast.hiddenToastAction()
-            CBToast.showToast(message: "Days can only contain numbers", aLocationStr: "center", aShowTime: 3.0)
+            displayAlert(title: "Invalid Days", message: "Days can only contain numbers.")
             addButton.isEnabled = true
         }
         else{
@@ -153,4 +153,10 @@ class AddNewReminderTableViewController: UITableViewController {
         }
     }
     
+    func displayAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true)
+    }
+
 }

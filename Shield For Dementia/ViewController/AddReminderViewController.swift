@@ -30,11 +30,11 @@ class AddReminderViewController: UIViewController {
         CBToast.showToastAction()
         if !ValidationUtils.drugNameValidate(name: medicineNameTF.text!){
             CBToast.hiddenToastAction()
-            displayAlert(title: "Invalid Medicine Name", message: "Medicine name should only contain letters and numbers")
+            displayAlert(title: "Invalid Medicine Name", message: "Medicine name should only contain letters and numbers and cannot be empty.")
         }
         else if !ValidationUtils.lastDaysValidate(days: lastDayTF.text!){
             CBToast.hiddenToastAction()
-            displayAlert(title: "Invalid Lasting Day", message: "Lasting day should only contain numbers")
+            displayAlert(title: "Invalid Lasting Day", message: "Lasting day should only contain numbers and cannot be empty")
         }
         else{
             let medicineName = medicineNameTF.text!.replacingOccurrences(of: " ", with: "+")

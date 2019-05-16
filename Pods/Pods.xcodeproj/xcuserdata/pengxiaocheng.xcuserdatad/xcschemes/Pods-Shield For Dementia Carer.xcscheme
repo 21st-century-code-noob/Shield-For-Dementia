@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9055C0BF4B8052644DDD19F6A7FEC9A4"
+               BlueprintIdentifier = "883AAFFE1B9116D31ABCDC87C4301688"
                BuildableName = "Pods_Shield_For_Dementia_Carer.framework"
                BlueprintName = "Pods-Shield For Dementia Carer"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9055C0BF4B8052644DDD19F6A7FEC9A4"
+            BlueprintIdentifier = "883AAFFE1B9116D31ABCDC87C4301688"
             BuildableName = "Pods_Shield_For_Dementia_Carer.framework"
             BlueprintName = "Pods-Shield For Dementia Carer"
             ReferencedContainer = "container:Pods.xcodeproj">
