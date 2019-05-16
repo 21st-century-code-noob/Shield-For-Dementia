@@ -50,14 +50,14 @@ class PairingViewController: UIViewController {
                         print(dataString)
                         CBToast.hiddenToastAction()
                         self.sendRequestButton.isEnabled = true
-                        CBToast.showToast(message: "The patient doesn't exist.", aLocationStr: "center", aShowTime: 3.0)
+                        self.displayAlert(title: "Invalid Patient Username", message: "This username does not exist.")
                     }
                 }
                 else{
                     DispatchQueue.main.sync{
                         CBToast.hiddenToastAction()
                         self.sendRequestButton.isEnabled = true
-                        CBToast.showToast(message: "Request sent", aLocationStr: "center", aShowTime: 3.0)
+                        self.displayAlert(title: "Successful", message: "Request has been sent. Please accept on patient app.")
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
@@ -66,6 +66,11 @@ class PairingViewController: UIViewController {
         }
     }
     
+    func displayAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true)
+    }
 
     /*
     // MARK: - Navigation

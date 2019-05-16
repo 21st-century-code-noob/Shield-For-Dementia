@@ -14,6 +14,7 @@ class FencedAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
+    var isHilighted: Bool = false
     
     init(newTitle: String, newSubtitle: String, lat: Double, long: Double) {
         

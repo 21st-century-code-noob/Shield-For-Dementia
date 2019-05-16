@@ -12,11 +12,11 @@ import MapKit
 class RecreationalAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
-    var address: String?
+    var subtitle: String?
     
     init(newTitle: String, newAddress: String, lat: Double, long: Double) {
         title = newTitle
-        address = newAddress
+        subtitle = newAddress
         coordinate = CLLocationCoordinate2D()
         coordinate.latitude = lat
         coordinate.longitude = long

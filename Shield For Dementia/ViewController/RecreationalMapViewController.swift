@@ -12,11 +12,14 @@ import CoreData
 
 class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var mapKit: MKMapView!
+    @IBOutlet weak var currentLocationButton: UIButton!
     var locationManager = CLLocationManager()
     var yogantaichisList:[RecreationalAnnotation] = [RecreationalAnnotation]()
     var parkList:[RecreationalAnnotation] = [RecreationalAnnotation]()
     var volunteeringList:[RecreationalAnnotation] = [RecreationalAnnotation]()
     var fitnessList:[RecreationalAnnotation] = [RecreationalAnnotation]()
+    var hasFocused: Bool = false
+    var currentRegion:MKCoordinateRegion?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,12 +67,17 @@ class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last{
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            self.mapKit.setRegion(region, animated: true)
+            if let location = locations.last{
+                let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                self.currentRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+            if !hasFocused{
+                self.mapKit.setRegion(currentRegion!, animated: true)
+                hasFocused = true
+                currentLocationButton.isEnabled = true
+            }
         }
     }
+ 
 
     /*
     // MARK: - Navigation
@@ -104,11 +112,6 @@ class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate
             btn.setTitle("Go There", for: .init())
             btn.frame = CGRect(x: 0, y: 0, width: 80, height: 50)
             view.rightCalloutAccessoryView = btn
-            
-            let addressLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 50))
-            addressLabel.font = addressLabel.font.withSize(12)
-            addressLabel.text = annotation.address
-            view.detailCalloutAccessoryView = addressLabel
         }
         return view
     }
@@ -150,8 +153,11 @@ class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate
                                 self.yogantaichisList.append(yogaAnnotation)
                                 self.mapKit.addAnnotation(yogaAnnotation)
                             }
-                            (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
-                            CBToast.hiddenToastAction()
+                            DispatchQueue.main.sync {
+                                (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
+                                CBToast.hiddenToastAction()
+                            }
+                            
                         }
                         catch{
                             print(error)
@@ -197,8 +203,10 @@ class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate
                                 self.parkList.append(parkAnnotation)
                                 self.mapKit.addAnnotation(parkAnnotation)
                             }
-                            (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
-                            CBToast.hiddenToastAction()
+                            DispatchQueue.main.sync {
+                                (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
+                                CBToast.hiddenToastAction()
+                            }
                         }
                         catch{
                             print(error)
@@ -244,8 +252,10 @@ class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate
                                 self.volunteeringList.append(volunteeringAnnotation)
                                 self.mapKit.addAnnotation(volunteeringAnnotation)
                             }
-                            (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
-                            CBToast.hiddenToastAction()
+                            DispatchQueue.main.sync {
+                                (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
+                                CBToast.hiddenToastAction()
+                            }
                         }
                         catch{
                             print(error)
@@ -291,8 +301,10 @@ class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate
                                 self.fitnessList.append(fitnessAnnotation)
                                 self.mapKit.addAnnotation(fitnessAnnotation)
                             }
-                            (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
-                            CBToast.hiddenToastAction()
+                            DispatchQueue.main.sync {
+                                (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
+                                CBToast.hiddenToastAction()
+                            }
                         }
                         catch{
                             print(error)
@@ -309,5 +321,8 @@ class RecreationalMapViewController: UIViewController, CLLocationManagerDelegate
             (self.navigationItem.titleView as? UISegmentedControl)?.isEnabled = true
             CBToast.hiddenToastAction()
         }
+    }
+    @IBAction func myLocationButtonPressed(_ sender: Any) {
+        self.mapKit.setRegion(self.currentRegion!, animated: true)
     }
 }

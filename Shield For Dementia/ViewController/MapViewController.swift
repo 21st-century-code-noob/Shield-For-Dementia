@@ -11,7 +11,9 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    
     var annotationList = [FencedAnnotation]()
     private var currentLocation: CLLocationCoordinate2D?
     private let locationManager = CLLocationManager()
@@ -61,9 +63,11 @@ class MapViewController: UIViewController {
                             let json = try JSONSerialization.jsonObject(with: data!) as? [Any]
                             
                             for a in json!{
-                                var b = a as! NSDictionary
+                                let b = a as! NSDictionary
                                 var newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "H_Name") as! String,newSubtitle: b.value(forKey: "H_roadname") as! String + ", " + (b.value(forKey: "H_Postcode") as! String),lat: b.value(forKey: "H_Latitude") as! Double, long: b.value(forKey: "H_Longitude") as! Double)
-                                
+                                if b.value(forKey: "H_include_status") as! Int == 1{
+                                    newAnnotation.isHilighted = true
+                                }
                                 self.addAnnotation(annotation: newAnnotation)
                                 
                             }
@@ -130,6 +134,11 @@ class MapViewController: UIViewController {
     }
     
     
+    @IBAction func currentLocationButtonTapped(_ sender: Any) {
+        let location: FencedAnnotation = FencedAnnotation(newTitle: "Melbourne City", newSubtitle: "Our location right now", lat: currentLocation!.latitude, long: currentLocation!.longitude)
+
+        focusOn(annotation: location)
+    }
     /*
      // MARK: - Navigation
      
@@ -149,6 +158,7 @@ extension MapViewController: CLLocationManagerDelegate{
         
         guard let latestLocation = locations.first else {return}
         currentLocation = latestLocation.coordinate
+        self.currentLocationButton.isEnabled = true
     }
 }
 
@@ -173,14 +183,22 @@ extension MapViewController: MKMapViewDelegate{
         let sizeChange = CGSize(width: 30, height: 30)
         let origin = CGPoint(x: 0, y: 0)
         UIGraphicsBeginImageContextWithOptions(sizeChange, false, 0.0)
-        
-        var imagea = UIImage(named: "hospital")
-        imagea?.draw(in: CGRect(origin: origin, size: sizeChange))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        annotationView?.image = newImage
-        annotationView?.image?.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
-        
+        if (annotation as! FencedAnnotation).isHilighted == false {
+            var imagea = UIImage(named: "hospital")
+            imagea?.draw(in: CGRect(origin: origin, size: sizeChange))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            annotationView?.image = newImage
+            annotationView?.image?.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
+        }
+        else{
+            var imagea = UIImage(named: "hospital-1")
+            imagea?.draw(in: CGRect(origin: origin, size: sizeChange))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            annotationView?.image = newImage
+            annotationView?.image?.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
+        }
         annotationView?.canShowCallout = true
         return annotationView
     }

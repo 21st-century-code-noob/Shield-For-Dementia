@@ -19,10 +19,9 @@ class ReminderTableViewController: UITableViewController {
         items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed)))
         items.append( UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil))
         items.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTable)))
-        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
-        items.append( UIBarButtonItem(title: "History", style: .plain, target: self, action: nil))
         items[1].width = 15
         self.toolbarItems = items
+        
         retrieveReminderData()
     }
     
