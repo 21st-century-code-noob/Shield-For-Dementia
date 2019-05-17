@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7z-BI-Pl8">
-                                <rect key="frame" x="183" y="823" width="48" height="48"/>
+                                <rect key="frame" x="183" y="788" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="KlP-w3-k3o"/>
                                     <constraint firstAttribute="width" constant="48" id="Png-Uq-TMq"/>
@@ -37,7 +37,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="K7z-BI-Pl8" firstAttribute="centerX" secondItem="uHx-nc-rTU" secondAttribute="centerX" id="BdN-uY-JYK"/>
-                            <constraint firstAttribute="bottom" secondItem="K7z-BI-Pl8" secondAttribute="bottom" constant="25" id="Ek8-Xr-jVY"/>
+                            <constraint firstAttribute="bottom" secondItem="K7z-BI-Pl8" secondAttribute="bottom" constant="60" id="Xoq-kV-zgY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dIm-09-4mT"/>
                     </view>
