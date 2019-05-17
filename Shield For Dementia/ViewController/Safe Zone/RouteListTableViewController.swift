@@ -130,7 +130,7 @@ class RouteListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routecell", for: indexPath) as! RouteCell
-        
+        cell.routeAvailableOrNotSwitch.isOn = false
         var i = 1
         var number = 0
         while i < locationList.count{

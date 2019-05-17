@@ -1598,7 +1598,7 @@ please log in or sign up</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyQ-Cd-IMA">
-                                <rect key="frame" x="183" y="823" width="48" height="48"/>
+                                <rect key="frame" x="183" y="788" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="7X3-c2-pvm"/>
                                     <constraint firstAttribute="height" constant="48" id="vcT-UX-dqX"/>
@@ -1613,7 +1613,7 @@ please log in or sign up</string>
                         <constraints>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="trailing" secondItem="OtI-th-Lj5" secondAttribute="trailing" id="6l5-hs-v0l"/>
                             <constraint firstItem="EyQ-Cd-IMA" firstAttribute="centerX" secondItem="GMq-TB-uk7" secondAttribute="centerX" id="Gmg-Qa-Lfw"/>
-                            <constraint firstAttribute="bottom" secondItem="EyQ-Cd-IMA" secondAttribute="bottom" constant="25" id="LXt-Xp-6LD"/>
+                            <constraint firstAttribute="bottom" secondItem="EyQ-Cd-IMA" secondAttribute="bottom" constant="60" id="LXt-Xp-6LD"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="leading" secondItem="OtI-th-Lj5" secondAttribute="leading" id="Qll-F3-T7p"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="leading" secondItem="OtI-th-Lj5" secondAttribute="leading" id="RL8-Xh-a7I"/>
                             <constraint firstItem="LVA-we-dAo" firstAttribute="trailing" secondItem="OtI-th-Lj5" secondAttribute="trailing" id="WoA-KU-917"/>
@@ -1773,7 +1773,7 @@ please log in or sign up</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owa-54-8hH">
-                                <rect key="frame" x="199" y="731" width="16" height="22"/>
+                                <rect key="frame" x="183" y="705" width="48" height="48"/>
                                 <state key="normal" image="find_patient"/>
                                 <connections>
                                     <action selector="ShowUserLocation:" destination="IOE-NS-ocX" eventType="touchUpInside" id="A4e-z9-KdP"/>
