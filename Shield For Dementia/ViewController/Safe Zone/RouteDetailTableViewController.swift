@@ -69,26 +69,26 @@ class RouteDetailTableViewController: UITableViewController {
             // Get user value
             let response = snapshot.value as? NSDictionary
             if response != nil{
-                var result = response!.value(forKey: self.routeName!) as? NSDictionary
+                let result = response!.value(forKey: self.routeName!) as? NSDictionary
                 if(result != nil){
-                    var durationResult = result!.value(forKey: "duration") as? Int
-                    var pointListResult = result!.value(forKey: "pointList") as? NSArray
+                    let durationResult = result!.value(forKey: "duration") as? Int
+                    let pointListResult = result!.value(forKey: "pointList") as? NSArray
                     var i = 0
                     while (i < pointListResult!.count){
-                        var info = pointListResult![i] as! NSDictionary
-                        var lat = info.value(forKey: "lat") as! Double
-                        var long = info.value(forKey: "long") as! Double
-                        var point = CLLocationCoordinate2DMake(lat, long)
+                        let info = pointListResult![i] as! NSDictionary
+                        let lat = info.value(forKey: "lat") as! Double
+                        let long = info.value(forKey: "long") as! Double
+                        let point = CLLocationCoordinate2DMake(lat, long)
                         self.pointList.append(point)
                         i += 1
                     }
                     
-                    var time = durationResult!.quotientAndRemainder(dividingBy: 60)
+                    let time = durationResult!.quotientAndRemainder(dividingBy: 60)
                     self.DurationLabel.text = String(time.quotient) + " minutes and " + String(time.remainder) + " seconds"
                     self.mkMapView.addOverlay(MKPolyline(coordinates: self.pointList, count: self.pointList.count))
                     self.route = MKPolyline(coordinates: self.pointList, count: self.pointList.count)
-                    var a = FencedAnnotation(newTitle: "Start", newSubtitle: "", lat: self.pointList[0].latitude, long: self.pointList[0].longitude)
-                    var b = FencedAnnotation(newTitle: "End", newSubtitle: "", lat: self.pointList[self.pointList.count-1].latitude, long: self.pointList[self.pointList.count-1].longitude)
+                    let a = FencedAnnotation(newTitle: "Start", newSubtitle: "", lat: self.pointList[0].latitude, long: self.pointList[0].longitude)
+                    let b = FencedAnnotation(newTitle: "End", newSubtitle: "", lat: self.pointList[self.pointList.count-1].latitude, long: self.pointList[self.pointList.count-1].longitude)
                     self.startEndPoint.append(a)
                     self.startEndPoint.append(b)
                     self.mkMapView.addAnnotations(self.startEndPoint)

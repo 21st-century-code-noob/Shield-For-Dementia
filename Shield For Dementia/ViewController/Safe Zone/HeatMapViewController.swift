@@ -23,7 +23,7 @@ class HeatMapViewController: UIViewController {
     
     @IBAction func ShowUserLocation(_ sender: Any) {
         if(currentLocation != nil){
-            var userlocation = FencedAnnotation(newTitle: "user", newSubtitle: "", lat: currentLocation!.latitude, long: currentLocation!.longitude)
+            let userlocation = FencedAnnotation(newTitle: "user", newSubtitle: "", lat: currentLocation!.latitude, long: currentLocation!.longitude)
             focusOn(annotation: userlocation)
         }
         else{
@@ -35,6 +35,7 @@ class HeatMapViewController: UIViewController {
 
         mapView.delegate = self
         // Do any additional setup after loading the view.
+        //download all data
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/graded-suburb"
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
@@ -56,8 +57,8 @@ class HeatMapViewController: UIViewController {
                             
                             for a in json!{
                                 var newAnnotation : FencedAnnotation?
-                                var b = a as! NSDictionary
-                                var graded_value = b.value(forKey: "graded_value") as! Double
+                                let b = a as! NSDictionary
+                                let graded_value = b.value(forKey: "graded_value") as! Double
                                 if(graded_value > 66){
                                      newAnnotation = FencedAnnotation(newTitle: "Postcode: " +  (b.value(forKey: "postcode") as! String),newSubtitle: "Safety Level: Dangerous",lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
                                 }
@@ -70,7 +71,7 @@ class HeatMapViewController: UIViewController {
                                 
                                 
                                 self.addAnnotation(annotation: newAnnotation!)
-                                var circle: MKCircle = MKCircle.init(center: newAnnotation!.coordinate, radius: 800)
+                                let circle: MKCircle = MKCircle.init(center: newAnnotation!.coordinate, radius: 800)
                                 circle.subtitle = String(b.value(forKey: "graded_value") as! Double)
                                 self.overlayList.append(circle)
                                 self.mapView.addOverlay(circle)
@@ -92,7 +93,7 @@ class HeatMapViewController: UIViewController {
         super.viewWillAppear(true)
         configureLocationServices()
 
-        var mel = FencedAnnotation(newTitle: "",newSubtitle: "",lat:-37.8136, long:144.9631)
+        let mel = FencedAnnotation(newTitle: "",newSubtitle: "",lat:-37.8136, long:144.9631)
         focusOn(annotation: mel)
         
         

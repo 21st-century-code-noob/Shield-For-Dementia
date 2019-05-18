@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
     
     @IBAction func ShowUserLocation(_ sender: Any) {
         if(currentLocation != nil){
-            var userlocation = FencedAnnotation(newTitle: "user", newSubtitle: "", lat: currentLocation!.latitude, long: currentLocation!.longitude)
+            let userlocation = FencedAnnotation(newTitle: "user", newSubtitle: "", lat: currentLocation!.latitude, long: currentLocation!.longitude)
             focusOn(annotation: userlocation)
         }
         else{
@@ -42,7 +42,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
         
-        
+        //download safe zones
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/hospital/getallhospitalinfo"
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
@@ -64,7 +64,7 @@ class MapViewController: UIViewController {
                             
                             for a in json!{
                                 let b = a as! NSDictionary
-                                var newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "H_Name") as! String,newSubtitle: b.value(forKey: "H_roadname") as! String + ", " + (b.value(forKey: "H_Postcode") as! String),lat: b.value(forKey: "H_Latitude") as! Double, long: b.value(forKey: "H_Longitude") as! Double)
+                                let newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "H_Name") as! String,newSubtitle: b.value(forKey: "H_roadname") as! String + ", " + (b.value(forKey: "H_Postcode") as! String),lat: b.value(forKey: "H_Latitude") as! Double, long: b.value(forKey: "H_Longitude") as! Double)
                                 if b.value(forKey: "H_include_status") as! Int == 1{
                                     newAnnotation.isHilighted = true
                                 }
@@ -184,7 +184,7 @@ extension MapViewController: MKMapViewDelegate{
         let origin = CGPoint(x: 0, y: 0)
         UIGraphicsBeginImageContextWithOptions(sizeChange, false, 0.0)
         if (annotation as! FencedAnnotation).isHilighted == false {
-            var imagea = UIImage(named: "hospital")
+            let imagea = UIImage(named: "hospital")
             imagea?.draw(in: CGRect(origin: origin, size: sizeChange))
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
@@ -192,7 +192,7 @@ extension MapViewController: MKMapViewDelegate{
             annotationView?.image?.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
         }
         else{
-            var imagea = UIImage(named: "hospital-1")
+            let imagea = UIImage(named: "hospital-1")
             imagea?.draw(in: CGRect(origin: origin, size: sizeChange))
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
@@ -202,18 +202,4 @@ extension MapViewController: MKMapViewDelegate{
         annotationView?.canShowCallout = true
         return annotationView
     }
-    //
-    //    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    //
-    //    }
-    //
-    //    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    //
-    //    }
-    //
-    //
-    //
-    //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    //
-    //    }
 }
