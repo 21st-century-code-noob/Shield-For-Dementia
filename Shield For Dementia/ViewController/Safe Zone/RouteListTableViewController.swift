@@ -87,8 +87,8 @@ class RouteListTableViewController: UITableViewController {
                             
                             for a in json!{
                                 
-                                var b = a as! NSDictionary
-                                var newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "locationName") as! String,newSubtitle: String(b.value(forKey: "idsafeZoneLocation") as! Int),lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
+                                let b = a as! NSDictionary
+                                let newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "locationName") as! String,newSubtitle: String(b.value(forKey: "idsafeZoneLocation") as! Int),lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
                                 
                                 self.locationList.append(newAnnotation)
                             }
