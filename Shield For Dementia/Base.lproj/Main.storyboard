@@ -85,7 +85,7 @@
                                                 <rect key="frame" x="211" y="57" width="180" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="outline_timeline_black_24pt" translatesAutoresizingMaskIntoConstraints="NO" id="8Fn-IH-ohx">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="memory" translatesAutoresizingMaskIntoConstraints="NO" id="8Fn-IH-ohx">
                                                         <rect key="frame" x="35" y="38" width="145" height="102"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,7 +120,7 @@
                                                 <rect key="frame" x="23" y="57" width="180" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="outline_view_list_black_24pt" translatesAutoresizingMaskIntoConstraints="NO" id="FxJ-z9-BSn">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="music-bell" translatesAutoresizingMaskIntoConstraints="NO" id="FxJ-z9-BSn">
                                                         <rect key="frame" x="35" y="38" width="145" height="102"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,7 +189,7 @@
                                                 <rect key="frame" x="23" y="205" width="180" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hospital" translatesAutoresizingMaskIntoConstraints="NO" id="d5I-NK-UU1">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hospital-2" translatesAutoresizingMaskIntoConstraints="NO" id="d5I-NK-UU1">
                                                         <rect key="frame" x="35" y="38" width="145" height="102"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <gestureRecognizers/>
@@ -217,7 +217,7 @@
                                                 <rect key="frame" x="23" y="353" width="180" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="baseline_adjust_black_24pt" translatesAutoresizingMaskIntoConstraints="NO" id="Zoh-5O-QRc">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="safe-zone" translatesAutoresizingMaskIntoConstraints="NO" id="Zoh-5O-QRc">
                                                         <rect key="frame" x="35" y="38" width="145" height="102"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -246,7 +246,7 @@
                                                 <rect key="frame" x="211" y="353" width="180" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="old_man" translatesAutoresizingMaskIntoConstraints="NO" id="Skx-5a-AKP">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newspaper" translatesAutoresizingMaskIntoConstraints="NO" id="Skx-5a-AKP">
                                                         <rect key="frame" x="35" y="38" width="145" height="102"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <gestureRecognizers/>
@@ -274,7 +274,7 @@
                                                 <rect key="frame" x="23" y="501" width="180" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tick_Mark_Dark-512 copy" translatesAutoresizingMaskIntoConstraints="NO" id="YEt-f4-d6F">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="walk" translatesAutoresizingMaskIntoConstraints="NO" id="YEt-f4-d6F">
                                                         <rect key="frame" x="35" y="38" width="145" height="102"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <gestureRecognizers/>
@@ -2821,15 +2821,18 @@ please log in or sign up</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Tick_Mark_Dark-512 copy" width="197.5" height="197.5"/>
         <image name="baseline_adjust_black_24pt" width="24" height="24"/>
         <image name="find_patient" width="48" height="48"/>
-        <image name="hospital" width="256" height="256"/>
+        <image name="hospital-2" width="512" height="512"/>
         <image name="link" width="256" height="256"/>
-        <image name="old_man" width="1300" height="1300"/>
+        <image name="memory" width="512" height="512"/>
+        <image name="music-bell" width="512" height="512"/>
+        <image name="newspaper" width="512" height="512"/>
         <image name="outline_map_black_24pt" width="24" height="24"/>
         <image name="outline_timeline_black_24pt" width="24" height="24"/>
         <image name="outline_view_list_black_24pt" width="24" height="24"/>
+        <image name="safe-zone" width="512" height="512"/>
+        <image name="walk" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d3b-PN-GaC"/>

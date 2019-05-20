@@ -20,7 +20,8 @@ class AddNewReminderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        startDatePicker.minimumDate = Date()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -145,6 +146,7 @@ class AddNewReminderTableViewController: UITableViewController {
                 else{
                     DispatchQueue.main.sync{
                         CBToast.hiddenToastAction()
+                        CBToast.showToastAction(message: "Successful. Please refresh the reminders on patient's app.")
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
