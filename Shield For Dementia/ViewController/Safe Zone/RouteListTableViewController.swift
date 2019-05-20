@@ -22,7 +22,7 @@ class RouteCell: UITableViewCell{
         
         if(sender.isOn == true){
             print("is on")
-            var routeName = routeNameLabel.text
+            let routeName = routeNameLabel.text
             databaseRef.child("users").child(patientId).child("availableRoute").updateChildValues([routeName!: 1])
         }
         else{
@@ -62,9 +62,9 @@ class RouteListTableViewController: UITableViewController {
         routeNameList = []
         availableList.removeAll()
         
+        //download safe zones information
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/safezonelocation/getlocationbyrequestid?requestId=" + String(requestId)
         
-        let a = URL(string: requestURL)!
         
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
@@ -87,8 +87,8 @@ class RouteListTableViewController: UITableViewController {
                             
                             for a in json!{
                                 
-                                var b = a as! NSDictionary
-                                var newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "locationName") as! String,newSubtitle: String(b.value(forKey: "idsafeZoneLocation") as! Int),lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
+                                let b = a as! NSDictionary
+                                let newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "locationName") as! String,newSubtitle: String(b.value(forKey: "idsafeZoneLocation") as! Int),lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
                                 
                                 self.locationList.append(newAnnotation)
                             }
@@ -104,6 +104,7 @@ class RouteListTableViewController: UITableViewController {
         }
         task.resume()
         
+        //download available route
         databaseRef.child("users").child(patientId).child("availableRoute").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let response = snapshot.value as? NSDictionary

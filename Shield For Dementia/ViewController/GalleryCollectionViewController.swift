@@ -33,13 +33,13 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         super.viewWillAppear(animated)
         CBToast.showToastAction()
         //UserDefaults
-        let userID = "10wRyo7S8AcF0dhhyxWhEJsAuB12"
         let userRef = databaseRef.child(username).child("images")
         imageList = []
         imagePathList = []
         imageNameList = []
         imageMessageList = []
         
+        //load memories
         userRef.observeSingleEvent(of: .value){(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
                 CBToast.hiddenToastAction()

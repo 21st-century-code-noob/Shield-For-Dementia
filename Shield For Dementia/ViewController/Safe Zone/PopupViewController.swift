@@ -90,7 +90,7 @@ class PopupViewController: UIViewController, SBCardPopupContent, CLLocationManag
     
     @objc func updateTimeLabel(){
         totalTime += 1
-        var result = totalTime.quotientAndRemainder(dividingBy: 60)
+        let result = totalTime.quotientAndRemainder(dividingBy: 60)
         
         timeLabel.text = String(result.quotient) + ":" + String(result.remainder)
     }

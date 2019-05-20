@@ -36,10 +36,6 @@ class SafeZoneViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -49,7 +45,7 @@ class SafeZoneViewController: UIViewController {
         //MKOverlayPathView
         
         
-        
+        //monitor patient's locatopm
         let patientId = UserDefaults.standard.value(forKey: "patientId") as! String
         databaseRef.child("users").child("\(patientId)").child("realTimeLocation").observe(.value, with:{(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
@@ -65,6 +61,7 @@ class SafeZoneViewController: UIViewController {
             self.addAnnotation(annotation: self.patientLocation!)
         })
         
+        //monitor notification
         databaseRef.child("users").child("\(patientId)").child("notificationExitRegin").observe(.value, with:{(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
                 return
@@ -80,6 +77,7 @@ class SafeZoneViewController: UIViewController {
 
         })
         
+        //monitor notification
         databaseRef.child("users").child("\(patientId)").child("notificationWhenTimerIsUp").observe(.value, with:{(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
                 return
@@ -101,6 +99,7 @@ class SafeZoneViewController: UIViewController {
             }
         })
         
+        //monitor notification
         databaseRef.child("users").child("\(patientId)").child("notificationOnOtherPlaces").observe(.value, with:{(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
                 return
@@ -116,6 +115,7 @@ class SafeZoneViewController: UIViewController {
             
         })
         
+        //monitor notification
         databaseRef.child("users").child("\(patientId)").child("notificationWhenNoRoute").observe(.value, with:{(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
                 return
@@ -132,6 +132,7 @@ class SafeZoneViewController: UIViewController {
             }
         })
         
+        //monitor notification
         databaseRef.child("users").child("\(patientId)").child("notificationWhenDeviate").observe(.value, with:{(snapshot) in
             guard let value = snapshot.value as? NSDictionary else{
                 return
@@ -169,9 +170,9 @@ class SafeZoneViewController: UIViewController {
         }
         geoLocationList = []
         
+        //download safe zones
         let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/safezonelocation/getlocationbyrequestid?requestId=" + String(requestId)
         
-        let a = URL(string: requestURL)!
         
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
@@ -194,8 +195,8 @@ class SafeZoneViewController: UIViewController {
                             
                             for a in json!{
                                 
-                                var b = a as! NSDictionary
-                                var newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "locationName") as! String,newSubtitle: b.value(forKey: "familiarity") as! String,lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
+                                let b = a as! NSDictionary
+                                let newAnnotation = FencedAnnotation(newTitle: b.value(forKey: "locationName") as! String,newSubtitle: b.value(forKey: "familiarity") as! String,lat: b.value(forKey: "latitude") as! Double, long: b.value(forKey: "longitude") as! Double)
                                 newAnnotation.subtitle = "Familiarity: " + newAnnotation.subtitle!
                                 self.addAnnotation(annotation: newAnnotation)
                                 self.locationList.append(newAnnotation)
@@ -203,7 +204,7 @@ class SafeZoneViewController: UIViewController {
                                 //geoLocation!.notifyOnExit = true
                                 geoLocation!.notifyOnEntry = true
                                 
-                                var circle: MKCircle = MKCircle.init(center: newAnnotation.coordinate, radius: 75)
+                                let circle: MKCircle = MKCircle.init(center: newAnnotation.coordinate, radius: 75)
                                 
                                 if(newAnnotation.subtitle == "Familiarity: Low"){
                                     geoLocation = CLCircularRegion(center: newAnnotation.coordinate, radius: 50, identifier: newAnnotation.title!)
@@ -309,18 +310,4 @@ extension SafeZoneViewController: MKMapViewDelegate{
         annotationView?.canShowCallout = true
         return annotationView
     }
-    //
-    //    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    //
-    //    }
-    //
-    //    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    //
-    //    }
-    //
-    //
-    //
-    //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    //
-    //    }
 }

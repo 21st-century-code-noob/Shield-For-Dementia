@@ -36,11 +36,10 @@ class PictureDetailViewController: UITableViewController {
             } else {
                 // File deleted successfully
                 CBToast.hiddenToastAction()
-                self.displayMessage("Memory has been deleted", "Success")
+                CBToast.showToastAction(message: "Success, Memory has been deleted")
+                self.navigationController?.popViewController(animated: true)
             }
         }
-        
-        
     }
     
     override func viewDidLoad() {
