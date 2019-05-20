@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PairedViewController: UIViewController {
 
@@ -14,6 +15,10 @@ class PairedViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var deletePairingButton: UIButton!
     @IBOutlet weak var refreshStatusButton: UIButton!
+    
+    let patientId = UserDefaults.standard.value(forKey: "patientId") as! String
+    var databaseRef = Database.database().reference()
+    var storageRef = Storage.storage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +37,8 @@ class PairedViewController: UIViewController {
         // Create OK button with action handler
         let ok = UIAlertAction(title: "Delete", style: .default, handler: { (action) -> Void in
             self.deletePairing()
+            self.databaseRef.child("users").child(self.patientId).removeValue()
+            
         })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
         }
