@@ -16,7 +16,7 @@ class ReminderTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: true)
         var items = [UIBarButtonItem]()
-        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed)))
+        items.append( UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addButtonPressed)))
         items.append( UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil))
         items.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTable)))
         items[1].width = 15
