@@ -1795,12 +1795,19 @@ please log in or sign up</string>
                         <viewLayoutGuide key="safeArea" id="KGj-B7-Qe0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Safe Zone" id="Lpt-gE-PwS"/>
-                    <navigationItem key="navigationItem" title="Heat Map" id="Sq6-jC-Xpr"/>
+                    <navigationItem key="navigationItem" title="Heat Map" id="Sq6-jC-Xpr">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="e7e-Tj-Bwb">
+                            <connections>
+                                <segue destination="y03-Ub-UAx" kind="unwind" unwindAction="unwindToCarePanelWithSegue:" id="qdF-Sp-2ao"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="65K-Vl-uAy" id="2JL-ZS-0DM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrB-Ra-NnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="y03-Ub-UAx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1459" y="2575"/>
         </scene>
@@ -1842,7 +1849,7 @@ please log in or sign up</string>
             </objects>
             <point key="canvasLocation" x="-980" y="619"/>
         </scene>
-        <!--Location List-->
+        <!--Safe Zone List-->
         <scene sceneID="13h-fc-SKt">
             <objects>
                 <tableViewController id="z3y-AT-FuL" customClass="LocationTableViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
@@ -1883,7 +1890,12 @@ please log in or sign up</string>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Route" id="xnK-Xq-bGy"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Location List" id="i5V-ZK-qZA">
+                    <navigationItem key="navigationItem" title="Safe Zone List" id="i5V-ZK-qZA">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="eRQ-ny-y65">
+                            <connections>
+                                <segue destination="3Ji-VE-dYX" kind="unwind" unwindAction="unwindToCarePanelWithSegue:" id="XRe-Yz-HV8"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="qlz-jT-iCO">
                             <connections>
                                 <segue destination="dqv-L9-Ooj" kind="show" id="w7B-dY-Mgf"/>
@@ -1893,6 +1905,7 @@ please log in or sign up</string>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skz-z6-pYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3Ji-VE-dYX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-390" y="2575"/>
         </scene>
@@ -1930,10 +1943,10 @@ please log in or sign up</string>
             </objects>
             <point key="canvasLocation" x="-2423" y="1629"/>
         </scene>
-        <!--New Location-->
+        <!--New Safe Zone-->
         <scene sceneID="sca-a7-WVv">
             <objects>
-                <tableViewController title="New Location" id="dqv-L9-Ooj" customClass="NewLocationTableViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="New Safe Zone" id="dqv-L9-Ooj" customClass="NewLocationTableViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ChN-oc-wU6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2013,19 +2026,40 @@ please log in or sign up</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Familiarity*：" id="GLE-vW-Rkl">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="80" id="oWa-MU-Wly">
+                                        <rect key="frame" x="0.0" y="204" width="414" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oWa-MU-Wly" id="lKH-Mt-XUQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ape-SL-UD7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="dqv-L9-Ooj" id="OQp-f7-O3E"/>
+                                                        <outlet property="delegate" destination="dqv-L9-Ooj" id="j7o-kt-00B"/>
+                                                    </connections>
+                                                </pickerView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Latitude*:" id="Uo9-8N-FWE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="MSK-8U-dos">
-                                        <rect key="frame" x="0.0" y="204" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="312" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MSK-8U-dos" id="eZX-Gh-cC3">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MSK-8U-dos" id="eZX-Gh-cC3">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please use current location or custom button" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29t-AC-N7x">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please use current location or custom button" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29t-AC-N7x">
                                                     <rect key="frame" x="40" y="19" width="334" height="30"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="latValidation:" destination="dqv-L9-Ooj" eventType="editingChanged" id="ZWj-xa-O4w"/>
@@ -2053,9 +2087,9 @@ please log in or sign up</string>
                             <tableViewSection headerTitle="Longitude*:" id="ZsX-Qx-zZt">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="vBT-bO-iVV">
-                                        <rect key="frame" x="0.0" y="292" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="400" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBT-bO-iVV" id="xXB-lw-HLC">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBT-bO-iVV" id="xXB-lw-HLC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -2083,28 +2117,6 @@ please log in or sign up</string>
                                                 <constraint firstItem="YVA-em-yiv" firstAttribute="bottom" secondItem="xXB-lw-HLC" secondAttribute="bottomMargin" id="Fwt-tt-F5j"/>
                                                 <constraint firstItem="bli-nX-7y6" firstAttribute="centerX" secondItem="xXB-lw-HLC" secondAttribute="centerX" id="yee-YP-J86"/>
                                             </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Familiarity*：" id="GLE-vW-Rkl">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="80" id="oWa-MU-Wly">
-                                        <rect key="frame" x="0.0" y="380" width="414" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oWa-MU-Wly" id="lKH-Mt-XUQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ape-SL-UD7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="dqv-L9-Ooj" id="OQp-f7-O3E"/>
-                                                        <outlet property="delegate" destination="dqv-L9-Ooj" id="j7o-kt-00B"/>
-                                                    </connections>
-                                                </pickerView>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -2437,7 +2449,7 @@ please log in or sign up</string>
             </objects>
             <point key="canvasLocation" x="3423" y="-876"/>
         </scene>
-        <!--Route List-->
+        <!--Safe Route List-->
         <scene sceneID="lFB-Ng-csE">
             <objects>
                 <tableViewController id="Adp-GZ-jxA" customClass="RouteListTableViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
@@ -2485,12 +2497,19 @@ please log in or sign up</string>
                             <outlet property="delegate" destination="Adp-GZ-jxA" id="5Ta-J1-e2w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Route List" id="eWG-Na-k98"/>
+                    <navigationItem key="navigationItem" title="Safe Route List" id="eWG-Na-k98">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="rDj-jP-cp6">
+                            <connections>
+                                <segue destination="wwj-rV-1oE" kind="unwind" unwindAction="unwindToCarePanelWithSegue:" id="Fax-Bx-i2L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="SJ8-rz-nMa" kind="show" identifier="routeDetail" id="zTn-gs-gNH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdk-Bl-Hlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wwj-rV-1oE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="404" y="2575"/>
         </scene>
