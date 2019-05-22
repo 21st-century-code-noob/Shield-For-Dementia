@@ -30,6 +30,12 @@ class HeatMapViewController: UIViewController {
             displayMessage("the location service is turned off, please check.", "Alert")
         }
     }
+    
+    @IBAction func Explanation(_ sender: Any) {
+        displayMessage("You can check the safety level for different postcode areas.", "Information")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

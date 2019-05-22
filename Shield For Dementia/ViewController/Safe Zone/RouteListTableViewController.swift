@@ -45,6 +45,11 @@ class RouteListTableViewController: UITableViewController {
     var storageRef = Storage.storage()
     var patientId = UserDefaults.standard.value(forKey: "patientId") as! String
     
+    @IBAction func Explanation(_ sender: Any) {
+        displayMessage("Safe route means the possible route between different safe zone locations. In order to use this function, there must be at least two safe zone locations.", "Information")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -114,6 +119,13 @@ class RouteListTableViewController: UITableViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func displayMessage(_ message: String,_ title: String){
+        let alertController = UIAlertController(title:title, message: message,
+                                                preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source

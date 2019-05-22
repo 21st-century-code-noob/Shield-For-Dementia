@@ -1761,7 +1761,7 @@ please log in or sign up</string>
             </objects>
             <point key="canvasLocation" x="-2423.1884057971015" y="2574.7767857142858"/>
         </scene>
-        <!--Heat Map-->
+        <!--Safety Map-->
         <scene sceneID="UrH-Wd-Wl0">
             <objects>
                 <viewController id="IOE-NS-ocX" customClass="HeatMapViewController" customModule="Shield_For_Dementia_Carer" customModuleProvider="target" sceneMemberID="viewController">
@@ -1795,10 +1795,15 @@ please log in or sign up</string>
                         <viewLayoutGuide key="safeArea" id="KGj-B7-Qe0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Safe Zone" id="Lpt-gE-PwS"/>
-                    <navigationItem key="navigationItem" title="Heat Map" id="Sq6-jC-Xpr">
+                    <navigationItem key="navigationItem" title="Safety Map" id="Sq6-jC-Xpr">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="e7e-Tj-Bwb">
                             <connections>
                                 <segue destination="y03-Ub-UAx" kind="unwind" unwindAction="unwindToCarePanelWithSegue:" id="qdF-Sp-2ao"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="round_help_outline_black_24pt" id="izb-F9-rOd">
+                            <connections>
+                                <action selector="Explanation:" destination="IOE-NS-ocX" id="OKB-Xd-e3u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1811,11 +1816,11 @@ please log in or sign up</string>
             </objects>
             <point key="canvasLocation" x="-1459" y="2575"/>
         </scene>
-        <!--Heat Map-->
+        <!--Safety Map-->
         <scene sceneID="P0K-rM-8iu">
             <objects>
                 <navigationController id="BXI-Cp-YaX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Heat Map" image="outline_map_black_24pt" id="E70-xO-ITB"/>
+                    <tabBarItem key="tabBarItem" title="Safety Map" image="outline_map_black_24pt" id="E70-xO-ITB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="krE-9c-CMK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2060,6 +2065,7 @@ please log in or sign up</string>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please use current location or custom button" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29t-AC-N7x">
                                                     <rect key="frame" x="40" y="19" width="334" height="30"/>
                                                     <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="latValidation:" destination="dqv-L9-Ooj" eventType="editingChanged" id="ZWj-xa-O4w"/>
@@ -2503,6 +2509,11 @@ please log in or sign up</string>
                                 <segue destination="wwj-rV-1oE" kind="unwind" unwindAction="unwindToCarePanelWithSegue:" id="Fax-Bx-i2L"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="round_help_outline_black_24pt" id="Oj7-ls-ccy">
+                            <connections>
+                                <action selector="Explanation:" destination="Adp-GZ-jxA" id="jca-V8-37x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="SJ8-rz-nMa" kind="show" identifier="routeDetail" id="zTn-gs-gNH"/>
@@ -2850,6 +2861,7 @@ please log in or sign up</string>
         <image name="outline_map_black_24pt" width="24" height="24"/>
         <image name="outline_timeline_black_24pt" width="24" height="24"/>
         <image name="outline_view_list_black_24pt" width="24" height="24"/>
+        <image name="round_help_outline_black_24pt" width="24" height="24"/>
         <image name="safe-zone" width="512" height="512"/>
         <image name="walk" width="512" height="512"/>
     </resources>
