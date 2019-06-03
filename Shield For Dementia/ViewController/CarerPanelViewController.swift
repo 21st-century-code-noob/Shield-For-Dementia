@@ -156,7 +156,8 @@ class CarerPanelViewController: UIViewController {
         }
         
     }
-
+    
+//get time of the day.
     func getTimeOfTheDay() -> String{
         let dateComponents = Calendar.current.dateComponents([.hour], from: Date())
         var timeOfDay: String = ""
@@ -187,6 +188,7 @@ class CarerPanelViewController: UIViewController {
         
     }
     
+    //handle pairing button tap action. If not paired, go to pairing page, else go to paired page.
     @IBAction func pairingButtonPressed(_ sender: Any) {
         CBToast.showToastAction()
         let username = UserDefaults.standard.object(forKey: "username") as? String
@@ -238,7 +240,8 @@ class CarerPanelViewController: UIViewController {
             task.resume()
         }
     }
-        
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pairedSegue"{
             if let vc = segue.destination as? PairedViewController, let status = sender as? [String] {

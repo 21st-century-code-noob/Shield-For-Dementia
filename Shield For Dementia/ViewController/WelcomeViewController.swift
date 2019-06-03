@@ -19,6 +19,7 @@ class WelcomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //if already signed in, go to main page.
         if UserDefaults.standard.object(forKey: "username") != nil{
             performSegue(withIdentifier: "loggedIn", sender: self)
         }

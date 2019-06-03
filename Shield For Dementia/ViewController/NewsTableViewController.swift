@@ -5,6 +5,7 @@
 //  Created by 彭孝诚 on 2019/5/9.
 //  Copyright © 2019 彭孝诚. All rights reserved.
 //
+//Handles News tableview. The ways to parse xml RSS document is from Youtube David Tran tutorial
 
 import UIKit
 import CoreData
