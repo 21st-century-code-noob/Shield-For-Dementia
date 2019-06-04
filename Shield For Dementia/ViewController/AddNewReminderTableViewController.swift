@@ -96,6 +96,7 @@ class AddNewReminderTableViewController: UITableViewController {
     }
     */
 
+    // handle add reminder button
     @IBAction func addReminderButtonPressed(_ sender: Any) {
         CBToast.showToastAction()
         addButton.isEnabled = false
@@ -155,6 +156,7 @@ class AddNewReminderTableViewController: UITableViewController {
         }
     }
     
+    //display alarm with only ok button
     func displayAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

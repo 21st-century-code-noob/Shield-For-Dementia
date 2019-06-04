@@ -31,6 +31,7 @@ class PairedViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //handle pairing button tap action
     @IBAction func deletePairingButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Delete Pairing", message: "Are you sure you want to delete?", preferredStyle: .alert)
         
@@ -48,6 +49,7 @@ class PairedViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    //handle delete pairing button action
     func deletePairing(){
         deletePairingButton.isEnabled = false
         CBToast.showToastAction()
@@ -91,7 +93,7 @@ class PairedViewController: UIViewController {
         task.resume()
     }
     
-    
+    //handle refresh status button action
     @IBAction func refreshStatusButtonPressed(_ sender: Any) {
         refreshStatusButton.isEnabled = false
         CBToast.showToastAction()

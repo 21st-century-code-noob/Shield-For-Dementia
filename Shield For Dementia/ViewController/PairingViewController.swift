@@ -19,6 +19,7 @@ class PairingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //handle send request button.
     @IBAction func sendRequestButtonPressed(_ sender: Any) {
         CBToast.showToastAction()
         sendRequestButton.isEnabled = false
@@ -68,7 +69,11 @@ class PairingViewController: UIViewController {
     
     func displayAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message:message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Okay",
+                                      style: UIAlertAction.Style.default,
+                                      handler: {
+                                        (action) in
+                                        self.navigationController?.popViewController(animated: true)}))
         self.present(alert, animated: true)
     }
 
