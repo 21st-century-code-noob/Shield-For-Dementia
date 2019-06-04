@@ -68,7 +68,7 @@ class RouteListTableViewController: UITableViewController {
         availableList.removeAll()
         
         //download safe zones information
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/safezonelocation/getlocationbyrequestid?requestId=" + String(requestId)
+        let requestURL = "Replace it with your API which can load safe zones for the pairing" + String(requestId)
         
         
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in

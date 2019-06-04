@@ -138,7 +138,7 @@ class ReminderTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/deletereminderbyreminderid?reminderId=" + String(describing: reminders[indexPath.row].reminderId)
+            let requestURL = "Replace it with your API which can delete a reminder" + String(describing: reminders[indexPath.row].reminderId)
             var urlRequest = URLRequest(url: URL(string: requestURL)!)
             urlRequest.httpMethod = "DELETE"
             let task = URLSession.shared.dataTask(with: urlRequest){ data, response, error in
@@ -200,7 +200,7 @@ class ReminderTableViewController: UITableViewController {
         CBToast.showToastAction()
         reminders.removeAll()
         if UserDefaults.standard.value(forKey: "patientId") != nil{
-            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/selectreminderbypatientid?patientId=" + (UserDefaults.standard.object(forKey: "patientId") as! String)
+            let requestURL = "Replace it with your API which can get all reminders for a patient" + (UserDefaults.standard.object(forKey: "patientId") as! String)
             let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
                 if error != nil{
                     CBToast.hiddenToastAction()

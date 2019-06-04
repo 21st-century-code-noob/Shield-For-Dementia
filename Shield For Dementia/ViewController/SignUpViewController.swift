@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController, UITableViewDelegate {
             let firstName = firstNameTF.text!
             let lastName = lastNameTF.text!
             
-            var requestURL3 = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/addaewcarer?carerId="
+            var requestURL3 = ""
             requestURL3 = requestURL3 + username
             requestURL3 = requestURL3 + "&password="
             requestURL3 = requestURL3 + passwordHash! + "&firstName=" + firstName + "&lastName=" + lastName
@@ -95,7 +95,7 @@ class SignUpViewController: UIViewController, UITableViewDelegate {
     func checkUsernameAvailability(username: String!){
         checkAvailabilityButton.isHidden = true
         checkAvailabilityIndicator.startAnimating()
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
+        let requestURL = "" + username
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
                 print("error occured")

@@ -30,7 +30,7 @@ class PairingViewController: UIViewController {
         else{
             let carerId = UserDefaults.standard.value(forKey: "username") as! String
             let patientId = patientIdTF.text!
-            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/friend-request/createnewconnectionrequest?carerId=" + carerId + "&patientId=" + patientId
+            let requestURL = "Replace it with your API which can create new connection request" + carerId + "&patientId=" + patientId
             let url = URL(string: requestURL)!
             var request = URLRequest(url: url)
             request.httpMethod = "POST"

@@ -32,7 +32,7 @@ class LocationTableViewController: UITableViewController {
         locationList = []
         
         //download safe zones 
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/safezonelocation/getlocationbyrequestid?requestId=" + String(requestId)
+        let requestURL = "Replace it with your API which can load safe zones for the pairing" + String(requestId)
         
         
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
@@ -126,7 +126,7 @@ class LocationTableViewController: UITableViewController {
             // Delete the row from the data source
             
             
-            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/safezonelocation/deletelocationbyidsafezonelocation?idsafeZoneLocation=" + locationList[indexPath.row].subtitle!
+            let requestURL = "Replace it with your API which can delete a safe zone" + locationList[indexPath.row].subtitle!
             
             self.locationList.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)

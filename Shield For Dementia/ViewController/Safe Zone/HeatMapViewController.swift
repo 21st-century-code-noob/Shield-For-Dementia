@@ -42,7 +42,7 @@ class HeatMapViewController: UIViewController {
         mapView.delegate = self
         // Do any additional setup after loading the view.
         //download all data
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/graded-suburb"
+        let requestURL = "Replace it with your API which can load all the graded suburb"
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
                 print("error occured")

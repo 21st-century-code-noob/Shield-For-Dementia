@@ -135,7 +135,7 @@ class NewLocationTableViewController: UITableViewController, CLLocationManagerDe
         
         if(locationNameErrorLabel.text == "" && postcodeErrorLabel.text == "" && latErrorLabel.text == "" && longErrorLabel.text == "" && locationNameTextField.text != "" && latTextField.text != "" && longTextField.text != ""){
             
-            var requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/safezonelocation/createsafezonelocation"
+            var requestURL = "Replace it with your API which can create a new safe zone"
             requestURL = requestURL + "?locationName=" + locationNameTextField.text!.trimmingCharacters(in: .whitespaces)
             requestURL = requestURL + "&latitude=" + latTextField.text!.trimmingCharacters(in: .whitespaces)
             requestURL = requestURL + "&longitude=" + longTextField.text!.trimmingCharacters(in: .whitespaces)

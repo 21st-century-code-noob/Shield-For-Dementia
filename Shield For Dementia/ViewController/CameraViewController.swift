@@ -139,7 +139,7 @@ class CameraViewController: UITableViewController, UIImagePickerControllerDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Auth.auth().signIn(withEmail: "123@123.com", password:"123456789"){(user,error) in
+        Auth.auth().signIn(withEmail: "Replace it with your email for firebase", password:"Replace it with your password for firebase"){(user,error) in
             if error != nil {
                 self.displayMessage(error!.localizedDescription,"Error")
             }

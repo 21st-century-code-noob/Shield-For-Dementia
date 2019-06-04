@@ -66,7 +66,7 @@ class CarerPanelViewController: UIViewController {
     //retrieve first name from api
     func retriveFname(){
         let username = UserDefaults.standard.value(forKey: "username") as! String
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
+        let requestURL = "Replace it with your API which can check the id of carer" + username
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
                 print("error occured")
@@ -106,7 +106,7 @@ class CarerPanelViewController: UIViewController {
         let username = UserDefaults.standard.object(forKey: "username") as! String
         var hasPatient:Bool = false
         if username != nil{
-            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkwhethercarerhaspatient?carerId=" + username
+            let requestURL = "Replace it with your API which can check whether this carer has been paired with a patient" + username
             let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
                 if error != nil{
                     print("error occured")
@@ -191,7 +191,7 @@ class CarerPanelViewController: UIViewController {
         CBToast.showToastAction()
         let username = UserDefaults.standard.object(forKey: "username") as? String
         if username != nil{
-            let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkwhethercarerhaspatient?carerId=" + username!
+            let requestURL = "Replace it with your API which can check whether carer has been paired with a patient" + username!
             let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
                 if error != nil{
                     print("error occured")

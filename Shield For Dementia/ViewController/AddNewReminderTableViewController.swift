@@ -119,7 +119,7 @@ class AddNewReminderTableViewController: UITableViewController {
             dateFormatter.dateFormat = "HH:mm"
             let notifyTime = dateFormatter.string(from: ringingTimePicker.date)
             let patientId = UserDefaults.standard.object(forKey: "patientId") as! String
-            var requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/reminder/addnewreminder?patientId=" + patientId + "&time="
+            var requestURL = "Replace it with your API which can create new a reminder" + patientId + "&time="
             requestURL = requestURL + notifyTime + "&drugName="
             requestURL = requestURL + medicineName + "&startDate="
             requestURL = requestURL + startDate + "&lasts=" + String(describing: lastDays!)

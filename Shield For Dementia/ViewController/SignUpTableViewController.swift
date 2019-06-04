@@ -175,7 +175,7 @@ class SignUpTableViewController: UITableViewController {
     
     
     func checkUsernameAvailability(username: String!, finished: @escaping((Bool)->Void)){
-        let requestURL = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/checkcarerid?carerId=" + username
+        let requestURL = "Replace it with your API which can check the login detail for a carer" + username
         let task = URLSession.shared.dataTask(with: URL(string: requestURL)!){ data, response, error in
             if error != nil{
                 print("error occured")
@@ -212,7 +212,7 @@ class SignUpTableViewController: UITableViewController {
         let lastName = self.lnameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         checkUsernameAvailability(username: username) {finished in
             if finished{
-                var requestURL3 = "https://sqbk9h1frd.execute-api.us-east-2.amazonaws.com/IEProject/ieproject/carer/addaewcarer?carerId="
+                var requestURL3 = "Replace it with your API which can add a new carer"
                 requestURL3 = requestURL3 + username
                 requestURL3 = requestURL3 + "&password="
                 requestURL3 = requestURL3 + passwordHash! + "&firstName=" + firstName + "&lastName=" + lastName
